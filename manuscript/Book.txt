@@ -39,4 +39,4 @@ local-methods.md
 09-contribute.md
 09b-translations.md
 10-acknowledgements.md
-11-references.Rmd
+11-references.md
