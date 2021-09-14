@@ -61,9 +61,9 @@ Advertising follows me on the Internet because I recently bought a washing machi
 Yes, it makes sense to suggest gloves if I already have a winter hat in my shopping cart.
 The algorithm recommends this movie, because users who liked other movies I liked also enjoyed the recommended movie.
 Increasingly, Internet companies are adding explanations to their recommendations.
-A good example is the Amazon product recommendation, which is based on frequently purchased product combinations:
+A good example are product recommendations, which are based on frequently purchased product combinations:
 
-![Recommended products when buying some paint from Amazon.](images/amazon-freq-bought-together.png)
+![Recommended products that are frequently bought together.](images/amazon-freq-bought-together.png)
 
 
 In many scientific disciplines there is a change from qualitative to quantitative methods (e.g. sociology, psychology), and also towards machine learning (biology, genomics).
@@ -77,9 +77,9 @@ You want to be 100% sure that the abstraction the system has learned is error-fr
 An explanation might reveal that the most important learned feature is to recognize the two wheels of a bicycle, and this explanation helps you think about edge cases like bicycles with side bags that partially cover the wheels.
 
 By default, machine learning models pick up biases from the training data.
-This can turn your machine learning models into racists that discriminate against protected groups.
+This can turn your machine learning models into racists that discriminate against underrepresented groups.
 Interpretability is a useful debugging tool for **detecting bias** in machine learning models.
-It might happen that the machine learning model you have trained for automatic approval or rejection of credit applications discriminates against a minority.
+It might happen that the machine learning model you have trained for automatic approval or rejection of credit applications discriminates against a minority that has been historically disenfranchised.
 Your main goal is to grant loans only to people who will eventually repay them.
 The incompleteness of the problem formulation in this case lies in the fact that you not only want to minimize loan defaults, but are also obliged not to discriminate on the basis of certain demographics.
 This is an additional constraint that is part of your problem formulation (granting loans in a low-risk and compliant way) that is not covered by the loss function the machine learning model was optimized for.
@@ -125,7 +125,7 @@ The classifier learned to use snow as a feature for classifying images as "wolf"
 
 If you can ensure that the machine learning model can explain decisions, you can also check the following traits more easily (Doshi-Velez and Kim 2017):
 
-- Fairness: Ensuring that predictions are unbiased and do not implicitly or explicitly discriminate against protected groups.
+- Fairness: Ensuring that predictions are unbiased and do not implicitly or explicitly discriminate against underrepresented groups.
 An interpretable model can tell you why it has decided that a certain person should not get a loan, and it becomes easier for a human to judge whether the decision is based on a learned demographic (e.g. racial) bias.
 - Privacy: Ensuring that sensitive information in the data is protected.
 - Reliability or Robustness: Ensuring that small changes in the input do not lead to large changes in the prediction.
@@ -283,7 +283,7 @@ But the weights in a linear model can still be interpreted better than the weigh
 
 You can zoom in on a single instance and examine what the model predicts for this input, and explain why.
 If you look at an individual prediction, the behavior of the otherwise complex model might behave more pleasantly.
-Locally, the prediction might only depend linearly or monotonously on some features, rather than having a complex dependence on them.
+Locally, the prediction might only depend linearly or monotonically on some features, rather than having a complex dependence on them.
 For example, the value of a house may depend nonlinearly on its size.
 But if you are looking at only one particular 100 square meters house, there is a possibility that for that data subset, your model prediction depends linearly on the size. 
 You can find this out by simulating how the predicted price changes when you increase or decrease the size by 10 square meters.

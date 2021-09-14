@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title></title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="shap.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-110543840-1', 'https://christophm.github.io/interpretable-ml-book/', {
+  'anonymizeIp': true
+  , 'storage': 'none'
+  , 'clientId': window.localStorage.getItem('ga_clientId')
+});
+ga(function(tracker) {
+  window.localStorage.setItem('ga_clientId', tracker.get('clientId'));
+});
+ga('send', 'pageview');
+</script>
+
+<link rel="stylesheet" type="text/css" href="css/cookieconsent.min.css" />
+<script src="javascript/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#000"
+    },
+    "button": {
+      "background": "#f1d600"
+    }
+  },
+  "position": "bottom-right",
+  "content": {
+    "message": "This website uses cookies for Google Analytics so that I know how many people are reading the book and which chapters are the most popular. The book website doesn't collect any personal data."
+  }
+})});
+</script>
+
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Interpretable machine learning</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="test.html"><a href="test.html"><i class="fa fa-check"></i><b>1</b> TEST</a><ul>
+<li class="chapter" data-level="1.1" data-path="shap.html"><a href="shap.html"><i class="fa fa-check"></i><b>1.1</b> SHAP (SHapley Additive exPlanations)</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="shap.html"><a href="shap.html#definition"><i class="fa fa-check"></i><b>1.1.1</b> Definition</a></li>
+<li class="chapter" data-level="1.1.2" data-path="shap.html"><a href="shap.html#kernelshap"><i class="fa fa-check"></i><b>1.1.2</b> KernelSHAP</a></li>
+<li class="chapter" data-level="1.1.3" data-path="shap.html"><a href="shap.html#treeshap"><i class="fa fa-check"></i><b>1.1.3</b> TreeSHAP</a></li>
+<li class="chapter" data-level="1.1.4" data-path="shap.html"><a href="shap.html#examples"><i class="fa fa-check"></i><b>1.1.4</b> Examples</a></li>
+<li class="chapter" data-level="1.1.5" data-path="shap.html"><a href="shap.html#shap-feature-importance"><i class="fa fa-check"></i><b>1.1.5</b> SHAP Feature Importance</a></li>
+<li class="chapter" data-level="1.1.6" data-path="shap.html"><a href="shap.html#shap-summary-plot"><i class="fa fa-check"></i><b>1.1.6</b> SHAP Summary Plot</a></li>
+<li class="chapter" data-level="1.1.7" data-path="shap.html"><a href="shap.html#shap-dependence-plot"><i class="fa fa-check"></i><b>1.1.7</b> SHAP Dependence Plot</a></li>
+<li class="chapter" data-level="1.1.8" data-path="shap.html"><a href="shap.html#shap-interaction-values"><i class="fa fa-check"></i><b>1.1.8</b> SHAP Interaction Values</a></li>
+<li class="chapter" data-level="1.1.9" data-path="shap.html"><a href="shap.html#clustering-shap-values"><i class="fa fa-check"></i><b>1.1.9</b> Clustering SHAP values</a></li>
+<li class="chapter" data-level="1.1.10" data-path="shap.html"><a href="shap.html#advantages"><i class="fa fa-check"></i><b>1.1.10</b> Advantages</a></li>
+<li class="chapter" data-level="1.1.11" data-path="shap.html"><a href="shap.html#disadvantages"><i class="fa fa-check"></i><b>1.1.11</b> Disadvantages</a></li>
+<li class="chapter" data-level="1.1.12" data-path="shap.html"><a href="shap.html#software"><i class="fa fa-check"></i><b>1.1.12</b> Software</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<!--bookdown:title:end-->
+<!--bookdown:title:start-->
+<div id="test" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> TEST</h1>
+<!--{pagebreak}-->
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="shap.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/christophM/interpretable-ml-book/edit/master/manuscript/%s",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"search": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
