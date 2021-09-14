@@ -17,7 +17,7 @@ First, forget about the training data and imagine you only have the black box mo
 You can probe the box as often as you want.
 Your goal is to understand why the machine learning model made a certain prediction.
 LIME tests what happens to the predictions when you give variations of your data into the machine learning model.
-LIME generates a new dataset consisting of permuted samples and the corresponding predictions of the black box model.
+LIME generates a new dataset consisting of perturbed samples and the corresponding predictions of the black box model.
 On this new dataset LIME then trains an interpretable model, which is weighted by the proximity of the sampled instances to the instance of interest. 
 The interpretable model can be anything from the [interpretable models chapter](#simple), for example [Lasso](#lasso) or a [decision tree](#tree).
 The learned model should be a good approximation of the machine learning model predictions locally, but it does not have to be a good global approximation.
@@ -402,28 +402,19 @@ The user can also specify a probability for turning off a superpixel in each per
 
 #### Example
 
-Since the computation of image explanations is rather slow, the [lime R package](https://github.com/thomasp85/lime) contains a precomputed example which we will also use to show the output of the method. 
-The explanations can be displayed directly on the image samples. 
-Since we can have several predicted labels per image (sorted by probability), we can explain the top `n_labels`.
-For the following image the top 3 predictions were *electric guitar*; *acoustic guitar*; and *Labrador*. 
+In this example we look at a classification made by the Inception V3 neural network.
+The image used shows some bread I baked which are in a bowl.
+Since we can have several predicted labels per image (sorted by probability), we can explain the top labels.
+The top prediction is "Bagel" with a probability of 77%, followed by "Strawberry" with a probability of 4%.
+The following images show for "Bagel" and "Strawberry" the LIME explanations.
+The explanations can be displayed directly on the image samples.
+Green means that this part of the image increases the probability for the label and red means a decrease.
 
-
-```{r lime-images-package-example, eval = FALSE, fig.show = "hide"}
-# Having trouble to install imagemick in version 6.8.8 or higher on TravisCI, 
-# which would be required for this code. So running only locally and added the
-# image manually.
-# For running locally, set eval = TRUE and make sure lime is installed.
-library("lime")
-explanation <- .load_image_example()
-plot_image_explanation(explanation)
-```
-
-```{r lime-images-package-example-include, fig.cap="LIME explanations for the top 3 classes for image classification made by Google's Inception neural network. The example is taken from the LIME paper (Ribeiro et. al., 2016).", out.width=500}
+```{r lime-images-package-example-include, fig.cap="Left: Image of a bowl of bread. Middle and right: LIME explanations for the top 2 classes (bagel, strawberry) for image classification made by Google's Inception V3 neural network.", out.width=500}
 knitr::include_graphics("images/lime-images-package-example-1.png")
 ```
+The prediction and explanation for "Bagel" are very reasonable, even if the prediction is wrong -- these are clearly no bagels since the hole in the middle is missing.
 
-The prediction and explanation in the first case are very reasonable.
-The first prediction of *electric guitar* is of course wrong, but the explanation shows us that the neural network still behaved reasonably because the image part identified suggests that this could be an electric guitar.
 
 ### Advantages
 
@@ -445,13 +436,14 @@ LIME is one of the few methods that **works for tabular data, text and images**.
 
 The **fidelity measure** (how well the interpretable model approximates the black box predictions) gives us a good idea of how reliable the interpretable model is in explaining the black box predictions in the neighborhood of the data instance of interest.
 
-LIME is implemented in Python ([lime](https://github.com/marcotcr/lime) and [Skater](https://github.com/datascienceinc/Skater)) and R ([lime package](https://cran.r-project.org/web/packages/lime/index.html) and [iml package](https://cran.r-project.org/web/packages/iml/index.html)) and is **very easy to use**.
+LIME is implemented in Python ([lime](https://github.com/marcotcr/lime) library) and R ([lime package](https://cran.r-project.org/web/packages/lime/index.html) and [iml package](https://cran.r-project.org/web/packages/iml/index.html)) and is **very easy to use**.
 
-The explanations created with local surrogate models **can use other features than the original model**. 
-This can be a big advantage over other methods, especially if the original features cannot bet interpreted. 
+The explanations created with local surrogate models **can use other (interpretable) features than the original model was trained on.**.
+Of course, these interpretable features must be derived from the data instances.
 A text classifier can rely on abstract word embeddings as features, but the explanation can be based on the presence or absence of words in a sentence.
 A regression model can rely on a non-interpretable transformation of some attributes, but the explanations can be created with the original attributes.
-
+For example, the regression model could be trained on components of a principal component analysis (PCA) of answers to a survey, but LIME might be trained on the original survey questions.
+Using interpretable features for LIME can be a big advantage over other methods, especially when the model was trained with non-interpretable features.
 
 ### Disadvantages
 
@@ -472,6 +464,9 @@ In an article [^limerobustness] the authors showed that the explanations of two 
 Also, in my experience, if you repeat the sampling process, then the explantions that come out can be different.
 Instability means that it is difficult to trust the explanations, and you should be very critical.
 
+LIME explanations can be manipulated by the data scientist to hide biases [^fool].
+The possibility of manipulation makes it more difficult to trust explanations generated with LIME.
+
 Conclusion:
 Local surrogate models, with LIME as a concrete implementation, are very promising.
 But the method is still in development phase and many problems need to be solved before it can be safely applied.
@@ -480,3 +475,6 @@ But the method is still in development phase and many problems need to be solved
 [^Ribeiro2016lime]: Ribeiro, Marco Tulio, Sameer Singh, and Carlos Guestrin. "Why should I trust you?: Explaining the predictions of any classifier." Proceedings of the 22nd ACM SIGKDD international conference on knowledge discovery and data mining. ACM (2016).
 
 [^limerobustness]: Alvarez-Melis, David, and Tommi S. Jaakkola. "On the robustness of interpretability methods." arXiv preprint arXiv:1806.08049 (2018).
+
+
+[^fool]: Slack, Dylan, et al. "Fooling lime and shap: Adversarial attacks on post hoc explanation methods." Proceedings of the AAAI/ACM Conference on AI, Ethics, and Society. 2020.

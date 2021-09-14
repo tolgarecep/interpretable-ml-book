@@ -469,7 +469,7 @@ The months are ordered by the similarity of days of each month based on the othe
 alecat1 = FeatureEffect$new(pred.bike, "mnth", method = "ale") 
 
 ggplot(alecat1$results) + 
-  geom_col(aes(x = mnth, y = .ale), fill = default_color, width = 0.3) + 
+  geom_col(aes(x = mnth, y = .value), fill = default_color, width = 0.3) + 
   scale_x_discrete('') + 
   scale_y_continuous("ALE of predicted bike rentals")
 ```
@@ -600,7 +600,7 @@ As a rule of thumb: Use ALE instead of PDP.
 
 Did I mention that [partial dependence plots](#pdp) and [individual conditional expectation curves](#ice) are an alternative? =) 
 
-To the best of my knowledge, ALE plots are currently only implemented in R, once in the [ALEPlot R package](https://cran.r-project.org/web/packages/ALEPlot/index.html) by the inventor himself and once in the [iml package](https://cran.r-project.org/web/packages/iml/index.html).
+ALE plots are implemented in R and Python, once in the [ALEPlot R package](https://cran.r-project.org/web/packages/ALEPlot/index.html) by the inventor himself and once in the [iml package](https://cran.r-project.org/web/packages/iml/index.html) and in the [ALEPython package](https://github.com/blent-ai/ALEPython).  
 
+[^ALE]: Apley, Daniel W., and Jingyu Zhu. "Visualizing the effects of predictor variables in black box supervised learning models." Journal of the Royal Statistical Society: Series B (Statistical Methodology) 82.4 (2020): 1059-1086.
 
-[^ALE]: Apley, Daniel W. "Visualizing the effects of predictor variables in black box supervised learning models." arXiv preprint arXiv:1612.08468 (2016).

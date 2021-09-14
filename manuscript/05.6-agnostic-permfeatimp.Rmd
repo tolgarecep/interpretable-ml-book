@@ -5,9 +5,9 @@ set.seed(42)
 
 <!--{pagebreak}-->
 
-## Feature Importance {#feature-importance}
+## Permutation Feature Importance {#feature-importance}
 
-The importance of a feature is the increase in the prediction error of the model after we permuted the feature's values, which breaks the relationship between the feature and the true outcome. 
+Permutation feature importance measures the increase in the prediction error of the model after we permuted the feature's values, which breaks the relationship between the feature and the true outcome. 
 
 ### Theory
 
@@ -47,19 +47,21 @@ n = 200
 p = 50
 X = data.frame(matrix(rnorm(n*p), nrow = n))
 y = rnorm(n)
-tsk = makeRegrTask(data = cbind(X, y), target = "y")
+dat = cbind(X, y)
+tsk = makeRegrTask(data = dat, target = "y")
 
 X2 = data.frame(matrix(rnorm(n*p), nrow = n))
 y2 = rnorm(n)
-tsk2 = makeRegrTask(data = cbind(X2, y = y2), target = "y")
+dat2 = cbind(X2, y = y2)
+tsk2 = makeRegrTask(data = dat2, target = "y")
 
 lrn = makeLearner("regr.svm")
-mod = train(lrn, tsk)
+mod = mlr::train(lrn, tsk)
 pred = predict(mod, tsk)
-perf1 = performance(pred, measures = list(mae))
+perf1 = mlr::performance(pred, measures = list(mlr::mae))
 
 pred2 = predict(mod, tsk2)
-perf2 = performance(pred2, measures = list(mae))
+perf2 = mlr::performance(pred2, measures = list(mlr::mae))
 
 ```
 
@@ -81,10 +83,10 @@ Or should the importances reflect how much the model depends on each of the feat
 Let us take a look at how the distributions of feature importances for training and test data differ.
 
 ```{r feature-imp-sim, fig.cap="Distributions of feature importance values by data type. An SVM was trained on a regression dataset with 50 random features and 200 instances. The SVM overfits the data: Feature importance based on the training data shows many important features. Computed on unseen test data, the feature importances are close to a ratio of one (=unimportant)."}
-pred = Predictor$new(mod, cbind(X, y), y = "y")
+pred = Predictor$new(mod, cbind(X, y = y), y = "y")
 imp = FeatureImp$new(pred, loss = "mae")
 
-pred2 = Predictor$new(mod, cbind(X2, y2), y = "y2")
+pred2 = Predictor$new(mod, cbind(X2, y = y2), y = "y")
 imp2 = FeatureImp$new(pred2, loss = "mae")
 
 imp$results$dat.type = "Training data"
@@ -283,12 +285,12 @@ Even though the importance values might make sense at the level of model behavio
 ### Software and Alternatives
 
 The `iml` R package was used for the examples.
-The `DALEX` R package and the Python `Skater` module also implement model-agnostic permutation feature importance.
+The R packages `DALEX` and `vip`, as well as the Python library `alibi`, `scikit-learn` and `rfpimp`, also implement model-agnostic permutation feature importance.
 
 An algorithm called [PIMP](https://academic.oup.com/bioinformatics/article/26/10/1340/193348) adapts the feature importance algorithm to provide p-values for the importances.
 
 
 [^Breiman2001]: Breiman, Leo.“Random Forests.” Machine Learning 45 (1). Springer: 5-32 (2001).
 
-[^Fisher2018]: Fisher, Aaron, Cynthia Rudin, and Francesca Dominici. “Model Class Reliance: Variable importance measures for any machine learning model class, from the ‘Rashomon’ perspective.” http://arxiv.org/abs/1801.01489 (2018).
+[^Fisher2018]: Fisher, Aaron, Cynthia Rudin, and Francesca Dominici. “All Models are Wrong, but Many are Useful: Learning a Variable's Importance by Studying an Entire Class of Prediction Models Simultaneously.” http://arxiv.org/abs/1801.01489 (2018).
 

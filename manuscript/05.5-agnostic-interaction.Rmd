@@ -57,8 +57,8 @@ This measurement is called H-statistic, introduced by Friedman and Popescu (2008
 ### Theory: Friedman's H-statistic
 
 We are going to deal with two cases:
-First, a two-way interaction measure that tells us whether and to what extend two features in the model interact with each other;
-second, a total interaction measure that tells us whether and to what extend a feature interacts in the model with all the other features.
+First, a two-way interaction measure that tells us whether and to what extent two features in the model interact with each other;
+second, a total interaction measure that tells us whether and to what extent a feature interacts in the model with all the other features.
 In theory, arbitrary interactions between any number of features can be measured, but these two are the most interesting cases.
 
 
@@ -193,6 +193,9 @@ We would need to conduct a statistical test, but this **test is not (yet) availa
 Concerning the test problem, it is difficult to say when the H-statistic is large enough for us to consider an interaction "strong".
 
 Also, the H-statistics can be larger than 1, which makes the interpretation difficult.
+
+When the total effect of two features is weak, but mostly consists of interactions, than the H-statistic will be very large.
+This can be easily overinterpreted as a strong interaction effect, when in reality both features play a minor role in the model.
 
 The H-statistic tells us the strength of interactions, but it does not tell us how the interactions look like.
 That is what [partial dependence plots](#pdp) are for. 
