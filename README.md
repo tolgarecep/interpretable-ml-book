@@ -1,11 +1,21 @@
-# Interpretable machine learning
+# Çeviri Hakkında
 
-Explaining the decisions and behaviour of machine learning models.
+*Bu repo (web versiyonunu şuradan görüntüleyebilirsiniz: tolgarecep.github.io/interpretable-ml-book) Christoph Molnar'ın "Interpretable Machine Learning" kitabının Türkçe çevirisini içerir. Orijinal metne buradan ulaşabilirsiniz:* 
+
+*Çeviride Türkçe halleri kullanılmayan/çok az kullanılan kelimeler İngilizce bırakılmıştır. Bölüm 2 - Özet'te belirtildiği üzere bu kitap sıfırdan makine öğrenmesi öğretmeyi amaçlamaz.* 
+
+Bu dosyanın kalanı README.md dosyasının Türkçe çevirisidir.
+
+# Açıklanabilir Makine Öğrenmesi
+
+(Bu) Makine öğrenmesi modellerinin aldıkları kararlar ve onların davranışlarını açıklama girişimidir.
 
 ![Build Status](https://github.com/christophM/interpretable-ml-book/actions/workflows/Book.yaml/badge.svg)
 
-## Summary
-You can find the current version of the book here: https://christophm.github.io/interpretable-ml-book/
+## Özet
+Kitabın güncel halini burada bulabilirsiniz: https://christophm.github.io/interpretable-ml-book/
+
+Bu kitap açıklanabilir makine öğrenmesi hakkında. Makine öğrenmesi günlük hayatımızdaki birçok ürünün ve prosedürün içine yerleştiği halde makineler tarafından alınan kararlar kendiliğinden herhangi bir izah içermiyor. Modelin yaptıklarının izahı, modele ve modelin aldığı karara olan güveni arttırır. Algoritmanın programcısı olarak bu öğrenmiş olan modele güvenip güvenemeyeceğinizi bilmelisiniz. Genel
 
 This book is about interpretable machine learning. Machine learning is being built into many products and processes of our daily lives, yet decisions made by machines don't automatically come with an explanation. An explanation increases the trust in the decision and in the machine learning model. As the programmer of an algorithm you want to know whether you can trust the learned model. Did it learn generalizable features? Or are there some odd artifacts in the training data which the algorithm picked up? This book will give an overview over techniques that can be used to make black boxes as transparent as possible and explain decisions. In the first chapter algorithms that produce simple, interpretable models are introduced together with instructions how to interpret the output. The later chapters focus on analyzing complex models and their decisions.
 In an ideal future, machines will be able to explain their decisions and make a transition into an algorithmic age more human. This books is recommended for machine learning practitioners, data scientists, statisticians and also for stakeholders deciding on the use of machine learning and intelligent algorithms.
