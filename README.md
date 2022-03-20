@@ -4,72 +4,62 @@
 
 *Çeviride Türkçe halleri kullanılmayan/çok az kullanılan kelimeler İngilizce bırakılmıştır. Bölüm 2 - Özet'te belirtildiği üzere bu kitap sıfırdan makine öğrenmesi öğretmeyi amaçlamaz.* 
 
-Bu dosyanın kalanı README.md dosyasının Türkçe çevirisidir.
+*Bu dosyanın kalanı README.md dosyasının Türkçe çevirisidir. Changelog henüz çevirilmedi.*
 
 # Açıklanabilir Makine Öğrenmesi
 
-(Bu) Makine öğrenmesi modellerinin aldıkları kararlar ve onların davranışlarını açıklama girişimidir.
+Makine öğrenmesi modellerinin aldıkları kararlar ve onların davranışlarının açıklanması.
 
 ![Build Status](https://github.com/christophM/interpretable-ml-book/actions/workflows/Book.yaml/badge.svg)
 
 ## Özet
 Kitabın güncel halini burada bulabilirsiniz: https://christophm.github.io/interpretable-ml-book/
 
-Bu kitap açıklanabilir makine öğrenmesi hakkında. Makine öğrenmesi günlük hayatımızdaki birçok ürünün ve prosedürün içine yerleştiği halde makineler tarafından alınan kararlar kendiliğinden herhangi bir izah içermiyor. Modelin yaptıklarının izahı, modele ve modelin aldığı karara olan güveni arttırır. Algoritmanın programcısı olarak bu öğrenmiş olan modele güvenip güvenemeyeceğinizi bilmelisiniz. Genel
+Bu kitap açıklanabilir makine öğrenmesi hakkında. Makine öğrenmesi günlük hayatımızdaki birçok ürünün ve prosedürün içine yerleşmiş olsa da makineler tarafından alınan kararlar kendiliğinden herhangi bir izah içermiyor. Modelin yaptıklarının izahı, modele ve modelin aldığı karara olan güveni arttırır. Algoritmanın programcısı olarak bu öğrenmiş (optimize edilmiş) modele güvenip güvenemeyeceğinizi bilmelisiniz. Genelleştirilebilir feature'lar öğrenebilmiş mi? Ya da training verisinde modelin yakaladığı garip yapaylıklar var mı? Bu kitap, kara-kutuları olabildiğince transparan yapmak ve kara-kutuların aldığı kararları açıklamak için geliştirilen metodları gözden geçiriyor. İlk bölümde sade ve yorumlanabilir modeller üreten algoritmalar onları nasıl yorumlayacağınıza dair açıklamalarla beraber sunuluyor. Sonraki bölümler karmaşık modelleri ve onların kararlarını analiz etmeye odaklanıyor. İdeal bir gelecekte makineler aldıkları kararları açıkalayabilecek ve daha insani bir algoritmik geleceğe geçiş yapacak. Bu kitap makine öğrenmesiyle çalışanlara, veri bilimcilere, istatistikçilere ve makine öğrenmesi algoritmalarını ve zeki algoritmaları kullanmaya karar vermiş menfaat sahibi kimselere tavsiye edilir. 
 
-This book is about interpretable machine learning. Machine learning is being built into many products and processes of our daily lives, yet decisions made by machines don't automatically come with an explanation. An explanation increases the trust in the decision and in the machine learning model. As the programmer of an algorithm you want to know whether you can trust the learned model. Did it learn generalizable features? Or are there some odd artifacts in the training data which the algorithm picked up? This book will give an overview over techniques that can be used to make black boxes as transparent as possible and explain decisions. In the first chapter algorithms that produce simple, interpretable models are introduced together with instructions how to interpret the output. The later chapters focus on analyzing complex models and their decisions.
-In an ideal future, machines will be able to explain their decisions and make a transition into an algorithmic age more human. This books is recommended for machine learning practitioners, data scientists, statisticians and also for stakeholders deciding on the use of machine learning and intelligent algorithms.
+Bu kitap master branch'den (çeviri turkish branch'inden) otomatik olarak kuruldu ve Github Actions ile gh-pages'a push edildi.
 
+## Destek
+[Nasıl destek olabilirim?](CONTRIBUTING.md)
 
-The book is automatically built from the master branch and pushed to gh-pages by Github Actions.
-
-## Contributing
-
-See [how to contribute](CONTRIBUTING.md)
-
-## Rendering the book
-Clone the repository.
+## Kitabın render'lanması
+Repo'yu clone'layın:
 ```{shell}
 git clone git@github.com:christophM/interpretable-ml-book.git
 ```
-Make sure all dependencies for the book are installed. This book has the structure of an R package, so dependencies can be installed easily, only R and the devtools library is required.
-Start an R session in the folder of the book repository and type:
+Tüm gerekliliklerin kurulu olduğundan emin olun. Bu kitap R paketi yapısında olduğundan gereklilikler kolayca kurulabilir; sadece R ve devtools kütüphanesi gerekli. Kitap repo'sunun klasöründe bir R oturumu başlatın ve şunu yazın:
 ```{r}
 devtools::install_deps()
 ```
-
-For rendering the book, start an R session and type:
+Kitabı render'lamak için, bir R oturumu başlatıp şunu yazın:
 ```{r}
 setwd("manuscript")
 # first, generate the references
 source("../scripts/references.R")
 bookdown::render_book('.', 'bookdown::gitbook')
 ```
-
-After rendering, the HTML files of the  book will be in the "_book" folder. You can either double-click index.html directly or, of course, do it in R:
+Render'ladıktan sonra kitabın HTML dosyaları "\_book" dosyasında olur. Daha sonra `index.html`'e çift tıklayabilir ya da R'de şunu yapabilirsiniz: 
 ```{r}
 browseURL('_book/index.html')
 ```
-## Notes on Printing with lulu.com
-
+## lulu.com ile çıktı alma
 - Export from Leanpub in 7.44" x 9.68" 	18.9cm x 24.6cm
-- For cover: 7.565 x 9.925", 19.226 x 25.224cm, see [recommended sizes](https://connect.lulu.com/en/discussion/33279/recommended-book-cover-image-dimensions)
-- Font for front cover: Francois One
+- Kapak için: 7.565 x 9.925", 19.226 x 25.224cm, [tavsiye edilen boyutlar](https://connect.lulu.com/en/discussion/33279/recommended-book-cover-image-dimensions)
+- Ön kapaktaki font: Francois One
 
-## Writing
+## Yazım
+Hem leanpub hem de bookdown'da geçerli bazı bilgiler:
+- Başlıklar # ile, altbaşlıklar ## ile başlar ve benzer şekilde ilerler.
+- Başlıklara {#tag-of-the-title} ile tag eklenebilir.
+- Bölümler `[text of the link](#tag-of-the-title)` ile refere edilebilir.
+- Figürler `[text of the link](#fig:tag-of-r-chunk-that-produced-figure)` ile refere edilebilir.
+- Matematiksel ifadeler `$` (inline) ya da `$$` (extra line) ile başlayıp bitirilir. leanpub ve regexpr için otomatik olarak değiştirilir. Dönüştürme script'i yalnızca formülde boş alan yoksa çalışır.
+- Formüller ve yazı arasında boş satır bırakın (if formula not inline). Formüller (with $$ ... $$) birçok satırda değil sadece tek bir satırda olmalı (due to parser).
+- Referanslar `[^ref-tag]` şeklinde yazılmalı ve ilgili dosyanın sonunda `[^ref]: Details of the reference ...` ile beraber olmalı. Boşluğun koyulduğundan emin olun. Referanslar 10-reference.Rmd içinde references.R ile birliktedir. `[^ref-tag]: ` ifadesini text içinde kullanmadığınızdan emin olun, sadece en aşağıda referanslar için kullanın. 
 
-Stuff that both works for leanpub and for bookdown:
+Ekstra satırları düzeltmek için:
+HTML kitabını kurun, manuscript/\_book/libs/gitbook*/css/style.css'a giderek, line-height:1.7'ı line-height:2.5 olarak değiştirin, Chrome'da HTML'i açarak "custom margin" seçeneği ile pdf olarak çıktı alın.
 
-- Titles start with #, subtitles with ## and so on.
-- Titles can be tagged using {#tag-of-the-title}
-- Chapters can be referenced by using `[text of the link](#tag-of-the-title)`
-- Figures can be referenced by using `[text of the link](#fig:tag-of-r-chunk-that-produced-figure)`
-- Start and end mathematical expressions with `$` (inline) or with `$$` (extra line). Will be automatically changed for leanpub with a regexpr. Conversion script only works if no empty spaces are in the formula.
-- Leave empty lines between formulas and text (if formula not inline). Formulas (with $$ ... $$) should be in one line and not over multiple lines (due to parser).
-- References have to be writen like this: `[^ref-tag]` and must be at the end of the respective file with `[^ref]: Details of the reference ...`. Make sure the space is included. References are collected in 10-reference.Rmd with the script references.R. Make sure not to use `[^ref-tag]: ` anywhere in the text, only at the bottom for the actual reference.
-
-Printing for  proofreading with extra line spacing:
-Build HTML book, go to manuscript/_book/libs/gitbook*/css/style.css, change line-height:1.7 to line-height:2.5, open local html with chrome, print to pdf with custom margin.
 ## Changelog
 All notable changes to the book will be documented here.
 
