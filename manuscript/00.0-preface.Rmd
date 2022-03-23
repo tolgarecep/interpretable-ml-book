@@ -14,39 +14,30 @@ install.packages("../pkg/sbrl_1.2.tar.gz", repos = NULL, type = "source")
 knitr::include_graphics('images/cutout.png', dpi = NA)
 ```
 
-Machine learning has great potential for improving products, processes and research.
-But **computers usually do not explain their predictions** which is a barrier to the adoption of machine learning.
-This book is about making machine learning models and their decisions interpretable.
+Makine öğrenmesi ürünleri, prosedürleri ve araştırmaları geliştirmede büyük bir potansiyele sahip. Ama bilgisayarlar genellikle yaptıkları tahminleri açıklamaz, ve bu makine öğrenmesinin benimsenmesinin önünde büyük bir engeldir. Bu kitap makine öğrenmesi modellerini ve onların kararlarını yorumlanabilir kılmak ile ilgili.
 
-After exploring the concepts of interpretability, you will learn about simple, **interpretable models** such as decision trees, decision rules and linear regression.
-The focus of the book is on model-agnostic methods for **interpreting black box models** such as feature importance and accumulated local effects, and explaining individual predictions with Shapley values and LIME.
-In addition, the book presents methods specific to deep neural networks.
+Yorumlanabilirlik kavramlarını keşfettikten sonra karar ağaçları (decision trees), karar kuralları ve linear regression gibi basit, **yorumlanabilir modelleri** öğreneceksiniz. Kitap feature importance, birikmiş bölgesel etkiler (accumulated local effects) ve Shapley değerleri ve LIME ile özel tahminleri açıklamak gibi, **kara-kutu modelleri yorumlamanın** modelden bağımsız (model-agnostic) metodlarına odaklanıyor. Ek olarak kitap derin neural network'lere özel metodlardan da bahsediyor. 
 
-All interpretation methods are explained in depth and discussed critically.
-How do they work under the hood?
-What are their strengths and weaknesses?
-How can their outputs be interpreted?
-This book will enable you to select and correctly apply the interpretation method that is most suitable for your machine learning project.
-Reading the book is recommended for machine learning practitioners, data scientists, statisticians, and anyone else interested in making machine learning models interpretable.
+Kitapta yorumlama metodları tüm derinliğiyle ve eleştirel bir şekilde tartışıldı. Modeller kaputlarının altında nasıl çalışıyor? Güçlü ve zayıf yanları neler? Çıktılar nasıl yorumlanabilir? Bu kitap kendi makine öğrenmesi projenize en uygun yorumlama metodunu seçip uygulamanızı sağlayacak. Bu kitap makine öğrenmesiyle çalışanlara, veri bilimcilere, istatistikçilere ve makine öğrenmesi algoritmalarını yorumlanabilir kılmakla ilgilenen herkese tavsiye edilir.
 
+`r if(is.html){"PDF ve e-kitap versiyonlarını (epub, mobi) [buradan leanpub.com] satın alabilirsiniz.(https://leanpub.com/interpretable-machine-learning)."}`
 
-`r if(is.html){"You can buy the PDF and e-book version (epub, mobi) [on leanpub.com](https://leanpub.com/interpretable-machine-learning)."}`
+`r if(is.html){"Baskı halini [buradan lulu.com] satın alabilirsiniz.(http://www.lulu.com/shop/christoph-molnar/interpretable-machine-learning/paperback/product-24036234.html)."}`
 
-`r if(is.html){"You can buy the print version [on lulu.com](http://www.lulu.com/shop/christoph-molnar/interpretable-machine-learning/paperback/product-24036234.html)."}`
+**Hakkımda:** Ben Christoph Molnar, bir istatistikçi ve makine öğrenicisiyim. Hedefim makine öğrenmesini yorumlanabilir kılmak.
 
-**About me:** My name is Christoph Molnar, I'm a statistician and a machine learner.
-My goal is to make machine learning interpretable.
+Beni Twitter'dan takip edin! [\@ChristophMolnar](https://twitter.com/ChristophMolnar)
 
-Follow me on Twitter! [\@ChristophMolnar](https://twitter.com/ChristophMolnar)
+Kapak: [\@YvonneDoinel](https://twitter.com/YvonneDoinel)
 
-Cover by [\@YvonneDoinel](https://twitter.com/YvonneDoinel)
+Çeviri: Tolga Recep Uçar [\@tolgarucar](https://twitter.com/tolgarucar)
 
 ```{r, fig.cap = ""}
 knitr::include_graphics("images/by-nc-sa.png")
 ```
 
 
-This book is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+Bu kitap [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/) lisansı altındadır.
 
 
 
