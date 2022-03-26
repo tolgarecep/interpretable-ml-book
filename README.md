@@ -6,7 +6,7 @@
 
 *Bu dosyanın kalanı README.md dosyasının Türkçe çevirisidir. Changelog henüz çevirilmedi.*
 
-# Açıklanabilir Makine Öğrenmesi
+# Yorumlanabilir Makine Öğrenmesi
 
 Makine öğrenmesi modellerinin aldıkları kararlar ve onların davranışlarının açıklanması.
 
