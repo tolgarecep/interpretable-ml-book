@@ -4,7 +4,7 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.1 Story Time | Interpretable Machine Learning</title>
+  <title>2.1 Hikaye Vakti | Yorumlanabilir Makine Öğrenmesi</title>
   <meta name="description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
@@ -439,94 +439,71 @@ window.cookieconsent.initialise({
 
             <section class="normal" id="section-">
 <div id="storytime" class="section level2 hasAnchor">
-<h2><span class="header-section-number">2.1</span> Story Time<a href="storytime.html#storytime" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We will start with some short stories.
-Each story is an admittedly exaggerated call for interpretable machine learning.
-If you are in a hurry, you can skip the stories.
-If you want to be entertained and (de-)motivated, read on!</p>
-<p>The format is inspired by Jack Clark’s Tech Tales in his <a href="https://jack-clark.net/">Import AI Newsletter</a>.
-If you like this kind of stories or if you are interested in AI, I recommend that you sign up.</p>
-<div id="lightning-never-strikes-twice" class="section level3 unnumbered hasAnchor">
-<h3>Lightning Never Strikes Twice<a href="storytime.html#lightning-never-strikes-twice" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><strong>2030: A medical lab in Switzerland</strong></p>
+<h2><span class="header-section-number">2.1</span> Hikaye Vakti<a href="storytime.html#storytime" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Bazı kısa hikayelerle başlayacağız. Her biri yorumlanabilir makine öğrenmesine kuşkusuz abartılmış birer çağrı.
+  Eğer aceleniz varsa hikayeleri atlayabilirsiniz. Eğer eğlenmek ve (de)motive olmak istiyorsanız, okumaya devam
+  edin!</p>
+<p>Bu format Jack Clark'ın <a href="https://jack-clark.net/">Import AI Newsletter'ındaki</a>
+  Teknoloji Masalları'ndan ilham alınarak oluşturuldu. Eğer bu
+  gibi hikayelerle ve yapay zekayla ilgileniyorsanız newsletter'a kaydolmanızı öneririm.</p>
+  <div id="lightning-never-strikes-twice" class="section level3 unnumbered hasAnchor">
+<h3>Yıldırım Aynı Yere İki Kez Düşmez<a href="storytime.html#lightning-never-strikes-twice" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>2030: İsviçre'de Bir Tıbbi Laboratuvar</strong></p>
 <p><img src="images/hospital.png" width="\textwidth" style="display: block; margin: auto;" /></p>
-<p>“It’s definitely not the worst way to die!” Tom summarised, trying to find something positive in the tragedy.
-He removed the pump from the intravenous pole.<br />
-“He just died for the wrong reasons,” Lena added.<br />
-“And certainly with the wrong morphine pump!
-Just creating more work for us!” Tom complained while unscrewing the back plate of the pump.
-After removing all the screws, he lifted the plate and put it aside.
-He plugged a cable into the diagnostic port.<br />
-“You didn’t just complain about having a job, did you?” Lena gave him a mocking smile.<br />
-“Of course not. Never!” he exclaimed with a sarcastic undertone.</p>
-<p>He booted the pump’s computer.<br />
-Lena plugged the other end of the cable into her tablet.
-“All right, diagnostics are running,” she announced.
-“I am really curious about what went wrong.”<br />
-“It certainly shot our John Doe into Nirvana.
-That high concentration of this morphine stuff.
-Man. I mean … that’s a first, right?
-Normally a broken pump gives off too little of the sweet stuff or nothing at all.
-But never, you know, like that crazy shot,” Tom explained.<br />
-“I know. You don’t have to convince me … Hey, look at that.” Lena held up her tablet.
-“Do you see this peak here? That’s the potency of the painkillers mix.
-Look! This line shows the reference level.
-The poor guy had a mixture of painkillers in his blood system that could kill him 17 times over.
-Injected by our pump here.
-And here …” she swiped, “here you can see the moment of the patient’s demise.”<br />
-“So, any idea what happened, boss?” Tom asked his supervisor.<br />
-“Hm … The sensors seem to be fine.
-Heart rate, oxygen levels, glucose, … The data were collected as expected.
-Some missing values in the blood oxygen data, but that’s not unusual.
-Look here.
-The sensors have also detected the patient’s slowing heart rate and extremely low cortisol levels caused by the morphine derivate and other pain blocking agents.”
-She continued to swipe through the diagnostics report.<br />
-Tom stared captivated at the screen.
-It was his first investigation of a real device failure.</p>
-<p>“Ok, here is our first piece of the puzzle.
-The system failed to send a warning to the hospital’s communication channel.
-The warning was triggered, but rejected at protocol level.
-It could be our fault, but it could also be the fault of the hospital.
-Please send the logs over to the IT team,” Lena told Tom.<br />
-Tom nodded with his eyes still fixed on the screen.<br />
-Lena continued:
-“It’s odd.
-The warning should also have caused the pump to shut down.
-But it obviously failed to do so.
-That must be a bug.
-Something the quality team missed.
-Something really bad.
-Maybe it’s related to the protocol issue.”<br />
-“So, the emergency system of the pump somehow broke down, but why did the pump go full bananas and inject so much painkiller into John Doe?” Tom wondered.<br />
-“Good question.
-You are right.
-Protocol emergency failure aside, the pump shouldn’t have administered that amount of medication at all.
-The algorithm should have stopped much earlier on its own, given the low level of cortisol and other warning signs,” Lena explained.<br />
-“Maybe some bad luck, like a one in a million thing, like being hit by a lightning?” Tom asked her.<br />
-“No, Tom.
-If you had read the documentation I sent you, you would have known that the pump was first trained in animal experiments, then later on humans, to learn to inject the perfect amount of painkillers based on the sensory input.
-The algorithm of the pump might be opaque and complex, but it’s not random.
-That means that in the same situation the pump would behave exactly the same way again.
-Our patient would die again.
-A combination or undesired interaction of the sensory inputs must have triggered the erroneous behavior of the pump.
-That is why we have to dig deeper and find out what happened here,” Lena explained.</p>
-<p>“I see …,” Tom replied, lost in thought.
-“Wasn’t the patient going to die soon anyway? Because of cancer or something?”<br />
-Lena nodded while she read the analysis report.<br />
-Tom got up and went to the window.
-He looked outside, his eyes fixed on a point in the distance.
-“Maybe the machine did him a favor, you know, in freeing him from the pain.
-No more suffering.
-Maybe it just did the right thing.
-Like a lightning, but, you know, a good one.
-I mean like the lottery, but not random.
-But for a reason.
-If I were the pump, I would have done the same.”<br />
-She finally lifted her head and looked at him.<br />
-He kept looking at something outside.<br />
-Both were silent for a few moments.<br />
-Lena lowered her head again and continued the analysis.
-“No, Tom. It’s a bug… Just a damn bug.”</p>
+<p>“Daha kötü bir şekilde de ölebilirdi!” diye özetledi Tom, trajedinin içerisinde olumlu bir şey ararcasına.
+  Pompayı IV kutbundan çıkarttı. <br />
+  “Yanlış sebeplerden dolayı öldü,” diyerek ekledi Lena. <br />
+  “Ve yanlış morfin pompalanmasıyla! Sadece bize daha fazla iş çıkarttı!” Tom pompanın arka plakasını sökerken
+  söylendi. Tüm vidaları söktükten sonra plakayı alıp bir kenara koydu. Tanı portuna bir kablo bağladı. <br />
+  “İş sahibi olmaktan şikayet etmiyorsun, değil mi?” Lena alaycı bir gülümsemeyle cevap verdi. <br />
+  “Tabi ki hayır! Asla!” sarkastik bir tonla haykırdı.</p>
+<p>Pompanın bilgisayarını açtı. <br />
+    Lena kablonun diğer ucunu kendi tabletine taktı. “Tamamdır, tanılar oluşturuluyor.” diye bildirdi. 
+  “Neyin ters gittiğini çok merak ediyorum.” <br />
+    “Bizim John Doe'yu Nirvana'ya fırlattığı ortada. Morfin seviyesinin yüksek konsantrasyonda olması...
+    Yani, bu ilk kez oluyor değil mi? Normalde kırık bir pompa bu tatlı şeyden çok az ya da hiç sızdırır. Ama asla,
+    sen de biliyorsun, o kadar çılgınca sızdırmaz.” Tom açıkladı.<br />
+    “Biliyorum, beni ikna etmene gerek yok... Aa, şuna baksana.” Lena tabletini gösterdi. “Şuradaki piki görüyor
+  musun? Ağrı kesici karışımının gücü. Bak! Bu çizgi referans seviyesini gösteriyor. Zavallı adam kan dolaşımında
+  onu 17 kez tekrar ve tekrar öldürebilecek ağrı kesiciler varmış. Pompa enjekte etmiş hepsini. Ve şurada ...” 
+    ekranı kaydırdı, “hastanın öldüğü anı görebiliyorsun.” <br />
+    “Ee, ne olduğu hakkında bir fikrin var mı patron?” Tom danışmanına sordu. “Hmm... Sensörler sağlam duruyor.
+    Kalp hızı, oksijen seviyeleri, glikoz,... Veri beklendiği gibi toplanmış. Kandaki oksijen verisinde birkaç 
+    kayıp değer var, ama sıra dışı değil. Şuraya bak. Sensörler hastanın azalan kalp hızını ve morfin türevi 
+  ve diğer ağrı önleyici etkenlerden dolayı fazlasıyla düşen kortizol seviyesini de tespit etmiş.” tanı raporunu
+    incelemeye devam etti. <br />
+    Tom ekrana büyülenmiş bir şekilde baktı. Gerçek bir makine hatasını ilk kez inceleyişiydi.</p>
+    
+<p>“Tamam, yapbozun ilk parçası burada. Sistem hastanenin iletişim kanalını uyaramamış. Uyarı tetiklenmiş, fakat 
+  protokol seviyesinde reddedilmiş. Bizim hatamız ya da hastanenin hatası olabilir. Kayıtları IT ekibine gönder.” 
+    dedi Lena Tom'a. <br />
+    Tom gözleri hala ekrana kilitlenmişken kafasını salladı. <br />
+  Lena devam etti: “Garip. Uyarının aynı zamanda pompayı kapatması gerekirdi. Ama öyle görünüyor ki bunu başaramamış.
+  Bir bug'dan dolayı olmalı. Kalite ekibinin kaçırdığı bir şey. Çok kötü bir şey. Belki de bir protokol hatasıyla
+  ilgilidir.” <br />
+  “Yani pompanın acil durum sistemi bir şekilde bozuldu, ama niye pompa çılgına dönüp John Doe'ya bu kadar fazla
+  ağrı kesici enjekte etti?” Tom merak etti. <br />
+  “Güzel soru. Haklısın. Protokol acil durum hatası bir yana, pompa o kadar ilaç kullanmamalıydı. Algoritma çok önceden
+  düşük kortizol seviyesini ve diğer hata sinyallerini görüp kendiliğinden durmalıydı.” Lena açıkladı. <br />
+  "Belki de kötü şans yüzündendir, milyonda bir ihtimal gibi, yıldırım tarafından çarpılmak gibi?" Tom ona sordu. <br />
+  "Hayır, Tom. Eğer gönderdiğim dökümanı okusaydın, pompanın önce hayvan, sonra insan deneylerinde eğitilip
+  sensör girdisine göre mükemmel seviyede ağrı kesici enjekte etmeyi öğrendiğini bilirdin. Pompanın algoritması opak
+  ve karmaşık olabilir, ama rastgele değil. Bu demek oluyor ki aynı koşullarda pompa yine aynı şekilde çalışırdı; 
+  hastamız yine ölürdü. Bir kombinasyon ya da sensör girdilerinin istenmeyen şekilde bir etkileşimi pompanın hatalı
+  davranışını tetiklemiş olmalı. Bu yüzden daha da derine inmeli ve ne yaşandığını öğrenmeliyiz." Lena açıkladı.
+    </p>
+<p>"Anlıyorum..." diyerek cevapladı Tom, düşüncede kaybolmuş bir şekilde. "Bu hasta zaten kanser gibi bir
+  şey yüzünden yakın zamanda ölmeyecek miydi?" <br />
+    Lena analiz raporunu okurken kafasını salladı. <br />
+    Tom kalktı ve cama doğru yürüdü. Dışarı baktı, gözleri uzaktaki bir noktaya sabitlenmişti. "Belki de 
+    makine ona bir iyilik yaptı, anlarsın ya, onun acısına son vermek için. Daha fazla acı çekmesin diye.
+    Belki de makine doğru şeyi yaptı. Bir yıldırım gibi davrandı, iyi bir yıldırım gibi ama. Piyango gibi, 
+    ama rastgele değil. Bir sebebe dayaranak. Ben pompa olsaydım, aynısını yapardım."<br />
+    Lena sonunda kafasını kaldırıp ona baktı. <br />
+  Tom dışarıdaki bir yere bakmaya devam etti. <br />
+  İkisi de bir süreliğine sessiz kaldı. <br />
+  Lena kafasını indirdi ve analize devam etti. "Hayır, Tom. Olan sadece bir bug... Lanet bir bug."
+    </p>
 </div>
 <div id="trust-fall" class="section level3 unnumbered hasAnchor">
 <h3>Trust Fall<a href="storytime.html#trust-fall" class="anchor-section" aria-label="Anchor link to header"></a></h3>
