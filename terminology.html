@@ -440,57 +440,59 @@ window.cookieconsent.initialise({
             <section class="normal" id="section-">
 <div id="terminology" class="section level2 hasAnchor">
 <h2><span class="header-section-number">2.3</span> Terminoloji<a href="terminology.html#terminology" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Belirsizliğe dayalı kafa karışıklığından kurtulmak için kitapta kullanılan terimlerin tanımları aşağıda verildi:</p>
-  <p>Bir <strong>algoritma</strong> makinenin hedefe ulaşmak için takip ettiği kurallar bütünüdür. 
-  Girdileri, çıktıları ve girdilerden çıktılara ulaşmayı sağlayacak adımları tanımlayan bir tarif olarak düşünülebilir.
-  Yemek tarifleri, malzemelerin girdiler, yemeğin çıktı ve yemeğin hazırlanışının algortimanın adımları
-    olduğu algoritmalardır. </p>
-  <p><strong>Makine öğrenmesi</strong> bilgisayarların veriye dayalı tahminler yapmasını ve onları geliştirmesini
-    sağlayan metotlardır (kanser, haftalık satış ve credit default gibi). Makine öğrenmesi tüm talimatların
-    açıkça yazıldığı normal programlamadan veriyle çalışan dolaylı programlamaya bir paradigma değişimidir.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:learner-definition"></span>
-<img src="images/learner.png" alt="A learner learns a model from labeled training data. The model is used to make predictions." width="0.5\textwidth" />
-</div>
-  <p class="caption">
-FIGURE 2.1: A learner learns a model from labeled training data. The model is used to make predictions.
-</p>
-  <p>Bir <strong>öğrenici</strong> veya <strong>makine öğrenmesi algoritması</strong> veriden modeli öğrenen
-  bir programdır. "İndükleyici" (Inducer) da denir (örneğin "tree inducer").</p>
-  <p>Bir <strong>makine öğrenmesi modeli</strong> girdileri tahminlerle eşleyen öğrenilmiş bir programdır.
+<p>Belirsizliğe dayalı kafa karışıklığından kurtulmak için önce kitapta kullanılan terimleri tanımlayalım:</p>
+<p>Bir <strong>algoritma</strong> makinenin hedefe ulaşmak için takip ettiği kurallar bütünüdür. Girdileri, çıktıları ve 
+  girdilerden çıktılara ulaşmayı sağlayacak adımları tanımlayan bir tarif olarak düşünülebilir. Yemek tarifleri, malzemelerin
+  girdiler, yemeğin çıktı ve yemeğin hazırlanışının algortimanın adımları olduğu algoritmalardır. </p>
+<p><strong>Makine öğrenmesi</strong> bilgisayarların veriye dayalı tahminler yapmasını ve onları geliştirmesini sağlayan
+  metotlardır (kanser, haftalık satış ve credit default gibi). Makine öğrenmesi tüm talimatların açıkça yazıldığı normal
+  programlamadan veriyle çalışan dolaylı programlamaya bir paradigma değişimidir.</p>
+  
+  <!--img with/without ml-->
+  
+<p><strong>Öğreniciler</strong> veya <strong>makine öğrenmesi algoritmaları</strong> veriden modeli öğrenen 
+  programlardır. "İndükleyici" (Inducer) da denir (örneğin "tree inducer").</p>
+<p><strong>Makine öğrenmesi modeli</strong> girdileri tahminlerle eşleyen öğrenilmiş bir programdır.
   Lineer bir model veya bir neural network için bir dizi ağırlık olabilir. Pek spesifik olmayan "model" kelimesi
   için bir diğer isim "tahmin edici" veya -probleme bağlı olarak- "sınıflandırıcı" veya "regression modeli"dir.
-  Formüllerde eğitilmiş makine öğrenmesi modeli <span class="math inline">\(\hat{f}\)</span> or <span class="math inline">\(\hat{f}(x)\)</span>
-  ile gösterilir.</p>
-  e trained machine learning model is called <span class="math inline">\(\hat{f}\)</span> or <span class="math inline">\(\hat{f}(x)\)</span>.</p>
-<p><strong></strong></p>
-         <p><img src="images/iml.png" width="\textwidth" style="display: block; margin: auto;" /></p>
-<p>intepretable</p>
-<p>A <strong>Black Box Model</strong> is a system that does not reveal its internal mechanisms.
-In machine learning, “black box” describes models that cannot be understood by looking at their parameters (e.g. a neural network).
-The opposite of a black box is sometimes referred to as <strong>White Box</strong>, and is referred to in this book as <a href="simple.html#simple">interpretable model</a>.
-<a href="agnostic.html#agnostic">Model-agnostic methods</a> for interpretability treat machine learning models as black boxes, even if they are not.</p>
+  Formüllerde, eğitilmiş makine öğrenmesi modeli <span class="math inline">\(\hat{f}\)</span>
+  veya <span class="math inline">\(\hat{f}(x)\)</span> ile gösterilir.</p>
+           
+<p><strong>Kara kutu modeller</strong> içindeki mekanizmaları gizli tutan sistemlerdir. Makine öğrenmesinde "kara kutu",
+  parametrelerine bakıp anlaşılamayacak modellere denir (örneğin bir neural network). Kara kutunun zıttı sistemlere
+  bazen beyaz kutu denir, bu kitapta ise bu tür modeller 
+  <a href="simple.html#simple">yorumlanabilir model</a> olarak anılıyor.<a href="agnostic.html#agnostic">Modelden bağımsız</a>
+  metotlar modellere öyle olmasalar da kara kutularmış gibi davranır.</p>
 
-<p><strong>Interpretable Machine Learning</strong> refers to methods and models that make the behavior and predictions of machine learning systems understandable to humans.</p>
-<p>A <strong>Dataset</strong> is a table with the data from which the machine learns.
-The dataset contains the features and the target to predict.
-When used to induce a model, the dataset is called training data.</p>
-<p>An <strong>Instance</strong> is a row in the dataset.
-Other names for ‘instance’ are: (data) point, example, observation.
-An instance consists of the feature values <span class="math inline">\(x^{(i)}\)</span> and, if known, the target outcome <span class="math inline">\(y_i\)</span>.</p>
-<p>The <strong>Features</strong> are the inputs used for prediction or classification.
-A feature is a column in the dataset.
-Throughout the book, features are assumed to be interpretable, meaning it is easy to understand what they mean, like the temperature on a given day or the height of a person.
-The interpretability of the features is a big assumption.
-But if it is hard to understand the input features, it is even harder to understand what the model does.
-The matrix with all features is called X and <span class="math inline">\(x^{(i)}\)</span> for a single instance.
-The vector of a single feature for all instances is <span class="math inline">\(x_j\)</span> and the value for the feature j and instance i is <span class="math inline">\(x^{(i)}_j\)</span>.</p>
-<p>The <strong>Target</strong> is the information the machine learns to predict.
-In mathematical formulas, the target is usually called y or <span class="math inline">\(y_i\)</span> for a single instance.</p>
-<p>A <strong>Machine Learning Task</strong> is the combination of a dataset with features and a target.
-Depending on the type of the target, the task can be for example classification, regression, survival analysis, clustering, or outlier detection.</p>
-<p>The <strong>Prediction</strong> is what the machine learning model “guesses” what the target value should be based on the given features.
-In this book, the model prediction is denoted by <span class="math inline">\(\hat{f}(x^{(i)})\)</span> or <span class="math inline">\(\hat{y}\)</span>.</p>
+  <!--img 42, figure?-->
+  
+<p><strong>Yorumlanabilir makine öğrenmesi</strong> terimi, makine öğrenmesi sistemlerinin davranışlarını ve tahminlerini
+  insanlara anlaşılabilir kılan metotlardan bahsederken kullanılır.</p>
 
+<p><strong>Veriseti</strong> makinenin öğrenirken kullandığı tablodur. Özellikleri ve tahmin edeceği hedefi içerir.
+  Bir modeli eğitmek için kullanıldığında, verisetine "eğitim verisi" (training data) denir.</p>
+
+<p><strong>Örnek</strong>, verisetindeki satırlara denir. Aynı anlama sahip diğer terimler ise şu
+  şekildedir: (veri) nokta(sı), gözlem. Bir örnek özellik değerlerinden (<span class="math inline">\(x^{(i)}\)</span>) ve, eğer biliniyorsa,
+  hedeften (<span class="math inline">\(y_i\)</span>) oluşur.</p>
+
+<p><strong>Özellikler</strong> tahmin veya sınıflandırma için kullanılan girdilerdir. Verisetindeki sütunlara denir.
+  Kitap boyunca özelliklerin yorumlanabildiği varsayılmıştır, yani ne anlama geldiklerini anlamak kolaydır (günlük sıcaklık
+  veya bir insanın boyu gibi). Özelliklerin yorumlanabilir olması büyük bir varsayımdır, ama özellikleri anlamak
+  zorsa modelin ne yaptığını anlamak çok daha zor olacaktır. Tüm özellikleri içeren matrise X, sadece bir gözlemin
+  özelliklerini içeren vektöre ise <span class="math inline">\(x^{(i)}\)</span> denir. Bir özelliğin
+  tüm gözlemler için değerlerini içeren vektöre <span class="math inline">\(x_j\)</span> 
+  ve i. gözlemin j. özelliğine <span class="math inline">\(x^{(i)}_j\)</span> denir.</p>
+ 
+<p><strong>Hedef</strong>, makinenin tahmin etmek üzere öğrendiği bilgiye denir. Matematik formüllerinde bir
+  gözlem için hedef genelde y veya <span class="math inline">\(y_i\)</span> ile gösterilir.</p>
+  
+<p>Bir<strong> makine öğrenmesi görevi</strong> veriseti, özellikler ve hedefin birleşimidir. Hedefin türüne göre
+  bu görev sınıflandırma, regression, sağkalım analizi, kümeleme veya aykırı değer tespiti olabilir.</p>
+  
+<p><strong>Tahmin</strong>, makine öğrenmesi modelinin özelliklere dayanarak tahmin ettiği hedeftir.
+  Bu kitapta tahmin <span class="math inline">\(\hat{f}(x^{(i)})\)</span> veya <span class="math inline">\(\hat{y}\)</span>
+  ile gösteriliyor.</p>  
 </div>
 <!-- </div> -->
 <div class="footnotes">
