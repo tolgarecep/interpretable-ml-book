@@ -4,7 +4,7 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.1 Importance of Interpretability | Interpretable Machine Learning</title>
+  <title>3.1 Yorumlanabilirliğin Önemi | Yorumlanabilir Makine Öğrenmesi</title>
   <meta name="description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
@@ -439,64 +439,79 @@ window.cookieconsent.initialise({
 
             <section class="normal" id="section-">
 <div id="interpretability-importance" class="section level2 hasAnchor">
-<h2><span class="header-section-number">3.1</span> Importance of Interpretability<a href="interpretability-importance.html#interpretability-importance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>If a machine learning model performs well, <strong>why do we not just trust the model</strong> and ignore <strong>why</strong> it made a certain decision?
-“The problem is that a single metric, such as classification accuracy, is an incomplete description of most real-world tasks.” (Doshi-Velez and Kim 2017 <a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>)</p>
-<p>Let us dive deeper into the reasons why interpretability is so important.
-When it comes to predictive modeling, you have to make a trade-off:
-Do you just want to know <strong>what</strong> is predicted?
-For example, the probability that a customer will churn or how effective some drug will be for a patient.
-Or do you want to know <strong>why</strong> the prediction was made and possibly pay for the interpretability with a drop in predictive performance?
-In some cases, you do not care why a decision was made, it is enough to know that the predictive performance on a test dataset was good.
-But in other cases, knowing the ‘why’ can help you learn more about the problem, the data and the reason why a model might fail.
-Some models may not require explanations because they are used in a low-risk environment, meaning a mistake will not have serious consequences, (e.g. a movie recommender system) or the method has already been extensively studied and evaluated (e.g. optical character recognition).
-The need for interpretability arises from an incompleteness in problem formalization (Doshi-Velez and Kim 2017), which means that for certain problems or tasks it is not enough to get the prediction (the <strong>what</strong>).
-The model must also explain how it came to the prediction (the <strong>why</strong>), because a correct prediction only partially solves your original problem.
-The following reasons drive the demand for interpretability and explanations (Doshi-Velez and Kim 2017 and Miller 2017).</p>
-<p><strong>Human curiosity and learning</strong>: Humans have a mental model of their environment that is updated when something unexpected happens.
-This update is performed by finding an explanation for the unexpected event.
-For example, a human feels unexpectedly sick and asks, “Why do I feel so sick?”.
-He learns that he gets sick every time he eats those red berries.
-He updates his mental model and decides that the berries caused the sickness and should therefore be avoided.
-When opaque machine learning models are used in research, scientific findings remain completely hidden if the model only gives predictions without explanations.
-To facilitate learning and satisfy curiosity as to why certain predictions or behaviors are created by machines, interpretability and explanations are crucial.
-Of course, humans do not need explanations for everything that happens.
-For most people it is okay that they do not understand how a computer works.
-Unexpected events makes us curious.
-For example: Why is my computer shutting down unexpectedly?</p>
-<p>Closely related to learning is the human desire to <strong>find meaning in the world</strong>.
-We want to harmonize contradictions or inconsistencies between elements of our knowledge structures.
-“Why did my dog bite me even though it has never done so before?” a human might ask.
-There is a contradiction between the knowledge of the dog’s past behavior and the newly made, unpleasant experience of the bite.
-The vet’s explanation reconciles the dog owner’s contradiction:
-“The dog was under stress and bit.”
-The more a machine’s decision affects a person’s life, the more important it is for the machine to explain its behavior.
-If a machine learning model rejects a loan application, this may be completely unexpected for the applicants.
-They can only reconcile this inconsistency between expectation and reality with some kind of explanation.
-The explanations do not actually have to fully explain the situation, but should address a main cause.
-Another example is algorithmic product recommendation.
-Personally, I always think about why certain products or movies have been algorithmically recommended to me.
-Often it is quite clear:
-Advertising follows me on the Internet because I recently bought a washing machine, and I know that in the next days I will be followed by advertisements for washing machines.
-Yes, it makes sense to suggest gloves if I already have a winter hat in my shopping cart.
-The algorithm recommends this movie, because users who liked other movies I liked also enjoyed the recommended movie.
-Increasingly, Internet companies are adding explanations to their recommendations.
-A good example are product recommendations, which are based on frequently purchased product combinations:</p>
+<h2><span class="header-section-number">3.1</span> Yorumlanabilirliğin Önemi<a href="interpretability-importance.html#interpretability-importance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+  <p>Bir model iyi performans gösteriyorsa, neden ona <strong>güvenip</strong> aldığı kararların <strong>nedenini</strong>
+    görmezden gelmiyoruz? "Problem şu ki, tek bir ölçüm aracı, sınıflandırmanın doğruluğu gibi, gerçek dünyadaki çoğu
+    problemin eksik bir açıklayıcısıdır." (Doshi-Velez ve Kim 2017 <a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>)
+  </p>
+  <p>
+  Yorumlanabilirliğin neden önemli olduğunu daha derinden inceleyelim. Bir tahmin yapmak üzere model oluştururken, bir
+    değiş-tokuş yapmanız gerekir: Sadece <strong>neyin</strong> tahmin edildiğini mi anlamaya çalışıyorsunuz? Örneğin, 
+    the probability that a customer will churn or how effective some drug will be for a patient. Yoksa, bir ihtimal
+    modelin yorumlanabilir olması adına performanstan ödün vermek ve tahminlerin neden öyle yapıldıklarını öğrenmek
+    mi istiyorsunuz? Bazı durumlarda kararların nasıl alındığı umrunuzda olmaz, modelin test verisindeki performansının
+    iyi olması yeterlidir. Ama diğer durumlarda, "nedenleri" bilmek problem hakkında daha fazla şey öğrenmenize yardımcı
+    olabilir. Bazı modeller düşük riskli ortamlarda çalıştırıldıklarından açıklanmaya ihtiyaç duymaz, yani böyle bir modelin
+    yapacağı herhangi bir hatanın ciddi sonuçları yoktur (bir film tavsiye sisteminde olduğu gibi), ya da kullanılan metotun
+    üstünde önceden genişçe bir çalışma yapılmış ve metot iyice değerlendirilmiştir (görsel karakter tanıma). Yorumlanabilirliğe
+    olan ihtiyaç problemlerin tanımlanmasındaki eksiklikten doğar (Doshi-Velez ve Kim 2017), yani belli problemler ve görevler
+    için tahminler ("Ne?" sorusunun cevabı) tek başına yeterli değildir. Model aynı zamanda tahminleri nasıl yaptığını 
+    ("Nasıl?" sorusunu) da açıklamalıdır, çünkü doğru tahminler elinizdeki problemin yalnızca bir kısmını çözer. Aşağıdaki
+    sebepler yorumlanabilirliğe ve açıklamalara olan talebi güçlendirir (Doshi-Velez ve Kim 2017, Miller 2017).
+  </p>
+<p>
+  <strong>İnsan merakı ve öğrenmek:</strong> İnsanlarda, çevrede beklenmedik durumlar oluştuğunda güncellenen zihinsel bir
+  model vardır. Bu güncelleme beklenmedik duruma bir açıklama getirilerek olur. Örneğin, bir insan hasta olduğunda "Neden hasta
+  hissediyorum?" diye sorar. O kırmızı üzümleri her yediğinde hasta olduğunu öğrenir. Zihnindeki modeli günceller ve 
+  üzümlerin hastalığa sebep olduklarına, dolayısıyla onlardan uzak durulması gerektiğine karar verir. Araştırmalar sırasında
+  iç mekanizmaları anlaşılmayan modeller kullanıldığında, eğer model açıklamadan tahminlerini sunuyorsa, bilimsel bulgular
+  tümüyle gizli kalır. Yapılan tahminlerin niye yapıldığını, belli davranışların neden sergilendiğini öğrenmek
+  ve merakı doyurmak için yorumlanabilirlik ve açıklamalar hayati önem taşır. Tabii ki insanlar olan her şeyin
+  açıklamasına ihtiyaç duymaz. Çoğu insan için bilgisayarların nasıl çalıştığını anlamamak bir problem oluşturmaz.
+  Beklenmedik olaylar bizi merakta bırakır, örneğin: Bilgisayarım niye durduk yere kapanıyor?
+  </p>  
+  <p>
+  Dünyanın anlamını bulmak, öğrenmekle yakından ilişkilidir. Bildiklerimizdeki çelişkileri veya tutarsızlıkları çözüp
+    uyumlu hale getirmeyi isteriz. Bir insan "Beni hiç ısırmayan köpeğim şimdi ne oldu da beni ısırdı?" diye sorabilir.
+    Köpeğin geçmişteki davranışının bilgisiyle yeni tecrübe arasında bir çelişki vardır. Veterinerin açıklaması köpek
+    sahibinin çelişik bilgilerini uzlaştırır: "Köpek strese girmiş." Bir makinenin kararları insan hayatını ne kadar
+    etkilerse makinenin ortaya bir açıklama koyması o kadar önem kazanır. Makine öğrenmesi modeli bir kredi başvurusunu
+    reddettiğinde bu başvuranlar için beklenmedik bir durum olabilir. Birbiriyle çelişen beklenti ve gerçekliği uzlaştırmak
+    için bir açıklamaya ihtiyaç duyarlar. Açıklamaların durumu tümüyle açıklamaları gerekmez, ama ana sebebi göstermeleri gerekir.
+    Bir diğer örnek ise algoritmik ürün tavsiyesidir. Şahsen ben belli ürünlerin ve filmlerin algoritmik olarak neden
+    önerildiklerini merak etmişimdir. Genelde sebep barizdir: Reklamcılık beni internette takip eder ve bir çamaşır yıkama
+    makinesi aldığımda, çamaşır yıkama makinesi reklamlarının beni takip etmeye başlayacağını bilirim. Sepetimde bir şapka
+    varsa bana bir eldiven önermek gayet mantıklıdır. Algoritma bir filmi önerir çünkü beğendiğim filmleri beğenmiş kullanıcılar
+    bu bana tavsiye edilen filmi de beğenmiştir. İnternet şirketleri zamanla artan bir şekilde yaptıkları tavsiyelere açıklamalar
+    ekliyorlar. Buna iyi bir örnek sık satın alınmış ürün kombinasyonlarına dayanan ürün tavsiyeleri:
+  </p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:amazon-recommendation"></span>
 <img src="images/amazon-freq-bought-together.png" alt="Recommended products that are frequently bought together." width="\textwidth" />
 <p class="caption">
 FIGURE 3.1: Recommended products that are frequently bought together.
 </p>
 </div>
-<p>In many scientific disciplines there is a change from qualitative to quantitative methods (e.g. sociology, psychology), and also towards machine learning (biology, genomics).
-The <strong>goal of science</strong> is to gain knowledge, but many problems are solved with big datasets and black box machine learning models.
-The model itself becomes the source of knowledge instead of the data.
-Interpretability makes it possible to extract this additional knowledge captured by the model.</p>
-<p>Machine learning models take on real-world tasks that require <strong>safety measures</strong> and testing.
-Imagine a self-driving car automatically detects cyclists based on a deep learning system.
-You want to be 100% sure that the abstraction the system has learned is error-free, because running over cyclists is quite bad.
-An explanation might reveal that the most important learned feature is to recognize the two wheels of a bicycle, and this explanation helps you think about edge cases like bicycles with side bags that partially cover the wheels.</p>
-<p>By default, machine learning models pick up biases from the training data.
+  <p>Birçok bilimsel alanda niceliksel metotlardan niteliksel metotlara (sosyoloji, psikoloji) ve makine öğrenmesine (biyoloji
+    gen bilimi) doğru bir değişim var. <strong>Bilimin amacı</strong> bilgi elde etmektir ama çoğu problem büyük veri setleriyle ve
+  kara kutu modellerle çözülür. Veri yerine modelin kendisi bilginin kaynağı haline gelir. Yorumlanabilirlik model
+    tarafından yakalanan bu ek bilgiyi ortaya çıkarmayı mümkün kılar.
+  </p>
+  <p>
+  Makine öğrenmesi modelleri güvenlik önlemleri ve test gerektiren gerçek görevleri üstlenir. Kendi kendine sürüş
+    sistemine sahip bir arabanın derin öğrenmeyle bisikletçileri tespit ettiğini hayal edin. Sistemin yaptığı
+    soyutlamanın hatasız olduğundan %100 emin olmak istersiniz, çünkü bisikletçilerin üstüne sürmek oldukça kötüdür.
+    Bir açıklama öğrenilmiş en önemli özelliğin bisikletin tekerleklerini tanımak olduğunu ortaya çıkarabilir, ve bu 
+    açıklama yanlarında tekerlekleri kısmen kapatan çantalar olan bisikletler gibi uç durumlar hakkında düşünebilmeyi sağlar.
+  </p>
+  <p>
+  Her durumda modeller eğitim verisindeki ön yargıları içermek zorundadır. Bu durum modellerinizi, yeterince temsil edilmemiş
+    gruplara karşı ayrımcılık yapan ırkçı şeylere dönüştürebilir. Yorumlanabilirlik modellerdeki ön yargıları ortadan kaldırmaya
+    yarayan kullanışlı bir araçtır. Kredi başvurularını otomatik olarak kabul etmek veya reddetmek üzere eğittiğiniz model geçmişte
+    haklarından mahrum bırakılmış azınlıkları ayrıştırabilir. Amacınız zamanı geldiğinde parayı geri ödeyecek kişilere kredi
+    vermektir. Bu amacın eksik tanımlanması  
+  </p>
+
+  <p>By default, machine learning models pick up biases from the training data.
 This can turn your machine learning models into racists that discriminate against underrepresented groups.
 Interpretability is a useful debugging tool for <strong>detecting bias</strong> in machine learning models.
 It might happen that the machine learning model you have trained for automatic approval or rejection of credit applications discriminates against a minority that has been historically disenfranchised.
