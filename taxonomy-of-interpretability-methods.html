@@ -4,7 +4,7 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.2 Taxonomy of Interpretability Methods | Interpretable Machine Learning</title>
+  <title>3.2 Yorumlama Metotlarının Sınıflandırılması | Yorumlanabilir Makine Öğrenmesi</title>
   <meta name="description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
@@ -439,17 +439,26 @@ window.cookieconsent.initialise({
 
             <section class="normal" id="section-">
 <div id="taxonomy-of-interpretability-methods" class="section level2 hasAnchor">
-<h2><span class="header-section-number">3.2</span> Taxonomy of Interpretability Methods<a href="taxonomy-of-interpretability-methods.html#taxonomy-of-interpretability-methods" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Methods for machine learning interpretability can be classified according to various criteria.</p>
-<p><strong>Intrinsic or post hoc?</strong>
-This criteria distinguishes whether interpretability is achieved by restricting the complexity of the machine learning model (intrinsic) or by applying methods that analyze the model after training (post hoc).
-Intrinsic interpretability refers to machine learning models that are considered interpretable due to their simple structure, such as short decision trees or sparse linear models.
-Post hoc interpretability refers to the application of interpretation methods after model training.
-Permutation feature importance is, for example, a post hoc interpretation method.
-Post hoc methods can also be applied to intrinsically interpretable models.
-For example, permutation feature importance can be computed for decision trees.
-The organization of the chapters in this book is determined by the distinction between <a href="simple.html#simple">intrinsically interpretable models</a> and <a href="agnostic.html#agnostic">post hoc (and model-agnostic) interpretation methods</a>.</p>
-<p><strong>Result of the interpretation method</strong>
+<h2><span class="header-section-number">3.2</span> 
+  Yorumlama Metotlarının Sınıflandırılması<a href="taxonomy-of-interpretability-methods.html#taxonomy-of-interpretability-methods" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Makine öğrenmesinde yorumlanabilirlik metotları farklı kriterlere göre 
+  sınıflandırılabilir.</p>
+<p><strong>İçsel / optimizasyon sonrası (post hoc)?</strong>
+Bu kriter, yorumlamanın modelin karmaşıklığını azaltarak mı (içsel metotlar)
+  yoksa modeli eğittikten sonra analiz eden metotlar kullanarak mı (optimizasyon
+  sonrası) yapıldığı arasında bir ayrım yapıyor. İçsel yorumlanabilirlik, basit yapıları
+  sayesinde yorumlanabilir olan modellerde (kısa karar ağaçları ve aralıklı 
+  lineer modeller) bulunur. Optimizasyon sonrasında yorumlanabilirlik model eğitildikten sonra
+  yorumlama metotların uygulanmasıdır. Örneğin permutation feature importance, optimizasyon
+  sonrası uygulanan bir metottur. Bu metotlar aynı zamanda içsel olarak yorumlanabilen modellere
+  de uygulanabilir. Örneğin, p.f.i. karar ağaçları için hesaplanabilir. Kitabın bölümleri 
+  <a href="simple.html#simple">içsel yorumlanabilirlik</a> ve <a href="agnostic.html#agnostic">optimizasyon sonrası (ve modelden bağımsız) yorumlama
+  metotları</a> farkına göre düzenlendi.</p>
+<p><strong>Yorumlama metodunun sonucu</strong> 
+  Farklı yorumlama metotları verdikleri sonuçlara göre kabaca sınıflandırılabilir.</p>
+<ul>
+  <li><strong>Özellik özet istatistiği:</strong> 
+ <p><strong>Result of the interpretation method</strong>
 The various interpretation methods can be roughly differentiated according to their results.</p>
 <ul>
 <li><strong>Feature summary statistic</strong>:
