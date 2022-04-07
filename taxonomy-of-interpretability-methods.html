@@ -457,47 +457,54 @@ Bu kriter, yorumlamanın modelin karmaşıklığını azaltarak mı (içsel meto
 <p><strong>Yorumlama metodunun sonucu</strong> 
   Farklı yorumlama metotları verdikleri sonuçlara göre kabaca sınıflandırılabilir.</p>
 <ul>
-  <li><strong>Özellik özet istatistiği:</strong> 
- <p><strong>Result of the interpretation method</strong>
-The various interpretation methods can be roughly differentiated according to their results.</p>
-<ul>
-<li><strong>Feature summary statistic</strong>:
-Many interpretation methods provide summary statistics for each feature.
-Some methods return a single number per feature, such as feature importance, or a more complex result, such as the pairwise feature interaction strengths, which consist of a number for each feature pair.</li>
-<li><strong>Feature summary visualization</strong>:
-Most of the feature summary statistics can also be visualized.
-Some feature summaries are actually only meaningful if they are visualized and a table would be a wrong choice.
-The partial dependence of a feature is such a case.
-Partial dependence plots are curves that show a feature and the average predicted outcome.
-The best way to present partial dependences is to actually draw the curve instead of printing the coordinates.</li>
-<li><strong>Model internals (e.g. learned weights)</strong>:
-The interpretation of intrinsically interpretable models falls into this category.
-Examples are the weights in linear models or the learned tree structure (the features and thresholds used for the splits) of decision trees.
-The lines are blurred between model internals and feature summary statistic in, for example, linear models, because the weights are both model internals and summary statistics for the features at the same time.
-Another method that outputs model internals is the visualization of feature detectors learned in convolutional neural networks.
-Interpretability methods that output model internals are by definition model-specific (see next criterion).</li>
-<li><strong>Data point</strong>:
-This category includes all methods that return data points (already existent or newly created) to make a model interpretable.
-One method is called counterfactual explanations.
-To explain the prediction of a data instance, the method finds a similar data point by changing some of the features for which the predicted outcome changes in a relevant way (e.g. a flip in the predicted class).
-Another example is the identification of prototypes of predicted classes.
-To be useful, interpretation methods that output new data points require that the data points themselves can be interpreted.
-This works well for images and texts, but is less useful for tabular data with hundreds of features.</li>
-<li><strong>Intrinsically interpretable model</strong>:
-One solution to interpreting black box models is to approximate them (either globally or locally) with an interpretable model.
-The interpretable model itself is interpreted by looking at internal model parameters or feature summary statistics.</li>
-</ul>
-<p><strong>Model-specific or model-agnostic?</strong>
-Model-specific interpretation tools are limited to specific model classes.
-The interpretation of regression weights in a linear model is a model-specific interpretation, since – by definition – the interpretation of intrinsically interpretable models is always model-specific.
-Tools that only work for the interpretation of e.g. neural networks are model-specific.
-Model-agnostic tools can be used on any machine learning model and are applied after the model has been trained (post hoc).
-These agnostic methods usually work by analyzing feature input and output pairs.
-By definition, these methods cannot have access to model internals such as weights or structural information.</p>
-<p><strong>Local or global?</strong>
-Does the interpretation method explain an individual prediction or the entire model behavior?
-Or is the scope somewhere in between?
-Read more about the scope criterion in the next section.</p>
+  <li><strong>Özellik özet istatistiği:</strong> Bir çok yorumlama metodu özelliklerin özet
+    istatistiklerini verir. Bazıları özellik başına tek bir sayı verirken (feature importance)
+    "ikili özellik etkileşim güçleri" gibi bazıları daha karmaşık bir sonuç verir (her özellik çifti için bir sayı verir).
+    </li>
+  <li><strong>Özellik özet görselleştirmeleri:</strong>
+  Özellik özet istatistiklerinin çoğu görselleştirilebilir. Bazı özellik özetleri için tablo
+    yanlış seçim olup görselleştirmek anlamlı olan tek yoldur. Bir özelliğin kısmi 
+    bağımlılığı buna bir örnektir. Kısmi bağımlılık grafikleri özelliği ve tahmin edilen
+    ortalama değeri gösterir. Kısmi bağımlılıkları göstermenin en iyi yolu koordinatları
+    yazdırmaktansa eğriyi çizmektir.
+  </li>
+  <li><strong>Dahili kısımlar (örn. optimize edilmiş parametreler):</strong>
+  İçsel yorumlanabilir modellerin yorumlanması bu kategoriye dahildir. Lineer modellerde
+    öğrenilmiş ağırlıklar veya karar ağaçlarının öğrenilen ağaç yapıları
+    (özellikler ve eşik değerleri) örnek verilebilir. Örneğin lineer modellerde dahili kısımlar
+    ve özellik özet istatistiği arasındaki fark belirsizdir çünkü ağırlıklar hem dahili kısımlar
+    olup hem de özellikler için özet istatistik değeri taşırlar. Dahili kısımları ortaya
+    koyan bir başka metot ise convolutional neural network'lerde öğrenilen özellik 
+    dedektörlerini görselleştirmektir. Modelin dahili kısımlarını çıktı olarak veren
+    metotlar tanım gereği modellere özgüdür (sonraki kriteri inceleyin).</li>
+  <li><strong>Veri noktası:</strong>
+  Bir veri noktası veren (var olan veya yeni oluşturulmuş) tüm metotlar bu kategoriye
+    dahildir. Bunlardan biri karşıolgusal açıklamalardır. Bir veri noktası dair tahmini açıklamak
+    için metot tahmin edilen sonucu değiştiren
+    özelliklerin değerini değiştirerek (ikili sınıflandırmada 0 yerine 1
+    tahmin edilmesi) başka bir veri noktası bulur. Bir başka örnek ise tahmin edilen
+    sınıfların prototiplerinin belirlenmesidir. Kullanışlı olabilmeleri için 
+    yeni bir veri noktası oluşturan yorumlama metotlarının veri noktalarının yorumlanabilmesine
+    ihtiyaçları vardır. Bu metot görseller ve metin için iyi çalışsa da yüzlerce özelliğe
+    sahip tablo verisinde pek kullanışlı değildir.
+  </li>
+  <li><strong>İçsel yorumlanabilir model:</strong> Kara kutu modelleri yorumlamanın bir diğer yöntemi ise 
+  onlara yorumlanabilir bir model ile yaklaşmaktır (global veya yerel olarak). 
+  Yorumlanabilir model dahili kısımlara ya da özellik özet istatistiklerine
+  bakarak yorumlanır.</li>
+ <p><strong>Modele özel / modelden bağımsız?</strong>
+  Modele özel yorumlama metotları belli model sınıflarına özgüdür. Tanım gereği
+   içsel yorumlanabilir modellerin yorumlanması modele özel olduğundan bir lineer
+   modeldeki regression ağırlıklarının yorumlanması modele özel yorumlamadır. Örneğin sadece
+   neural network'lerin yorumlanmasına yarayan araçlar modele özel yorumlama metotlarıdır.
+   Modelden bağımsız metotlar her makine öğrenmesi modeline uygulanabilir ve model
+   eğitildikten sonra uygulanırlar (optimizasyon sonrası). Bu agnostik metotlar genelde özellik
+   girdilerini ve çıktı çiftlerini analiz eder. Tanım gereği bu metotlar modelin
+   parametreler veya yapısal detaylar gibi dahili kısımlarına erişim sağlayamaz.
+  </p>
+<p><strong>Yerel / global?</strong> Yorumlama metodu bir veri noktası için yapılan
+  tahmini mi açıklıyor yoksa modelin tüm davranışını mı? Yoksa kapsam ikisinin arasında
+  bir yerde mi? Kapsam kriteriyle ilgili daha fazlası için sonraki bölümü okuyun.</p>
 <!--{pagebreak}-->
 </div>
             </section>
