@@ -508,48 +508,54 @@ FIGURE 3.1: Recommended products that are frequently bought together.
     gruplara karşı ayrımcılık yapan ırkçı şeylere dönüştürebilir. Yorumlanabilirlik modellerdeki ön yargıları ortadan kaldırmaya
     yarayan kullanışlı bir araçtır. Kredi başvurularını otomatik olarak kabul etmek veya reddetmek üzere eğittiğiniz model geçmişte
     haklarından mahrum bırakılmış azınlıkları ayrıştırabilir. Amacınız zamanı geldiğinde parayı geri ödeyecek kişilere kredi
-    vermektir. Bu amacın eksik tanımlanması  
+    vermektir. Bu durumda problemin tanımlanmasının eksikliği, yalnızca kredi temerrütlerini en aza indirmek
+    istemeniz değil, aynı zamanda belirli demografik özellikler temelinde ayrımcılık yapmamak zorunda olmanız
+    gerçeğinde yatmaktadır. Bu, problem tanımınızın bir parçası olan (düşük riskli ve uyumlu bir şekilde kredi verme)
+    ek bir kısıtlamadır ve modelin optimize edildiği kayıp fonksiyonunun kapsamında değildir.
   </p>
+  <p>
+  Makinelerin ve algoritmaların hayatımıza entegre edilmesi, <strong>toplum tarafından kabul edilebilirliği</strong>
+    arttırmak için yorumlanabilirliğe ihtiyaç duyar. İnsanlar nesnelere inançlar, arzular, niyetler vb. atfeder.
+    Meşhur bir deneyde, Heider ve Simmel (1994)<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>
+    katılımcılara bir çemberin kapıyı açıp odaya (bir üçgen) girdiği bir video gösterdiler. Katılımcılar şekillerin
+    hareketlerini sanki insanlardan bahsediyormuş gibi niyetler, duygular hatta kişilik özellikleri atfederek
+    açıkladılar. Robotlar buna iyi bir örnek, benim Doge adını verdiğim elektrikli süpürgem gibi. Doge sıkıştığında
+    şöyle düşünüyorum: "Doge temizliğe devam etmek istiyor, fakat benden yardım istiyor çünkü sıkıştı." Sonra, Doge
+    temizliği bitirip odada şarj istasyonunu ararken "Doge yeniden şarj olmayı istiyor ve istasyonunu arıyor." diye 
+    düşünüyorum. Aynı zamanda kişilik özellikleri de atfediyorum: "Doge biraz aptal, ama sevimli bir şekilde." Bunlar
+    Doge'yi izlerken, özellikle temizliği sırasında bir bitkiyi devirdiğinde aklıma gelen düşünceler. Tahminlerini
+    açıklayan bir makine ya da algoritma daha kabullenilebilir olacaktır. <a href="explanation.html#explanation">
+    Açıklamalarla ilgili bölümde</a> açıklamanın sosyal bir süreç olduğundan bahsettim.</p>
 
-  <p>By default, machine learning models pick up biases from the training data.
-This can turn your machine learning models into racists that discriminate against underrepresented groups.
-Interpretability is a useful debugging tool for <strong>detecting bias</strong> in machine learning models.
-It might happen that the machine learning model you have trained for automatic approval or rejection of credit applications discriminates against a minority that has been historically disenfranchised.
-Your main goal is to grant loans only to people who will eventually repay them.
-The incompleteness of the problem formulation in this case lies in the fact that you not only want to minimize loan defaults, but are also obliged not to discriminate on the basis of certain demographics.
-This is an additional constraint that is part of your problem formulation (granting loans in a low-risk and compliant way) that is not covered by the loss function the machine learning model was optimized for.</p>
-<p>The process of integrating machines and algorithms into our daily lives requires interpretability to increase <strong>social acceptance</strong>.
-People attribute beliefs, desires, intentions and so on to objects.
-In a famous experiment, Heider and Simmel (1944) <a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> showed participants videos of shapes in which a circle opened a “door” to enter a “room” (which was simply a rectangle).
-The participants described the actions of the shapes as they would describe the actions of a human agent, assigning intentions and even emotions and personality traits to the shapes.
-Robots are a good example, like my vacuum cleaner, which I named “Doge”.
-If Doge gets stuck, I think:
-“Doge wants to keep cleaning, but asks me for help because it got stuck.”
-Later, when Doge finishes cleaning and searches the home base to recharge, I think:
-“Doge has a desire to recharge and intends to find the home base.”
-I also attribute personality traits:
-“Doge is a bit dumb, but in a cute way.”
-These are my thoughts, especially when I find out that Doge has knocked over a plant while dutifully vacuuming the house.
-A machine or algorithm that explains its predictions will find more acceptance.
-See also the <a href="explanation.html#explanation">chapter on explanations</a>, which argues that explanations are a social process.</p>
-<p>Explanations are used to <strong>manage social interactions</strong>.
-By creating a shared meaning of something, the explainer influences the actions, emotions and beliefs of the recipient of the explanation.
-For a machine to interact with us, it may need to shape our emotions and beliefs.
-Machines have to “persuade” us, so that they can achieve their intended goal.
-I would not fully accept my robot vacuum cleaner if it did not explain its behavior to some degree.
-The vacuum cleaner creates a shared meaning of, for example, an “accident” (like getting stuck on the bathroom carpet … again) by explaining that it got stuck instead of simply stopping to work without comment.
-Interestingly, there may be a misalignment between the goal of the explaining machine (create trust) and the goal of the recipient (understand the prediction or behavior).
-Perhaps the full explanation for why Doge got stuck could be that the battery was very low, that one of the wheels is not working properly and that there is a bug that makes the robot go to the same spot over and over again even though there was an obstacle.
-These reasons (and a few more) caused the robot to get stuck, but it only explained that something was in the way, and that was enough for me to trust its behavior and get a shared meaning of that accident.
-By the way, Doge got stuck in the bathroom again.
-We have to remove the carpets each time before we let Doge vacuum.</p>
+ <p>
+  Açıklamalar <strong>sosyal etkileşimleri kontrol etmeye</strong> yarar. Bir şeyi herkesçe kabul edilmiş
+   bir şekilde anlamlandırarak açıklayan kimse açıklamayı yaptığı kişinin
+   hareketlerini, duygularını ve inançlarını etkiler. Bir makinenin bizle etkileşime geçmesi için
+   duygularımızı ve inançlarımızı şekillendirmesi gerekebilir. Makinelerin bizi "ikna etmeleri" gerekir ki
+   hedeflerine ulaşabilsinler. Davranışlarını belli bir seviyede açıklamasa elektrikli süpürgemi
+   tam anlamıyla kabul etmezdim. Elektrikli süpürge örneğin bir kazanın (banyo halısına takılmak gibi)
+   ortak bir açıklamasını hiçbir yorum yapmadan çalışmayı durdurmak yerine sıkıştığını anlatarak yapar.
+   İlginç bir şekilde, açıklamayı yapan makinenin amacıyla (güven oluşturmak)
+   açıklamayı dinleyenin amacı (tahmini veya davranışı anlamak) arasında bir uyuşmazlık olabilir.
+   Doge'nin sıkışmasının tam bir açıklaması neredeyse bitmiş bir pil, çalışmayan bir tekerlek ve robotu
+   engel olmasına rağmen sürekli aynı yanlış yere götüren bir bug olabilir. Bu üç neden (ve birkaç tanesi daha)
+   robotun sıkışmasına sebep olmasına rağmen robot sadece yolda bir engel olduğunu açıklıyor, ki bu
+   onun davranışına güvenmem ve kazanın ortak bir açıklamasını yapmam için yeterli. Bu arada, Doge tekrar
+   banyoda sıkıştı. O temizliğe başlamadan önce halıları kaldırmalıyım.
+  </p>
+  
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:doge-stuck"></span>
 <img src="images/doge-stuck.jpg" alt="Doge, our vacuum cleaner, got stuck. As an explanation for the accident, Doge told us that it needs to be on an even surface." width="\textwidth" />
 <p class="caption">
 FIGURE 3.2: Doge, our vacuum cleaner, got stuck. As an explanation for the accident, Doge told us that it needs to be on an even surface.
 </p>
 </div>
-<p>Machine learning models can only be <strong>debugged and audited</strong> when they can be interpreted.
+  
+  <p>
+  
+  </p>
+
+  <p>Machine learning models can only be <strong>debugged and audited</strong> when they can be interpreted.
 Even in low risk environments, such as movie recommendations, the ability to interpret is valuable in the research and development phase as well as after deployment.
 Later, when a model is used in a product, things can go wrong.
 An interpretation for an erroneous prediction helps to understand the cause of the error.
