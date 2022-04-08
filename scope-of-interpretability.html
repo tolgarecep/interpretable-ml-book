@@ -4,7 +4,7 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.3 Scope of Interpretability | Interpretable Machine Learning</title>
+  <title>3.3 Yorumlanabilirliğin Kapsamı | Yorumlanabilir Makine Öğrenmesi</title>
   <meta name="description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
@@ -439,39 +439,53 @@ window.cookieconsent.initialise({
 
             <section class="normal" id="section-">
 <div id="scope-of-interpretability" class="section level2 hasAnchor">
-<h2><span class="header-section-number">3.3</span> Scope of Interpretability<a href="scope-of-interpretability.html#scope-of-interpretability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>An algorithm trains a model that produces the predictions.
-Each step can be evaluated in terms of transparency or interpretability.</p>
-<div id="algorithm-transparency" class="section level3 hasAnchor">
-<h3><span class="header-section-number">3.3.1</span> Algorithm Transparency<a href="scope-of-interpretability.html#algorithm-transparency" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><em>How does the algorithm create the model?</em></p>
-<p>Algorithm transparency is about how the algorithm learns a model from the data and what kind of relationships it can learn.
-If you use convolutional neural networks to classify images, you can explain that the algorithm learns edge detectors and filters on the lowest layers.
-This is an understanding of how the algorithm works, but not for the specific model that is learned in the end, and not for how individual predictions are made.
-Algorithm transparency only requires knowledge of the algorithm and not of the data or learned model.
-This book focuses on model interpretability and not algorithm transparency.
-Algorithms such as the least squares method for linear models are well studied and understood.
-They are characterized by a high transparency.
-Deep learning approaches (pushing a gradient through a network with millions of weights) are less well understood and the inner workings are the focus of ongoing research.
-They are considered less transparent.</p>
+<h2><span class="header-section-number">3.3</span> 
+  Yorumlanabilirliğin Kapsamı<a href="scope-of-interpretability.html#scope-of-interpretability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Bir algoritma tahminleri üreten modeli eğitir. Her adım şeffaflık ve yorumlanabilirlik kavramlarıyla değerlendirilebilir.</p>
+  <div id="algorithm-transparency" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.3.1</span>
+  Algoritma Şeffaflığı<a href="scope-of-interpretability.html#algorithm-transparency" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><em>Algoritma nasıl bir model meydana getiriyor?</em></p>
+    <p>Algoritmalarda şeffaflık, bir algoritmanın veriden modeli nasıl öğrendiği ve ne gibi ilişkileri
+    öğrenebileceğiyle ilgildiir. Görüntüleri sınıflamak için convolutional neural network'ler kullanırsanız, algoritmanın
+    derinlerdeki katmanlarda kenarları tespit eden özellikleri ve filtreleri öğrendiğini görebilirsiniz.
+    Bu algoritmanın nasıl çalıştığına dair bir açıklamadır fakat algoritmanın öğrendiği modelin veya belli tahminlerin
+      nasıl yapıldığının bir açıklaması değildir. Algoritma şeffaflığı sadece algoritmayla ilgili bilgiye ihtiyaç duyup
+      verinin veya öğrenilen modelin bilgisine ihtiyaç duymaz. Bu kitapta algoritmaların şeffaflığına değil
+      modellerin yorumlanabilirliğine odaklanacağız. Lineer modeller için kullanılan "en küçük kareler" gibi algoritmalar
+      zaten iyi çalışılmış ve anlaşılmışlardır. Yüksek şeffaflığa sahip olarak nitelendirilirler. Derin öğrenme yöntemleri
+      (milyonlarca parametreye sahip bir neural network'te gradyan vektörünü hesaplamak) daha az anlaşılmış yöntemlerdir ve
+      içlerindeki mekanizmalar devam eden araştırmaların odağındadır. Daha az şeffaf algoritmalar olarak görülürler.
+    </p>
 </div>
 <div id="global-holistic-model-interpretability" class="section level3 hasAnchor">
-<h3><span class="header-section-number">3.3.2</span> Global, Holistic Model Interpretability<a href="scope-of-interpretability.html#global-holistic-model-interpretability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><em>How does the trained model make predictions?</em></p>
-<p>You could describe a model as interpretable if you can comprehend the entire model at once (Lipton 2016<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>).
-To explain the global model output, you need the trained model, knowledge of the algorithm and the data.
-This level of interpretability is about understanding how the model makes decisions, based on a holistic view of its features and each of the learned components such as weights, other parameters, and structures.
-Which features are important and what kind of interactions between them take place?
-Global model interpretability helps to understand the distribution of your target outcome based on the features.
-Global model interpretability is very difficult to achieve in practice.
-Any model that exceeds a handful of parameters or weights is unlikely to fit into the short-term memory of the average human.
-I argue that you cannot really imagine a linear model with 5 features, because it would mean drawing the estimated hyperplane mentally in a 5-dimensional space.
-Any feature space with more than 3 dimensions is simply inconceivable for humans.
-Usually, when people try to comprehend a model, they consider only parts of it, such as the weights in linear models.</p>
+<h3><span class="header-section-number">3.3.2</span> 
+  Evrensel (Bütünsel) Model Yorumlanabilirliği<a href="scope-of-interpretability.html#global-holistic-model-interpretability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><em>Eğitilmiş model nasıl tahmin yapar?</em></p>
+  <p>
+  Tek seferde tümüyle anlayabildiğiniz bir modeli yorumlanabilir sayarsınız (Lipton 2016<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>).
+    Modelin çıktısını açıklamak için eğitilmiş modele, algoritmanın ne olduğunu bilmeye ve veriye ihtiyacınız vardır.
+    Bu seviyede yorumlanabilirliğin amacı modelin nasıl karar aldığını özelliklerinin (features) ve ağırlıklar veya yapılar gibi
+    öğrenilen kısımlarının bütünsel bir bakış açısıyla ele alınarak anlamaktır. Hangi özellikler gerçekten önemli ve aralarında
+    nasıl ilişkiler var? Evrensel yorumlanabilirlik özelliklere dayanarak hedef (target) dağılımını anlamaya yardımcı olur.
+    Evrensel yorumlanabilirliğin uygulanması çok zordur. Birkaç parametreden fazlasına sahip bir model ortalama bir insanın
+    kısa süreli hafızasına sığamayacak büyüklüktedir. 5 özelliğe sahip bir lineer modeli hayal edemezsiniz çünkü bunu yapmanız
+    5-boyutlu bir uzayda bir hiperdüzlem çizmeniz demek olurdu. 3 boyutun üzerindeki her feature space insanlar için anlaşılmaz
+    olacaktır. Genelde insanlar modelleri anlamaya çalışırken modellerin belli kısımlarına (lineer modellerde ağırlıklar gibi) odaklanırlar.
+  </p>
 </div>
 <div id="global-model-interpretability-on-a-modular-level" class="section level3 hasAnchor">
-<h3><span class="header-section-number">3.3.3</span> Global Model Interpretability on a Modular Level<a href="scope-of-interpretability.html#global-model-interpretability-on-a-modular-level" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><em>How do parts of the model affect predictions?</em></p>
+<h3><span class="header-section-number">3.3.3</span> 
+  Modüler Seviyede Evrensel Model Yorumlama<a href="scope-of-interpretability.html#global-model-interpretability-on-a-modular-level" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><em>Modelin hangi parçası sonucu nasıl etkiliyor?</em></p>
+<p>Yüzlerce özelliğe sahip bir Naive Bayes modeli aklımızda tutmamız için fazla büyük olurdu. Tüm parametreleri
+  ezberlesek bile yeni veriler için hızlıca tahmin yapamazdık. Ek olarak, her özelliğin önemini
+  ve ortalama olarak sonucu nasıl değiştirdiklerini anlamak için aklınızda özelliklerin ortak dağılımını
+  (joint distribution) tutmanız gerekirdi. Tüm bunlar imkansız, ama tek bir ağırlığı kolayca anlayabilirsiniz. Evrensel
+  yorumlanabilirlik genelde erişilemezken, bazı modelleri modüler seviyede anlamlandırabilme şansınız yüksektir. Her model
+  parametreler bağlamında anlamlandırılabilir değildir. Lineer modeller için yorumlanabilir kısım ağırlıklarken karar ağaçları
+  için bu kısım eşik değerleri (ve seçilen özellikler) ve yapraklardaki tahminlerdir. 
+  </p>
 <p>A Naive Bayes model with many hundreds of features would be too big for me and you to keep in our working memory.
 And even if we manage to memorize all the weights, we would not be able to quickly make predictions for new data points.
 In addition, you need to have the joint distribution of all features in your head to estimate the importance of each feature and how the features affect the predictions on average.
