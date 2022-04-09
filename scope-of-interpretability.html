@@ -455,7 +455,7 @@ window.cookieconsent.initialise({
       modellerin yorumlanabilirliğine odaklanacağız. Lineer modeller için kullanılan "en küçük kareler" gibi algoritmalar
       zaten iyi çalışılmış ve anlaşılmışlardır. Yüksek şeffaflığa sahip olarak nitelendirilirler. Derin öğrenme yöntemleri
       (milyonlarca parametreye sahip bir neural network'te gradyan vektörünü hesaplamak) daha az anlaşılmış yöntemlerdir ve
-      içlerindeki mekanizmalar devam eden araştırmaların odağındadır. Daha az şeffaf algoritmalar olarak görülürler.
+      içlerindeki mekanizmalar devam eden araştırmaların odağındadır. Daha az şeffaflık gösterirler.
     </p>
 </div>
 <div id="global-holistic-model-interpretability" class="section level3 hasAnchor">
@@ -484,42 +484,35 @@ window.cookieconsent.initialise({
   (joint distribution) tutmanız gerekirdi. Tüm bunlar imkansız, ama tek bir ağırlığı kolayca anlayabilirsiniz. Evrensel
   yorumlanabilirlik genelde erişilemezken, bazı modelleri modüler seviyede anlamlandırabilme şansınız yüksektir. Her model
   parametreler bağlamında anlamlandırılabilir değildir. Lineer modeller için yorumlanabilir kısım ağırlıklarken karar ağaçları
-  için bu kısım eşik değerleri (ve seçilen özellikler) ve yapraklardaki tahminlerdir. 
-  </p>
-<p>A Naive Bayes model with many hundreds of features would be too big for me and you to keep in our working memory.
-And even if we manage to memorize all the weights, we would not be able to quickly make predictions for new data points.
-In addition, you need to have the joint distribution of all features in your head to estimate the importance of each feature and how the features affect the predictions on average.
-An impossible task.
-But you can easily understand a single weight.
-While global model interpretability is usually out of reach, there is a good chance of understanding at least some models on a modular level.
-Not all models are interpretable at a parameter level.
-For linear models, the interpretable parts are the weights, for trees it would be the splits (selected features plus cut-off points) and leaf node predictions.
-Linear models, for example, look like as if they could be perfectly interpreted on a modular level, but the interpretation of a single weight is interlocked with all other weights.
-The interpretation of a single weight always comes with the footnote that the other input features remain at the same value, which is not the case with many real applications.
-A linear model that predicts the value of a house, that takes into account both the size of the house and the number of rooms, can have a negative weight for the room feature.
-It can happen because there is already the highly correlated house size feature.
-In a market where people prefer larger rooms, a house with fewer rooms could be worth more than a house with more rooms if both have the same size.
-The weights only make sense in the context of the other features in the model.
-But the weights in a linear model can still be interpreted better than the weights of a deep neural network.</p>
-</div>
+  için bu kısım eşik değerleri (ve seçilen özellikler) ve yapraklardaki tahminlerdir. Lineer modeller yorumlanırken mükemmel bir şekilde 
+  parça parça ele alınabilirmiş gibi gözükseler de aslında her bir ağırlık diğerleriyle bağlantılıdır. Bir ağırlık yorumlanırken diğer
+  özellik girdilerinin değerlerinin sabit kaldığı varsayılır, fakat bu çoğunlukla pratikte geçersizdir. Bir evin fiyatını evin büyüklüğü
+  ve içerdiği oda sayını hesaba katarak tahmin eden bir lineer model, oda sayısı özelliği için negatif bir ağırlığa sahip olabilir, çünkü zaten
+  evin büyüklüğü özelliği evin fiyatıyla yüksek korelasyona sahiptir. Alıcıların büyük odaları tercih ettiği bir pazarda, daha az odaya sahip bir ev 
+  aynı büyüklükte ama daha çok odaya sahip olandan daha değerli olabilir. Her bir özelliğin ağırlığı diğer özellikler bağlamında ele alındığında
+  anlamlıdır, fakat yine de bir lineer modelin ağırlıkları bir derin neural network'ünkinden daha iyi yorumlanabilir.
+  </p></div>
 <div id="local-interpretability-for-a-single-prediction" class="section level3 hasAnchor">
-<h3><span class="header-section-number">3.3.4</span> Local Interpretability for a Single Prediction<a href="scope-of-interpretability.html#local-interpretability-for-a-single-prediction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><em>Why did the model make a certain prediction for an instance?</em></p>
-<p>You can zoom in on a single instance and examine what the model predicts for this input, and explain why.
-If you look at an individual prediction, the behavior of the otherwise complex model might behave more pleasantly.
-Locally, the prediction might only depend linearly or monotonically on some features, rather than having a complex dependence on them.
-For example, the value of a house may depend nonlinearly on its size.
-But if you are looking at only one particular 100 square meters house, there is a possibility that for that data subset, your model prediction depends linearly on the size.
-You can find this out by simulating how the predicted price changes when you increase or decrease the size by 10 square meters.
-Local explanations can therefore be more accurate than global explanations.
-This book presents methods that can make individual predictions more interpretable in the <a href="agnostic.html#agnostic">section on model-agnostic methods</a>.</p>
-</div>
+<h3><span class="header-section-number">3.3.4</span> 
+  Tek Bir Tahmin İçin Yerel Yorumlanabilirlik<a href="scope-of-interpretability.html#local-interpretability-for-a-single-prediction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><em>Model bu örnek için neden bu tahmini yaptı?</em></p>
+  <p>
+  Verilerden birinin girdilerine odaklanabilir ve modelin onun için yaptığı tahmini ve neden bu tahmini yaptığını açıklayabilirsiniz.
+    Bir veriye baktığınızda, normalde karmaşık olan bir model daha pratik davranır. Yerel olarak, tahmin lineer veya monoton olarak sadece
+    birkaç özelliğe dayanıyor olabilir. Örneğin bir evin fiyatı ve büyüklüğü arasında non-lineer bir ilişki olabilir, ama sadece spesifik olarak
+    100 metrekare evlere bakıyorsanız, verinin bu alt kümesi için ev fiyatının büyüklüğe lineer olarak bağlı olabilir. Bu durumu, ev büyüklüğü değerini
+    10 metrekare arttırdığınızda veya azalttığınızda evin fiyat tahmininin nasıl değiştiğine bakarak gözlemleyebilirsiniz. Dolayısıyla yerel açıklamalar
+    evrensel açıklamalardan daha tutarlı olabilir. Kitapta bireysel tahminleri daha yorumlanabilir kılan metotlar <a href="agnostic.html#agnostic">modelden 
+    bağımsız metotlar kısmında</a> anlatılıyor.
+  </p></div>
 <div id="local-interpretability-for-a-group-of-predictions" class="section level3 hasAnchor">
-<h3><span class="header-section-number">3.3.5</span> Local Interpretability for a Group of Predictions<a href="scope-of-interpretability.html#local-interpretability-for-a-group-of-predictions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><em>Why did the model make specific predictions for a group of instances?</em></p>
-<p>Model predictions for multiple instances can be explained either with global model interpretation methods (on a modular level) or with explanations of individual instances.
-The global methods can be applied by taking the group of instances, treating them as if the group were the complete dataset, and using the global methods with this subset.
-The individual explanation methods can be used on each instance and then listed or aggregated for the entire group.</p>
+<h3><span class="header-section-number">3.3.5</span> 
+  Bir Grubun Tahmini için Yerel Yorumlama<a href="scope-of-interpretability.html#local-interpretability-for-a-group-of-predictions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><em>Model bu gruptaki veriler için neden bu tahmini yaptı?</em></p>
+<p>Birkaç veri örneğinin için yapılan tahminler evrensel yorumlama metotlarıyla (modüler seviyede) ya da
+  bireysel tahminlerin açıklanmasıyla (yerel) yorumlanabilir. Evrensel metotlar kullanılırken bir grup veri alınır ve sanki tüm eğitim verisi oymuş gibi
+  davranılarak evrensel metotlar uygulanır. Bireysel açıklama metotları her bir veriye uygulanıp daha sonra listelenebilir veya tüm açıklamalar
+  birleştirilebilir.</p>
 <!--{pagebreak}-->
 </div>
 </div>
