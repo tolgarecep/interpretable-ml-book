@@ -4,7 +4,7 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.5 Properties of Explanations | Interpretable Machine Learning</title>
+  <title>3.5 Açıklamaların Özellikleri | Yorumlanabilir Makine Öğrenmesi</title>
   <meta name="description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
@@ -439,34 +439,38 @@ window.cookieconsent.initialise({
 
             <section class="normal" id="section-">
 <div id="properties" class="section level2 hasAnchor">
-<h2><span class="header-section-number">3.5</span> Properties of Explanations<a href="properties.html#properties" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We want to explain the predictions of a machine learning model.
-To achieve this, we rely on some explanation method, which is an algorithm that generates explanations.
-<strong>An explanation usually relates the feature values of an instance to its model prediction in a humanly understandable way.</strong>
-Other types of explanations consist of a set of data instances (e.g in the case of the k-nearest neighbor model).
-For example, we could predict cancer risk using a support vector machine and explain predictions using the <a href="lime.html#lime">local surrogate method</a>, which generates decision trees as explanations.
-Or we could use a linear regression model instead of a support vector machine.
-The linear regression model is already equipped with an explanation method (interpretation of the weights).</p>
-<p>We take a closer look at the properties of explanation methods and explanations (Robnik-Sikonja and Bohanec, 2018<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>).
-These properties can be used to judge how good an explanation method or explanation is.
-It is not clear for all these properties how to measure them correctly, so one of the challenges is to formalize how they could be calculated.</p>
-<p><strong>Properties of Explanation Methods</strong></p>
+<h2><span class="header-section-number">3.5</span> 
+  Açıklamaların Özellikleri<a href="properties.html#properties" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+  <p>Makine öğrenmesi modellerinin yaptıkları tahminleri açıklamak istiyoruz ve bunun için açıklamalar üreten bir algoritma olan açıklama yöntemine başvuruyoruz.
+  <strong>Bir açıklamanın genellikle yaptığı şey, bir verinin özellik girdilerini modelin o veri için yaptığı tahminle insanların anlayacağı bir
+    şekilde eşleştirmektir.</strong> Farklı türde açıklamalar bir veri kümesinden meydana gelir (örneğin k-nearest neighbor modelleri).
+  Örneğin, kanser riskini bir support vector machine modeliyle tahmin edebilir ve tahminleri, karar ağaçları şeklinde açıklamalar oluşturan
+    yerel vekil metodu ile açıklayabiliriz. Veya support vector machine yerine lineer bir model kullanabiliriz, ki bu durumda açıklama yöntemi
+  algoritmayla beraber gelir (ağırlıkların yorumlanması).</p>
+<p>Şimdi, açıklamaların ve açıklama yöntemlerin özelliklerine daha yakından bakacağız
+  (Robnik-Sikonja ve Bohanec, 2018<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>. Bu özellikler bir açıklamanın veya açıklama yönteminin
+  ne kadar iyi olduğuna karar verirken kullanılır. Her birinin nasıl ölçüleceğine dair kesin bir yol bulunmadığından önümüzdeki zorluklardan biri de 
+  bunların nasıl hesaplanabileceğini formülize etmek.</p>
+<p><strong>Açıklama Metotlarının Özellikleri</strong></p>
 <ul>
-<li><strong>Expressive Power</strong> is the “language” or structure of the explanations the method is able to generate.
-An explanation method could generate IF-THEN rules, decision trees, a weighted sum, natural language or something else.</li>
-<li><strong>Translucency</strong> describes how much the explanation method relies on looking into the machine learning model, like its parameters.
-For example, explanation methods relying on intrinsically interpretable models like the linear regression model (model-specific) are highly translucent.
-Methods only relying on manipulating inputs and observing the predictions have zero translucency.
-Depending on the scenario, different levels of translucency might be desirable.
-The advantage of high translucency is that the method can rely on more information to generate explanations.
-The advantage of low translucency is that the explanation method is more portable.</li>
-<li><strong>Portability</strong> describes the range of machine learning models with which the explanation method can be used.
-Methods with a low translucency have a higher portability because they treat the machine learning model as a black box.
-Surrogate models might be the explanation method with the highest portability.
-Methods that only work for e.g. recurrent neural networks have low portability.</li>
-<li><strong>Algorithmic Complexity</strong> describes the computational complexity of the method that generates the explanation.
-This property is important to consider when computation time is a bottleneck in generating explanations.</li>
+<li><strong>Kendini Açıklayabilme Gücü</strong> metodun ortaya koyabildiği açıklamaların "dili" ya da yapısıdır. Bir açıklama metodu
+  NEDEN-SONUÇ kuralları, karar ağaçları, ağırlıklandırılmış toplam, doğal bir dil ya da başka bir şey oluşturabilir.</li>
+  
+<li><strong>Yarı saydamlık</strong> açıklama yönteminin ne kadar modelin içine bakmayı (parametrelere bakmak gibi)
+  gerektirdiğinin ölçüsüdür. Örneğin, lineer regression gibi içsel yorumlanabilir modellere uygulanan açıklama
+  metotları (modele özel metotlardır) fazlasıyla yarı saydamlık gösterirler. Girdilerde değişiklik yapıp çıktıyı inceleyen
+  metotlar sıfır yarı saydamlığa sahiptir. Uygun yarı saydamlık seviyesi duruma göre değişir. Yüksek yarı saydamlığın avantajı
+  metodun açıklama üretmek için daha fazla bilgiyi kullanabilmesidir. Düşük yarı saydamlığın avantajı ise metodun farklı modellere
+  uyarlanabilmesidir (portatiflik).</li>
+
+<li><strong>Portatiflik</strong> metodun uygulanabildiği model türlerinin sayısıdır. Düşük yarı saydamlığa sahip metotlar
+  yüksek portatifliğe sahiptir çünkü modellere kara kutularmış gibi davranırlar. Vekil modeller en yüksek portatifliğe sahip metotlar
+  olabilir. Tek tür modele uygulanabilen (örneğin sadece recurrent neural network'lere) metotlar düşük portatifliğe sahiptir.</li>
+  
+<li><strong>Algoritmik Karmaşıklık</strong> açıklamayı üreten algoritmanın hesaplanmasındaki karmaşıklığın ölçüsüdür.
+  Bu özellik, açıklamaları üretirken hesaplama süresinin önemli olduğu durumlarda dikkate alınmalıdır.</li>
 </ul>
+  
 <p><strong>Properties of Individual Explanations</strong></p>
 <ul>
 <li><strong>Accuracy</strong>: How well does an explanation predict unseen data?
