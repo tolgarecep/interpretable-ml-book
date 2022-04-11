@@ -471,51 +471,53 @@ window.cookieconsent.initialise({
   Bu özellik, açıklamaları üretirken hesaplama süresinin önemli olduğu durumlarda dikkate alınmalıdır.</li>
 </ul>
   
-<p><strong>Properties of Individual Explanations</strong></p>
+  <p><strong>Tekil Tahminlerin Özellikleri</strong></p>
 <ul>
-<li><strong>Accuracy</strong>: How well does an explanation predict unseen data?
-High accuracy is especially important if the explanation is used for predictions in place of the machine learning model.
-Low accuracy can be fine if the accuracy of the machine learning model is also low, and if the goal is to explain what the black box model does.
-In this case, only fidelity is important.</li>
-<li><strong>Fidelity</strong>: How well does the explanation approximate the prediction of the black box model?
-High fidelity is one of the most important properties of an explanation, because an explanation with low fidelity is useless to explain the machine learning model.
-Accuracy and fidelity are closely related.
-If the black box model has high accuracy and the explanation has high fidelity, the explanation also has high accuracy.
-Some explanations offer only local fidelity, meaning the explanation only approximates well to the model prediction for a subset of the data (e.g. <a href="lime.html#lime">local surrogate models</a>) or even for only an individual data instance (e.g. <a href="shapley.html#shapley">Shapley Values</a>).</li>
-<li><strong>Consistency</strong>: How much does an explanation differ between models that have been trained on the same task and that produce similar predictions?
-For example, I train a support vector machine and a linear regression model on the same task and both produce very similar predictions.
-I compute explanations using a method of my choice and analyze how different the explanations are.
-If the explanations are very similar, the explanations are highly consistent.
-I find this property somewhat tricky, since the two models could use different features, but get similar predictions (also called <a href="https://en.wikipedia.org/wiki/Rashomon_effect">“Rashomon Effect”</a>).
-In this case a high consistency is not desirable because the explanations have to be very different.
-High consistency is desirable if the models really rely on similar relationships.</li>
-<li><strong>Stability</strong>: How similar are the explanations for similar instances?
-While consistency compares explanations between models, stability compares explanations between similar instances for a fixed model.
-High stability means that slight variations in the features of an instance do not substantially change the explanation (unless these slight variations also strongly change the prediction).
-A lack of stability can be the result of a high variance of the explanation method.
-In other words, the explanation method is strongly affected by slight changes of the feature values of the instance to be explained.
-A lack of stability can also be caused by non-deterministic components of the explanation method, such as a data sampling step, like the <a href="lime.html#lime">local surrogate method</a> uses.
-High stability is always desirable.</li>
-<li><strong>Comprehensibility</strong>: How well do humans understand the explanations?
-This looks just like one more property among many, but it is the elephant in the room.
-Difficult to define and measure, but extremely important to get right.
-Many people agree that comprehensibility depends on the audience.
-Ideas for measuring comprehensibility include measuring the size of the explanation (number of features with a non-zero weight in a linear model, number of decision rules, …) or testing how well people can predict the behavior of the machine learning model from the explanations.
-The comprehensibility of the features used in the explanation should also be considered.
-A complex transformation of features might be less comprehensible than the original features.</li>
-<li><strong>Certainty</strong>: Does the explanation reflect the certainty of the machine learning model?
-Many machine learning models only give predictions without a statement about the models confidence that the prediction is correct.
-If the model predicts a 4% probability of cancer for one patient, is it as certain as the 4% probability that another patient, with different feature values, received?
-An explanation that includes the model’s certainty is very useful.</li>
-<li><strong>Degree of Importance</strong>: How well does the explanation reflect the importance of features or parts of the explanation?
-For example, if a decision rule is generated as an explanation for an individual prediction, is it clear which of the conditions of the rule was the most important?</li>
-<li><strong>Novelty</strong>: Does the explanation reflect whether a data instance to be explained comes from a “new” region far removed from the distribution of training data?
-In such cases, the model may be inaccurate and the explanation may be useless.
-The concept of novelty is related to the concept of certainty.
-The higher the novelty, the more likely it is that the model will have low certainty due to lack of data.</li>
-<li><strong>Representativeness</strong>: How many instances does an explanation cover?
-Explanations can cover the entire model (e.g. interpretation of weights in a linear regression model) or represent only an individual prediction (e.g. <a href="shapley.html#shapley">Shapley Values</a>).</li>
-</ul>
+<li><strong>Doğruluk</strong>: Açıklama yeni verileri ne kadar doğru tahmin ediyor? Özellikle açıklamalar tahminlerde model yerine kullanıldığında, doğruluğun
+  yüksek olması önemlidir. Eğer modelin doğruluğu düşükse ve amaç modelin ne yaptığını açıklamaksa,
+  açıklamanın düşük doğruluğa sahip olmasında sorun yoktur. Bu durumda sadece uygunluk önemlidir.</li>
+  
+<li><strong>Uygunluk</strong>: Açıklama modelin tahminlerini ne kadar iyi tahmin ediyor? Yüksek uygunluk bir açıklamanın en önemli özelliklerinden biridir çünkü
+  düşük uygunluğa sahip bir açıklama modeli açıklamada işe yaramaz. Doğruluk ve uygunluk yakından ilişkilidir. Eğer model yüksek doğruluğa ve açıklama yüksek uygunluğa
+  sahipse, bu açıklamanın da yüksek doğruluğa sahip olduğu anlamına gelir. Bazı açıklamalar sadece yerel uygunluğa sahiptir, yani açıklama sadece verinin belli bir
+  alt kümesi için (örneğin <a href="lime.html#lime">yerel vekil modelleri</a>) veya sadece tek bir veri için (örneğin
+  <a href="shapley.html#shapley">Shapley Değerleri</a>) modelin tahminlerini iyi tahmin eder.
+  
+<li><strong>Tutarlılık</strong>: Açıklama aynı görev için eğitilen ve benzer tahminler üreten modeller arasında ne kadar ayrım yapıyor? Örneğin,
+  bir görev için support vector machine ve lineer regression eğittiğimi ve çok benzer sonuçlar verdiklerini varsayalım. Seçtiğim bir metot ile her biri
+  için açıklamalar üretiyorum ve ne kadar farklı olduklarını inceliyorum. Eğer açıklamalar yeterince benziyorsa, açıklamalar tutarlıdır. Bu özelliği biraz
+  aldatıcı buluyorum çünkü iki model farklı nitelikler kullanıp benzer tahminler üretebilirler (bu duruma 
+  <a href="https://en.wikipedia.org/wiki/Rashomon_effect">“Rashomon Effect”</a> de denir.) Böyle bir durumda yüksek tutarlılık istenmez çünkü açıklamaların
+  birbirlerinden farklı olmaları gerekir. Yüksek tutarlılık, eğer modeller gerçekten benzer ilişkilere dayanıyorsa istenilen bir durumdur.</li>
+
+  <li><strong>Kararlılık</strong>: Benzer veriler için yapılan açıklamalar birbirine ne kadar benziyor? Tutarlılık modeller arası açıklamaların karşılaştırılmasıyken,
+    kararlılık bir modelde benzer veriler için yapılan açıklamaların karşılaştırılmasıdır. Yüksek kararlılık bir verinin niteliklerindeki
+    küçük değişikliklerin açıklamayı büyük oranda değiştirmemesidir (bu küçük değişiklikler yapılan tahmini de büyük oranda değiştirmiyorsa).
+    Kararlı olmayan bir açıklama metodu metottaki yüksek varyansın sonucu olabilir. Başka bir deyişle, bu tür metodlar açıklanacak verinin niteliklerindeki
+    küçük değişikliklerden kuvvetle etkilenirler. Kararsızlık metodun deterministik olmayan kısımlarından da kaynaklanıyor olabilir,
+    <a href="lime.html#lime">yerel vekil metodunun</a> kullandığı veri örnekleme adımı gibi. Yüksek kararlılık her zaman istenen bir özelliktir.</li>
+
+  <li><strong>Anlaşılabilirlik</strong>: İnsanlar bu açıklamaları ne kadar iyi anlıyor? Bu herhangi bir özellik gibi dursa da önemi çok bariz bir kavram.
+    Tanımlaması ve ölçmesi çok zor ama elde edilmesi oldukça mühim. Çoğunluk anlaşılabilirliğin kitleye bağlı olduğunda hemfikir. Ölçme yöntemleri
+    arasında açıklamanın büyüklüğünü ölçmek (lineer modelde sıfırdan farklı ağırlığa sahip nitelik sayısı, karar kurallarının sayısı vs.) veya
+    insanların açıklamalara dayanarak modelin davranışlarını ne kadar iyi tahmin ettiğini test etmek yer alıyor. Açıklamada kullanılan niteliklerin
+    anlaşılabilirliği de dikkate alınmalıdır. Dönüştürülüp daha karmaşık hale gelmiş nitelikler orijinal niteliklerden daha az anlaşılabilir olabilir.</li>
+
+  <li><strong>Kesinlik</strong>: Açıklama modelin kesinliğini yansıtıyor mu? Birçok makine öğrenmesi modeli, kendi tahminlerinin doğruluğuna olan güvenleri
+    hakkında bir şey söylemeksizin tahminlerini sunar. Eğer model bir hastanın kanser olma olasılığını %4 olarak tahmin ediyorsa, model bu tahminden
+    başka nitelik değerlerine sahip ve kanser olma olasılığını yine %4 olarak tahmin etmiş başka bir hasta için yapılan tahminden olduğu kadar emin midir? Modelin
+    kesinliğini içeren bir açıklama oldukça kullanışlı olacaktır.
+   
+  <li><strong>Önem Derecesi</strong>: Açıklama niteliklerin veya açıklamanın kısımlarının önemini ne kadar iyi yansıtıyor? Örneğin, eğer tekil bir tahmin için
+    açıklama olarak bir karar kuralı üretilmişse, kuralın hangi koşullarının en yüksek öneme sahip olduğu belli midir?</li>
+
+  <li><strong>Yenilik</strong>: Açıklama, açıklanacak verinin, eğitim verisinin dağılımından uzak "yeni" bir bölgeden gelip gelmediğini ne kadar iyi anlatıyor?
+    Bu gibi durumlarda model doğru olmayabilir ve açıklama kullanışsız olabilir. Yenilik kavramı kesinlik kavramıyla ilişkilidir. Yenilik arttıkça, modelin
+    veri eksikliğinden ötürü düşk kesinliğe sahip olma ihtimali artar.</li>
+
+  <li><strong>Temsil Edebilirlik</strong>: Açıklama ne kadarlık bir kısmı kapsıyor? Açıklamalar modelin tümünü 
+    (örneğin bir lineer regression modelindeki ağırlıkları yorumlamak) veya sadece tekil bir tahmini 
+    (örneğin <a href="shapley.html#shapley">Shapley Değerleri</a>) kapsayabilir.</ul>
 <!--{pagebreak}-->
 </div>
 <div class="footnotes">
