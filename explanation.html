@@ -4,7 +4,7 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.6 Human-friendly Explanations | Interpretable Machine Learning</title>
+  <title>3.6 İnsan Dostu Açıklamalar | Yorumlanabilir Makine Öğrenmesi Learning</title>
   <meta name="description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
@@ -439,25 +439,28 @@ window.cookieconsent.initialise({
 
             <section class="normal" id="section-">
 <div id="explanation" class="section level2 hasAnchor">
-<h2><span class="header-section-number">3.6</span> Human-friendly Explanations<a href="explanation.html#explanation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Let us dig deeper and discover what we humans see as “good” explanations and what the implications are for interpretable machine learning.
-Humanities research can help us find out.
-Miller (2017) has conducted a huge survey of publications on explanations, and this chapter builds on his summary.</p>
-<p>In this chapter, I want to convince you of the following:
-As an explanation for an event, humans prefer short explanations (only 1 or 2 causes) that contrast the current situation with a situation in which the event would not have occurred.
-Especially abnormal causes provide good explanations.
-Explanations are social interactions between the explainer and the explainee (recipient of the explanation) and therefore the social context has a great influence on the actual content of the explanation.</p>
-<p>When you need explanations with ALL factors for a particular prediction or behavior, you do not want a human-friendly explanation, but a complete causal attribution.
-You probably want a causal attribution if you are legally required to specify all influencing features or if you debug the machine learning model.
-In this case, ignore the following points.
-In all other cases, where lay people or people with little time are the recipients of the explanation, the following sections should be interesting to you.</p>
-<div id="what-is-an-explanation" class="section level3 hasAnchor">
-<h3><span class="header-section-number">3.6.1</span> What Is an Explanation?<a href="explanation.html#what-is-an-explanation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>An explanation is the <strong>answer to a why-question</strong> (Miller 2017).</p>
+<h2><span class="header-section-number">3.6</span> 
+  İnsan Dostu Açıklamalar<a href="explanation.html#explanation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Şimdi daha derine inelim ve insanların "iyi" kabul ettiği açıklamalara ve bunun makine öğrenmesi için ne anlam ifade ettiğine bakalım. Beşeri bilimler
+  bu konuda bize yardımcı olabilir. Bu bölüm, Miller (2017)'ın açıklamalarla ilgili yayınları incelediği geniş çaplı incelemesinin üstüne kuruldu.</p>
+
+<p>Bu bölümde sizi şuna ikna etmeye çalışacağım: İnsanlar, mevcut durumu olayın meydana gelmeyeceği bir durumla karşılaştıran kısa açıklamaları
+  (sadece 1 veya 2 nedenden oluşan) tercih ederler. Özellikle anormal nedenler iyi açıklamalar meydana getirir. Açıklamalar açıklayan ve açıklanan (açıklamayı
+  alıcısı) arasındaki sosyal etkileşimdir ve dolayısıyla sosyal altmetnin açıklamanın içeriğine olan etkisi büyüktür.</p>
+
+<p>Bir tahminin veya davranışın tüm etkenlerini içeren bir açıklamaya ihtiyacınız olduğunda, insan dostu bir açıklama aramak yerine
+  eksiksiz bir nedenlere dayandırma ararsınız. Büyük ihtimalle etki eden tüm nitelikleri belirlemeniz veya modeli düzeltmeniz gerektiğinde
+  nedenlere dayandıran bir açıklamaya ihtiyacınız olur. Böyle bir durumda ileriki maddeler önemsizdir. Açıklamanın alıcısının insanlar ya da sadece
+  zamanı kısıtlı olan insanlar olduğu diğer tüm durumlarda ilerleyen kısımlar ilginizi çekecektir.</p>
+
+  <div id="what-is-an-explanation" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.6.1</span> 
+  Açıklama Nedir?<a href="explanation.html#what-is-an-explanation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Açıklama bir <strong>neden sorusuna verilen cevaptır<strong> (Miller 2017).</p>
 <ul>
-<li>Why did not the treatment work on the patient?</li>
-<li>Why was my loan rejected?</li>
-<li>Why have we not been contacted by alien life yet?</li>
+<li>Hastaya uyguladığımız tedavi neden çalışmadı?</li>
+<li>Kredi başvurum neden reddedildi?</li>
+<li>Neden hala uzaylılarla iletişime geçmedik?</li>
 </ul>
 <p>The first two questions can be answered with an “everyday”-explanation, while the third one comes from the category “More general scientific phenomena and philosophical questions”.
 We focus on the “everyday”-type explanations, because those are relevant to interpretable machine learning.
