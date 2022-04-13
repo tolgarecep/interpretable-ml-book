@@ -505,48 +505,52 @@ Bir olayın birçok farklı nedenle açıklanabilmesine Rashomon Etkisi denir. R
 <strong>Bunlar yorumlanabilir makine öğrenmesi için ne anlam ifade ediyor</strong>: Dünya çok daha karmaşık olsa da açıklamayı oldukça kısa tut ve
     sadece bir - üç neden göster. <a href="lime.html#lime">LIME metodu</a> bu konuda iyi iş çıkarıyor.
 
-  <p><strong>Explanations are social</strong>.
-They are part of a conversation or interaction between the explainer and the receiver of the explanation.
-The social context determines the content and nature of the explanations.
-If I wanted to explain to a technical person why digital cryptocurrencies are worth so much, I would say things like:
-“The decentralized, distributed, blockchain-based ledger, which cannot be controlled by a central entity, resonates with people who want to secure their wealth, which explains the high demand and price.”
-But to my grandmother I would say:
-“Look, Grandma: Cryptocurrencies are a bit like computer gold. People like and pay a lot for gold, and young people like and pay a lot for computer gold.”<br />
-<strong>What it means for interpretable machine learning</strong>:
-Pay attention to the social environment of your machine learning application and the target audience.
-Getting the social part of the machine learning model right depends entirely on your specific application.
-Find experts from the humanities (e.g. psychologists and sociologists) to help you.</p>
-<p><strong>Explanations focus on the abnormal</strong>.
-People focus more on abnormal causes to explain events (Kahnemann and Tversky, 1981<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>).
-These are causes that had a small probability but nevertheless happened.
-The elimination of these abnormal causes would have greatly changed the outcome (counterfactual explanation).
-Humans consider these kinds of “abnormal” causes as good explanations.
-An example from Štrumbelj and Kononenko (2011)<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a> is:
-Assume we have a dataset of test situations between teachers and students.
-Students attend a course and pass the course directly after successfully giving a presentation.
-The teacher has the option to additionally ask the student questions to test their knowledge.
-Students who cannot answer these questions will fail the course.
-Students can have different levels of preparation, which translates into different probabilities for correctly answering the teacher’s questions (if they decide to test the student).
-We want to predict whether a student will pass the course and explain our prediction.
-The chance of passing is 100% if the teacher does not ask any additional questions, otherwise the probability of passing depends on the student’s level of preparation and the resulting probability of answering the questions correctly.<br />
-Scenario 1:
-The teacher usually asks the students additional questions (e.g. 95 out of 100 times).
-A student who did not study (10% chance to pass the question part) was not one of the lucky ones and gets additional questions that he fails to answer correctly.
-Why did the student fail the course?
-I would say that it was the student’s fault to not study.<br />
-Scenario 2:
-The teacher rarely asks additional questions (e.g. 2 out of 100 times).
-For a student who has not studied for the questions, we would predict a high probability of passing the course because questions are unlikely.
-Of course, one of the students did not prepare for the questions, which gives him a 10% chance of passing the questions.
-He is unlucky and the teacher asks additional questions that the student cannot answer and he fails the course.
-What is the reason for the failure?
-I would argue that now, the better explanation is “because the teacher tested the student”.
-It was unlikely that the teacher would test, so the teacher behaved abnormally.<br />
-<strong>What it means for interpretable machine learning</strong>:
-If one of the input features for a prediction was abnormal in any sense (like a rare category of a categorical feature) and the feature influenced the prediction, it should be included in an explanation, even if other ‘normal’ features have the same influence on the prediction as the abnormal one.
-An abnormal feature in our house price prediction example might be that a rather expensive house has two balconies.
-Even if some attribution method finds that the two balconies contribute as much to the price difference as the above average house size, the good neighborhood or the recent renovation, the abnormal feature “two balconies” might be the best explanation for why the house is so expensive.</p>
-<p><strong>Explanations are truthful</strong>.
+    <p><strong>Açıklamalar toplumsaldır</strong></p>. Açıklayan ve alıcı arasındaki konuşmanın veya etkileşimin
+  bir parçasıdırlar. Sosyal bağlam açıklamanın içeriğini ve doğasını belirler. Eğer teknik bilgisi olan birisine dijital
+  kripto para birimlerinin neden çok önemli olduğunu anlatacaksam "Merkezsizleştirilmiş, dağıtık, blokzinciri tabanlı
+  defter merkezi bir varlık tarafından kontrol edilemez ve bu varlıklarını korumak isteyen insanların isteyeceği
+  bir sistemdir; bu da yüksek talebi ve fiyatı açıklar." gibi şeyler söylerim, ama aynı şeyi anneanneme açıklamak istesem
+  "Bak anneanne: Kripto para birimleri bilgisayardaki altın gibi bir şey. İnsanlar altını sever ve onun için büyük miktarda
+  para öderler, genç insanlar ise bilgisayar altınlarını sever ve onun için büyük para öderler." <br />
+  
+<strong>Bunlar yorumlanabilir makine öğrenmesi için ne anlam ifade ediyor</strong>:
+  Makine öğrenmesini kullandığınız alanın sosyal çevresine ve hedef kitlesine dikkat etmeniz gerekir. Modelin sosyal kısmını
+  doğru tasarlamak tümüyle yaptığınız uygulamaya bağlı olarak değişir. Beşeri bilimlerden uzmanlar (örneğin
+  psikologlar ve sosyologlar) bu konuda
+  size yardımcı olabilir.
+  
+<p><strong>Açıklamalar anormale odalanır</strong>.
+  İnsanlar bir olayı açıklayabilen daha anormal sebepleri normal olanlara tercih ederler (Kahnemann ve Tversky, 1981<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>).
+  Bu sebepler düşük olasılığa sahip olmalarına rağmen gerçekleşmiş durumlardır. Bu anormal sebeplerin ortadan kalkması
+  sonucu büyük ölçüde değiştirirdi (karşıolgusal açıklama). İnsanlar bu tür "anormal nedenlerin" iyi açıklamalar
+  oluşturduğunu düşünürler. Štrumbelj ve Kononenko (2011)<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a>
+  'den bir örnek şu şekilde: Bir öğretmenin öğrenciyi test ettiği durumları içeren bir veri setimiz olduğunu düşünelim.
+  Öğrenciler dersi alıyor ve başarıyla sunumu yaptıklarında direkt dersi geçiyorlar. Öğretmenlerin, öğrencinin
+  bilgisini test etmek için ekstra sorular sorma hakları var. Sorulara cevap vermeyen öğrenciler dersi geçemeyecek.
+  Her öğrencinin hazırlığı farklı seviyede, yani sorulara cevap verebilme olasılıkları farklı (eğer öğretmen soru
+  sormuşsa). Bizse bir öğrencinin dersi geçip geçemeyeceğini tahmin etmeye ve bu tahmini açıklamya çalışıyoruz.
+  Öğretmen ekstra bir soru sormazsa öğrencinin dersi geçme olasılığı %100, eğer öğretmen bir soru sorarsa
+  öğrencinin dersi geçme olasılığı hazırlık seviyesine bağlı olarak değişiyor. <br />
+  1. senaryo: Öğretmen genellikle öğrencilere soru sorar (örneğin 100 öğrenciden 95'ine). Hazırlanmamış bir öğrenci
+  (soruya cevap verebilme olasılığı %10) şanssız duruma düşer ve öğretmenden bir soru gelir, öğrenci doğru cevap veremez. Bu öğrenci neden
+  dersi geçememiştir? Ben hazırlık yapmadığı için derdim. <br />
+  2. senaryo: Öğretmen nadiren soru sorar (örneğin 100 öğrenciden 2'sine). Sorulara çalışmamış bir öğrencinin dersi
+  geçme olasılığını yüksek bir değer olarak tahmin ederdik çünkü soru sorulma olasılığı çok düşük. Tabii ki, öğrencilerden
+  birisi hazırlığını yapmamış ve soru sorulduğunda cevaplayabilme olasılığı %10. Bu öğrenci yine şanssızdır ve 
+  öğretmen ona bir soru sormaya karar verir, öğrenci cevap veremez ve dolayısıyla dersi geçemez. Bu
+  başarısızlığın sebebi nedir? Bu durumda daha iyi olan
+  açıklamanın "dersi geçemedi çünkü öğretmen soru sordu" olduğunu düşünürdüm. Öğretmenin soru sorma olasılığı düşüktü, dolayısıyla
+  anormal davranış soru sormasıydı. <br />
+  
+<strong>Bunlar yorumlanabilir makine öğrenmesi için ne anlam ifade ediyor</strong>: Eğer modelin girdisi olan
+  niteliklerden birisi herhangi bir şekilde anormal değer taşıyorsa (kategorik bir verinin çok rastlanmayan bir
+  değer alması gibi) ve bu nitelik tahmini etkilemişse, diğer "normal" nitelikler de o nitelik
+  kadar tahmini etkilemişse bile bu durum açıklamada yer almalıdır. Ev fiyatlarının tahmini örneğinde anormal
+  nitelik görece pahalı bir evin iki balkona sahip olması olabilir. Bir atıf metodu iki balkona sahip olma niteliğinin
+  fiyatı ortalamanın üstünde ev büyüklüğü, iyi mahalle veya yeni tadilat kadar etkilediğini söylese bile
+  iki balkona sahip olma anormal niteliği bu evin pahalılığı için en iyi açıklama olacaktır.
+  
+  <p><strong>Explanations are truthful</strong>.
 Good explanations prove to be true in reality (i.e. in other situations).
 But disturbingly, this is not the most important factor for a “good” explanation.
 For example, selectiveness seems to be more important than truthfulness.
