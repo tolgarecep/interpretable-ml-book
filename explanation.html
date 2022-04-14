@@ -555,38 +555,36 @@ Bir olayın birçok farklı nedenle açıklanabilmesine Rashomon Etkisi denir. R
     Örneğin seçilebilirlik, gerçekçilikten sık sık daha önemli oluyor. Bir ya da iki nedeni seçen açıklamalar
     alakalı bütün nedenlerin listesinin çok küçük bir kısmını ele alıyor; seçilebilirlik gerçeğin bir kısmını
     ihmal etmek demek oluyor. Örneğin borsanın çökmesine, sadece seçilen bir ya da iki nedenin sebep olduğu doğru değil,
-    gerçekte insanların davranışlarını borsanın çöküşüne yol açacak şekilde etkileyen milyonlarca neden var.
+    gerçekte insanların davranışlarını borsanın çöküşüne yol açacak şekilde etkileyen milyonlarca neden var.<br />
+    
+<strong>Bunlar yorumlanabilir makine öğrenmesi için ne anlam ifade ediyor</strong>: Açıklamaların olayı olabildiğince gerçeğe yakın açıklaması gerekir,
+    ve makine öğrenmesinde buna <strong>sadakat</strong> denir. İki balkona sahip olma bu evin fiyatını arttırıyorsa, diğer (benzer)
+    evlerin de fiyatını arttırmalıdır. İnsanlara göre açıklamanın sadakati seçilebilirliği, belirttiği karşıtlık ve sosyal bağlamı kadar önemli değildir.</p>
+  
+    <p><strong>İyi açıklamalar, açıklayıcının önceki inançlarıyla tutarlıdır</strong>.
+      İnsanlar önceki inançlarına ters düşen bilgiyi reddetme eğilimindedir. Bu duruma doğrulama yanlılığı
+      (Nickerson 1998<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>) denir. Bu önyargı
+      açıklamalar için de geçerlidir. İnsanlar inançlarıyla uyuşmayan açıklamaları değersiz görüp reddedeceklerdir.
+      İnançların ne olduğu insandan insana değişse de politik dünya görüşleri gibi grup tabanlı inançlar da vardır. <br />
+      <strong>Bunlar yorumlanabilir makine öğrenmesi için ne anlam ifade ediyor</strong>: İyi açıklamalar önceki inançlarlar tutarlıdır.
+      Bunu makine öğrenmesine katmak zordur ve yüksek ihtimalle tahmin etme performansını yüksek oranda düşürecektir.
+      Evin büyüklüğünün fiyatına olan etkisine dair önceki inancımız ev büyüdükçe fiyatın artacağı yönündedir.
+      Varsayalım ki modelimiz birkaç ev için evin büyüklüğünün fiyata negatif etki ettiğini göstersin. Modelin bu açıklamayı öğrenmesinin sebebi
+      tahmin performansını arttırıyor olmasıdır (bir takım karmaşık ilişkiler yüzünden), fakat bu önceki inançlarımızla çelişir. Bu durumda
+      monotonluk kısıtları ekleyebilir (bir nitelik tahmini yalnızca bir yönde etkileyebilir) ya da bu özelliğe sahip bir lineer model kullanabilirsiniz.
+      
+
+  <p><strong>İyi açıklamalar olasıdır ve genelleştirilebilirler</strong>.
+    Birçok olayı açıklayabilen bir neden oldukça geneldir ve iyi bir açıklama olarak nitelendirilir. Bu, anormal nedenlerden iyi açıklamalar oluşturulabileceğiyle
+    çelişir. Benim görüşüm anormal nedenlerin genel nedenleri yendiğidir. Anormal nedenler tanım gereği eldeki senaryo içerisinde gerçekleşme olasılığı
+    düşük durumlardır. Anormal durumun yokluğunda genel bir neden iyi açıklama kabul edilebilir. Aynı zamanda, insanların ortak olasılıkları
+    yanlış yorumlamaya eğilimli olduklarını unutmayın: "Joe bir kütüphane görevlisidir. Joe'nun utangaç bir insan olması mı, yoksa kitap okumayı
+    seven utangaç bir insan olması mı daha yüksek olasılıktır?" İyi bir örnek şu şekildedir: "Bu ev pahalı çünkü büyük" genel bir nedendir ve 
+    evlerin neden pahalı veya ucuz olduklarına dair iyi bir açıklamadır.
     
 <strong>Bunlar yorumlanabilir makine öğrenmesi için ne anlam ifade ediyor</strong>:
-    
-    
-The explanation should predict the event as truthfully as possible, which in machine learning is sometimes called <strong>fidelity</strong>.
-So if we say that a second balcony increases the price of a house, then that also should apply to other houses (or at least to similar houses).
-For humans, fidelity of an explanation is not as important as its selectivity, its contrast and its social aspect.</p>
-<p><strong>Good explanations are consistent with prior beliefs of the explainee</strong>.
-Humans tend to ignore information that is inconsistent with their prior beliefs.
-This effect is called confirmation bias (Nickerson 1998<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>).
-Explanations are not spared by this kind of bias.
-People will tend to devalue or ignore explanations that do not agree with their beliefs.
-The set of beliefs varies from person to person, but there are also group-based prior beliefs such as political worldviews.<br />
-<strong>What it means for interpretable machine learning</strong>:
-Good explanations are consistent with prior beliefs.
-This is difficult to integrate into machine learning and would probably drastically compromise predictive performance.
-Our prior belief for the effect of house size on predicted price is that the larger the house, the higher the price.
-Let us assume that a model also shows a negative effect of house size on the predicted price for a few houses.
-The model has learned this because it improves predictive performance (due to some complex interactions), but this behavior strongly contradicts our prior beliefs.
-You can enforce monotonicity constraints (a feature can only affect the prediction in one direction) or use something like a linear model that has this property.</p>
-<p><strong>Good explanations are general and probable</strong>.
-A cause that can explain many events is very general and could be considered a good explanation.
-Note that this contradicts the claim that abnormal causes make good explanations.
-As I see it, abnormal causes beat general causes.
-Abnormal causes are by definition rare in the given scenario.
-In the absence of an abnormal event, a general explanation is considered a good explanation.
-Also remember that people tend to misjudge probabilities of joint events.
-(Joe is a librarian. Is he more likely to be a shy person or to be a shy person who likes to read books?)
-A good example is “The house is expensive because it is big”, which is a very general, good explanation of why houses are expensive or cheap.<br />
-<strong>What it means for interpretable machine learning</strong>:
-Generality can easily be measured by the feature’s support, which is the number of instances to which the explanation applies divided by the total number of instances.</p>
+    Genelleştirilebilirlik niteliğin desteğiyle kolayca ölçülebilir, ki bu ölçü açıklamaya uyan verilerin toplam veriye bölünmesidir.
+    </p>
 
 </div>
 </div>
