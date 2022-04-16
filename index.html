@@ -319,11 +319,16 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="5.7.2" data-path="other-interpretable.html"><a href="other-interpretable.html#k-nearest-neighbors"><i class="fa fa-check"></i><b>5.7.2</b> K-Nearest Neighbors<span></span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="agnostic.html"><a href="agnostic.html"><i class="fa fa-check"></i><b>6</b> Model-Agnostic Methods<span></span></a></li>
-<li class="chapter" data-level="7" data-path="example-based.html"><a href="example-based.html"><i class="fa fa-check"></i><b>7</b> Example-Based Explanations<span></span></a></li>
-<li class="chapter" data-level="8" data-path="global-methods.html"><a href="global-methods.html"><i class="fa fa-check"></i><b>8</b> Global Model-Agnostic Methods<span></span></a><ul>
-<li class="chapter" data-level="8.1" data-path="pdp.html"><a href="pdp.html"><i class="fa fa-check"></i><b>8.1</b> Partial Dependence Plot (PDP)<span></span></a><ul>
-<li class="chapter" data-level="8.1.1" data-path="pdp.html"><a href="pdp.html#pdp-based-feature-importance"><i class="fa fa-check"></i><b>8.1.1</b> PDP-based Feature Importance<span></span></a></li>
+<li class="chapter" data-level="6" data-path="agnostic.html"><a href="agnostic.html"><i class="fa fa-check"></i><b>6</b> 
+  <!--Model-Agnostic Methods-->Modelden Bağımsız Metotlar<span></span></a></li>
+<li class="chapter" data-level="7" data-path="example-based.html"><a href="example-based.html"><i class="fa fa-check"></i><b>7</b> 
+  <!--Example-Based Explanations-->Örneklere Dayalı Açıklamalar<span></span></a></li>
+<li class="chapter" data-level="8" data-path="global-methods.html"><a href="global-methods.html"><i class="fa fa-check"></i><b>8</b> 
+  <!--Global Model-Agnostic Methods-->Evrensel Modelden Bağımsız Metotlar<span></span></a><ul>
+<li class="chapter" data-level="8.1" data-path="pdp.html"><a href="pdp.html"><i class="fa fa-check"></i><b>8.1</b> 
+  <!--Partial Dependence Plot (PDP)-->Kısmi Bağımlılık Grafiği (PDP)<span></span></a><ul>
+<li class="chapter" data-level="8.1.1" data-path="pdp.html"><a href="pdp.html#pdp-based-feature-importance"><i class="fa fa-check"></i><b>8.1.1</b> 
+  <!--PDP-based Feature Importance-->PDP Tabanlı Nitelik Değerleri<span></span></a></li>
 <li class="chapter" data-level="8.1.2" data-path="pdp.html"><a href="pdp.html#examples"><i class="fa fa-check"></i><b>8.1.2</b> Examples<span></span></a></li>
 <li class="chapter" data-level="8.1.3" data-path="pdp.html"><a href="pdp.html#advantages-5"><i class="fa fa-check"></i><b>8.1.3</b> Advantages<span></span></a></li>
 <li class="chapter" data-level="8.1.4" data-path="pdp.html"><a href="pdp.html#disadvantages-5"><i class="fa fa-check"></i><b>8.1.4</b> Disadvantages<span></span></a></li>
@@ -383,7 +388,8 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="8.7.5" data-path="proto.html"><a href="proto.html#code-and-alternatives"><i class="fa fa-check"></i><b>8.7.5</b> Code and Alternatives<span></span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="local-methods.html"><a href="local-methods.html"><i class="fa fa-check"></i><b>9</b> Local Model-Agnostic Methods<span></span></a><ul>
+<li class="chapter" data-level="9" data-path="local-methods.html"><a href="local-methods.html"><i class="fa fa-check"></i><b>9</b> 
+  <!--Local Model-Agnostic Methods-->Yerel Modelden Bağımsız Metotlar<span></span></a><ul>
 <li class="chapter" data-level="9.1" data-path="ice.html"><a href="ice.html"><i class="fa fa-check"></i><b>9.1</b> Individual Conditional Expectation (ICE)<span></span></a><ul>
 <li class="chapter" data-level="9.1.1" data-path="ice.html"><a href="ice.html#examples-4"><i class="fa fa-check"></i><b>9.1.1</b> Examples<span></span></a></li>
 <li class="chapter" data-level="9.1.2" data-path="ice.html"><a href="ice.html#advantages-12"><i class="fa fa-check"></i><b>9.1.2</b> Advantages<span></span></a></li>
@@ -507,37 +513,8 @@ window.cookieconsent.initialise({
 
             <section class="normal" id="section-">
 <div id="header">
-<!--
-<h1 class="title">Interpretable Machine Learning</h1>
-<h2 class="subtitle"><em>A Guide for Making Black Box Models Explainable</em></h2>
-<p class="author"><em>Christoph Molnar</em></p>
-<p class="date"><em>2022-03-04</em></p>
-</div>
-<div id="summary" class="section level1 unnumbered hasAnchor">
-<h1>Summary<a href="index.html#summary" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><img src="images/cutout.png" width="400px" style="display: block; margin: auto;" /></p>
-<p>Machine learning has great potential for improving products, processes and research.
-But <strong>computers usually do not explain their predictions</strong> which is a barrier to the adoption of machine learning.
-This book is about making machine learning models and their decisions interpretable.</p>
-<p>After exploring the concepts of interpretability, you will learn about simple, <strong>interpretable models</strong> such as decision trees, decision rules and linear regression.
-The focus of the book is on model-agnostic methods for <strong>interpreting black box models</strong> such as feature importance and accumulated local effects, and explaining individual predictions with Shapley values and LIME.
-In addition, the book presents methods specific to deep neural networks.</p>
-<p>All interpretation methods are explained in depth and discussed critically.
-How do they work under the hood?
-What are their strengths and weaknesses?
-How can their outputs be interpreted?
-This book will enable you to select and correctly apply the interpretation method that is most suitable for your machine learning project.
-Reading the book is recommended for machine learning practitioners, data scientists, statisticians, and anyone else interested in making machine learning models interpretable.</p>
-<p>You can buy the PDF and e-book version (epub, mobi) <a href="https://leanpub.com/interpretable-machine-learning">on leanpub.com</a>.</p>
-<p>You can buy the print version <a href="http://www.lulu.com/shop/christoph-molnar/interpretable-machine-learning/paperback/product-24036234.html">on lulu.com</a>.</p>
-<p><strong>About me:</strong> My name is Christoph Molnar, I’m a statistician and a machine learner.
-My goal is to make machine learning interpretable.</p>
-<p>Follow me on Twitter! <a href="https://twitter.com/ChristophMolnar">@ChristophMolnar</a></p>
-<p>Cover by <a href="https://twitter.com/YvonneDoinel">@YvonneDoinel</a></p>
-<p><img src="images/by-nc-sa.png" width="\textwidth" style="display: block; margin: auto;" /></p>
-<p>This book is licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
--->
-<h1 class="title">Makine Öğrenmesinde Yorumlanabilirlik</h1>
+
+<h1 class="title">Yorumlanabilir Makine Öğrenmesi</h1>
 <h2 class="subtitle"><em>Kara Kutu Modelleri Açıklama Rehberi</em></h2>
 <p class="author"><em>Christoph Molnar</em></p>
 <p class="date"><em>2022-03-04</em></p>
@@ -552,15 +529,15 @@ My goal is to make machine learning interpretable.</p>
 <p>Kitapta yorumlanabilirlik kavramlarını keşfettikten sonra karar ağaçları (decision trees), karar kuralları ve linear regression gibi basit,
   <strong>yorumlanabilir modelleri</strong> öğreneceksiniz. Kitap feature importance, birikmiş bölgesel etkiler (accumulated local effects) ve Shapley değerleri
   ve LIME ile özel tahminleri açıklamak gibi <strong>kara-kutu modelleri yorumlamanın</strong> modelden bağımsız (model-agnostic) yöntemlerine odaklanıyor.
-  Ek olarak kitap derin sinir ağlarına özel metodlardan da bahsediyor. 
+  Ek olarak kitap derin sinir ağlarına özel metotlardan da bahsediyor. 
 </p>  
-<p>Kitapta yorumlama metodları tüm derinliğiyle ve eleştirel bir şekilde tartışıldı. Modeller kaputlarının altında nasıl çalışıyor? Güçlü ve zayıf yanları
+<p>Kitapta yorumlama metotları tüm derinliğiyle ve eleştirel bir şekilde tartışıldı. Modeller kaputlarının altında nasıl çalışıyor? Güçlü ve zayıf yanları
   neler? Çıktıları nasıl yorumlanabilir? Bu kitap kendi makine öğrenmesi projenize en uygun yorumlama metodunu seçip uygulamanıza olanak sağlayacak. Makine
   öğrenmesiyle çalışanlara, veri bilimcilere, istatistikçilere ve makine öğrenmesi algoritmalarını yorumlamak isteyen herkese tavsiye edilir.
 </p>
-<p>You can buy the PDF and e-book version (epub, mobi) <a href="https://leanpub.com/interpretable-machine-learning">on leanpub.com</a>.</p>
-<p>You can buy the print version <a href="http://www.lulu.com/shop/christoph-molnar/interpretable-machine-learning/paperback/product-24036234.html">on lulu.com</a>.</p>
-<p><strong>Hakkımda:</strong>Ben Christoph Molnar, bir istatistikçi ve makine öğrenicisiyim. Hedefim makine öğrenmesini yorumlanabilir kılmak.</p>
+<p>PDF ve e-kitap versiyonlarına (epub, mobi) burada ulaşabilirsiniz: <a href="https://leanpub.com/interpretable-machine-learning">leanpub.com</a>.</p>
+<p>Baskıyı buradan satın alabilirsiniz: <a href="http://www.lulu.com/shop/christoph-molnar/interpretable-machine-learning/paperback/product-24036234.html">lulu.com</a>.</p>
+<p><strong>Hakkımda:</strong> Ben Christoph Molnar, bir istatistikçi ve makine öğrenicisiyim. Hedefim makine öğrenmesini yorumlanabilir kılmak.</p>
 <p>Beni Twitter'da takip edin! <a href="https://twitter.com/ChristophMolnar">@ChristophMolnar</a></p>
 <p>Kapak: <a href="https://twitter.com/YvonneDoinel">@YvonneDoinel</a></p>
 <p>Çeviri: Tolga Recep Uçar <a href="https://twitter.com/tolgarucar">@tolgarucar</a></p>
