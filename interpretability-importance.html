@@ -488,7 +488,7 @@ window.cookieconsent.initialise({
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:amazon-recommendation"></span>
 <img src="images/amazon-freq-bought-together.png" alt="Recommended products that are frequently bought together." width="\textwidth" />
 <p class="caption">
-FIGURE 3.1: Recommended products that are frequently bought together.
+ŞEKİL 3.1: Sıklıkla birlikte satın alınan ürünler tavsiye edilir.
 </p>
 </div>
   <p>Birçok bilimsel alanda niceliksel metotlardan niteliksel metotlara (sosyoloji, psikoloji) ve makine öğrenmesine (biyoloji
@@ -547,60 +547,55 @@ FIGURE 3.1: Recommended products that are frequently bought together.
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:doge-stuck"></span>
 <img src="images/doge-stuck.jpg" alt="Doge, our vacuum cleaner, got stuck. As an explanation for the accident, Doge told us that it needs to be on an even surface." width="\textwidth" />
 <p class="caption">
-FIGURE 3.2: Doge, our vacuum cleaner, got stuck. As an explanation for the accident, Doge told us that it needs to be on an even surface.
+FIGURE 3.2: Elektrikli süpürgemiz Doge sıkıştı. Kazayı düz zemin gerekliliğiyle açıklıyor.
 </p>
 </div>
   
   <p>
-  
+  Makine öğrenmesi modellerini <strong>tamir etmenin ve denetlemenin</strong> tek yolu onları yorumlayabilmektir. Film tavsiyesi gibi
+    düşük riskli durumlarda bile yorumlayabilme kapasitesi, ürünün dağıtımı sonrasında olduğu gibi araştırma ve üretme sürecinde de büyük önem taşır.
+    Model hazırlanıp üründe kullanıldıktan sonra işler ters gidebilir. Modelin hatalı tahminlerinin yorumlanması sorunun nedenini anlamamızı sağlar. Çözüme
+    giden yolu bu belirler. Eskimo köpeklerini ve kurtları sınıflandırırken bazı Eskimo köpeklerini kurt olarak sınıflandıran bir model hayal edin. Makine öğrenmesinde
+    yorumlama metotlarını kullanarak hatalı sınıflandırmanın resimlerdeki karlar olduğunu görebilirsiniz. Sınıflandırma modeli resimdeki karları
+    resmi "kurt" olarak sınıflandırmada bir nitelik olarak kullanmıştır, bu eğitim verisi içerisinde sınıflandırma yaparken anlamlı olsa da gerçek dünyada
+    her zaman doğru değildir.</p>
+<p>Eğer modeliniz kararlarını açıklayabiliyorsa, aşağıdaki özelliklerini kolayca test edebilirsiniz (Doshi-Velez ve Kim 2017):</p>
+  <ul>
+  <li>Adillik: Tahminlerin ön yargısız olması ve dolaylı veya direkt olarak azınlıkları ayırmaması.
+    Modeliniz, eğer kararlarını açıklayabiliyorsa, kredi başvurusunu reddettiği kişiye neden kredi vermediğini açıklayabilir, ve böylece
+    bir insan kararın demografik (örneğin ırksal) ön yargıya dayanıp dayanmadığını kontrol edebilir.</li>
+  <li>Gizlilik: Verideki hassas bilgilerin güvende olması.</li>
+    <li>Dayanıklılık: Girdideki küçük değişikliklerin çıktıda büyük değişikliklere sebep olmaması.<li>
+    <li>Nedensellik: Sadece nedensel ilişkilerin seçilmesi.</li>
+<li>Güvenilirlik: Kararlarını açıklayan bir sisteme güvenmek bir kara kutuya güvenmekten çok daha kolaydır.</li>
+  </ul>
+  <p><strong>Yorumlamaya ihtiyacımız olmayan durumlar:</strong></p>
+<p>Aşağıdaki senaryolar yorumlanabilirliğe ihtiyacımız olmayan hatta onu istemeyeceğimiz durumları örnekliyor.</p>
+  <p>
+  Eğer modelin <strong>kayda değer bir etkisi yoksa</strong> yorumlanmasına ihtiyaç yoktur. Mike adından birisinin, Facebook verisini kullanarak
+    arkadaşlarının bir sonraki tatillerde nereye gideceklerini tahmin etmek üzere bir yan proje üzerinde çalıştığını hayal edin. Mike'ın tek istediği
+    arkadaşlarını üstünde çalışılmış tahminlerle şaşırtmak. Modelin yanlış çalışması küçük bir utanç dışında hiçbir probleme sebep olmaz, ya da Mike'ın modelini
+    açıklayamaması dert değildir. Böyle bir durumda yorumlanabilirliğin yokluğu kabul edilebilirdir. Eğer Mike bu model etrafında bir iş kurmaya başlarsa durum
+    değişir. Modelin yanlış çalışması işe para kaybettirebilir ya da ırksal ön yargıdan ötürü model bazı insanlar için kötü çalışabilir. Modelin etki alanı
+    finansal ya da sosyal anlamda büyüdüğü an yorumlanabilirlik önemli hale gelir.</p>
+  <p>
+    Eğer eldeki <strong>problem iyice araştırılmışsa</strong> yorumlanabilirliğe ihtiyaç yoktur. Bazı durumlarda problem iyice araştırıldığından
+    modelle ilgili yeterli pratik tecrübe birikmiş ve modelde karşılaşılabilecek problemler zaman içinde çözülmüştür. Buna iyi bir örnek mektup görüntülerini
+    işleyip adresleri veren görsel karakter tanıma modelidir. Bu sistemle yıllarca tecrübe biriktirilmiştir ve çalışabildikleri gayet ortadadır. Eldeki problemle
+    ilgili ek içgörülere artık pek gerek yoktur.
   </p>
-
-  <p>Machine learning models can only be <strong>debugged and audited</strong> when they can be interpreted.
-Even in low risk environments, such as movie recommendations, the ability to interpret is valuable in the research and development phase as well as after deployment.
-Later, when a model is used in a product, things can go wrong.
-An interpretation for an erroneous prediction helps to understand the cause of the error.
-It delivers a direction for how to fix the system.
-Consider an example of a husky versus wolf classifier that misclassifies some huskies as wolves.
-Using interpretable machine learning methods, you would find that the misclassification was due to the snow on the image.
-The classifier learned to use snow as a feature for classifying images as “wolf”, which might make sense in terms of separating wolves from huskies in the training dataset, but not in real-world use.</p>
-<p>If you can ensure that the machine learning model can explain decisions, you can also check the following traits more easily (Doshi-Velez and Kim 2017):</p>
-<ul>
-<li>Fairness: Ensuring that predictions are unbiased and do not implicitly or explicitly discriminate against underrepresented groups.
-An interpretable model can tell you why it has decided that a certain person should not get a loan, and it becomes easier for a human to judge whether the decision is based on a learned demographic (e.g. racial) bias.</li>
-<li>Privacy: Ensuring that sensitive information in the data is protected.</li>
-<li>Reliability or Robustness: Ensuring that small changes in the input do not lead to large changes in the prediction.</li>
-<li>Causality: Check that only causal relationships are picked up.</li>
-<li>Trust: It is easier for humans to trust a system that explains its decisions compared to a black box.</li>
-</ul>
-<p><strong>When we do not need interpretability.</strong></p>
-<p>The following scenarios illustrate when we do not need or even do not want interpretability of machine learning models.</p>
-<p>Interpretability is not required if the model <strong>has no significant impact</strong>.
-Imagine someone named Mike working on a machine learning side project to predict where his friends will go for their next holidays based on Facebook data.
-Mike just likes to surprise his friends with educated guesses where they will be going on holidays.
-There is no real problem if the model is wrong (at worst just a little embarrassment for Mike), nor is there a problem if Mike cannot explain the output of his model.
-It is perfectly fine not to have interpretability in this case.
-The situation would change if Mike started building a business around these holiday destination predictions.
-If the model is wrong, the business could lose money, or the model may work worse for some people because of learned racial bias.
-As soon as the model has a significant impact, be it financial or social, interpretability becomes relevant.</p>
-<p>Interpretability is not required when the <strong>problem is well studied</strong>.
-Some applications have been sufficiently well studied so that there is enough practical experience with the model and problems with the model have been solved over time.
-A good example is a machine learning model for optical character recognition that processes images from envelopes and extracts addresses.
-There is years of experience with these systems and it is clear that they work.
-In addition, we are not really interested in gaining additional insights about the task at hand.</p>
-<p>Interpretability might enable people or programs to <strong>manipulate the system</strong>.
-Problems with users who deceive a system result from a mismatch between the goals of the creator and the user of a model.
-Credit scoring is such a system because banks want to ensure that loans are only given to applicants who are likely to return them, and applicants aim to get the loan even if the bank does not want to give them one.
-This mismatch between the goals introduces incentives for applicants to game the system to increase their chances of getting a loan.
-If an applicant knows that having more than two credit cards negatively affects his score, he simply returns his third credit card to improve his score, and organizes a new card after the loan has been approved.
-While his score improved, the actual probability of repaying the loan remained unchanged.
-The system can only be gamed if the inputs are proxies for a causal feature, but do not actually cause the outcome.
-Whenever possible, proxy features should be avoided as they make models gameable.
-For example, Google developed a system called Google Flu Trends to predict flu outbreaks.
-The system correlated Google searches with flu outbreaks – and it has performed poorly.
-The distribution of search queries changed and Google Flu Trends missed many flu outbreaks.
-Google searches do not cause the flu.
-When people search for symptoms like “fever” it is merely a correlation with actual flu outbreaks.
-Ideally, models would only use causal features because they would not be gameable.</p>
+ <p>
+  Yorumlanabilirlik, kişilerin veya programların <strong>sistemi manipüle etmesine</strong> olanak sağlayabilir.
+   Sistemi kandıran kullanıcı problemi, modelin üreticisinin ve kullanıcının hedefleri arasındaki uyumsuzluktan dolayı ortaya çıkıyor. Kredi puanı sistemi
+   bu probleme açık çünkü modelin sahibi bankanın hedefi krediyi ödeyecek kişiye vermekken, kullanıcının hedefi banka kredi vermek istemese de alabilmek.
+   Bu amaçlar arasındaki uyumsuzluk kullanıcıları sisteme oyun oynayarak kredi başvurularının kabulü olasılığını arttırmaya teşvik ediyor. Eğer başvuran kişi
+   ikiden fazla kredi kartına sahip olmanın kredi puanını negatif etkilediğini biliyorsa, üçüncü kartını iptal eder ve krediyi aldıktan sonra tekrar üçüncü bir kart
+   çıkartır. Sistemin gözünde puanı artsa da krediyi ödeme olasılığı değişmemiştir. Sistem ancak eğer girdiler nedensel bir nitelik için vekilse ama sonucun direkt
+   bir nedeni değilse manipüle edilebilir. Eğer mümkünse vekil niteliklerden kaçınılmalıdır çünkü modelleri manipülasyona açık hale getirirler. Buna örnek olarak
+   Google'ın grip salgınlarını tahmin etmek üzere geliştirdği Google Flu Trends gösterilebilir. Sistem Google aramalarının grip salgınlarıyla korelasyonuna odaklandı
+   ve model kötü performans gösterdi. Arama dağılımı değişti ve sistem birçok salgını tahmin edemedi. Çünkü Google aramaları grip salgınlarının sebebi değildi. Kullanıcıların
+   "yüksek ateş" gibi semptomları aratmaları ve grip salgınları arasındaki ilişki sadece korelasyondan ibaret. İdeal anlamda modeller manipüle edilmemek adına
+   sadece nedensel nitelikler kullanırlar.</p>
 <!--{pagebreak}-->
 </div>
 <div class="footnotes">
