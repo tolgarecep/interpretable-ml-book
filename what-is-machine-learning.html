@@ -442,41 +442,41 @@ window.cookieconsent.initialise({
 <h2><span class="header-section-number">2.2</span> Makine Öğrenmesi Nedir?<a href="what-is-machine-learning.html#what-is-machine-learning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Makine öğrenmesi bilgisayarların veriye dayalı tahminler ya da davranışlar üretmede ve bu tahminleri
   geliştirmede kullandığı bir dizi metottur.</p>
-  <p>Örneğin, bir evin fiyatını tahmin etmek için bilgisayar önceki ev satışlarından pattern'ler öğrenir. 
+  <p>Örneğin, bir evin fiyatını tahmin etmek için bilgisayar, önceki ev satışlarındaki örüntüleri öğrenir. 
   Kitabın odağı, elimizde ilgili sonucunu bildiğimiz (örneğin ev fiyatları) verilerin olduğu ve yeni veri için sonucu
     tahmin etmek istediğimiz supervised learning problemleri üzerine. Elimizde belli bir sonucun olmadığı, 
     verilerin nasıl kümelendiğini görmek istediğimiz clustering problemleri (= unsupervised learning)
     supervised learning'e dahil olmayan problemlere örnektir. Bir yapay zekanın (agent) bir ortamda
-    hareket ederek belli bir ödüle ulaşmak üzere optimize edildiği reinforcement learning de bu tür problemlere bir
-  örnektir (örneğin Tetris oynayan bir bilgisayar). Supervised learning'in amacı verinin özelliklerini (örneğin
-    evin büyüklüğü, lokasyonu veya zeminin tarzı) çıktılarıyla (örneğin evin fiyatı) eşleyen bir model öğrenmektir.
-  Eğer çıktı kategorikse probleme sınıflandırma, nicel ise regression problemi deniyor. Makine öğrenmesi algoritması
-  parametreleri (ağırlıklar gibi) veya öğrenme yapılarını (ağaçlar gibi) hesaplayarak modeli öğreniyor.
-  Algoritma minimize edilecek bir puan veya kayıp fonksiyonuyla yönlendiriliyor. Ev fiyatı örneğinde makine 
-  hesaplanmış ev fiyatı ile tahmini ev fiyatı arasındaki farkı minimize ediyor. Daha sonra tamamen eğitilmiş
-  bir makine öğrenmesi modeli yeni veriler için tahmin yapmakta kullanılabilir.</p>
+    hareket ederek belli bir ödüle ulaşmak üzere optimize edildiği reinforcement learning problemleri de (örneğin Tetris oynayan bir bilgisayar)
+    bu tür problemlere bir örnektir. Supervised learning'in amacı verinin özelliklerini (örneğin
+    evin büyüklüğünü, lokasyonunu veya zeminin tarzını) çıktılarıyla (örneğin evin fiyatıyla) eşleyen bir model öğrenmektir.
+  Eğer çıktı kategorikse probleme sınıflandırma problemi, nicel ise regression problemi deniyor. Makine öğrenmesi algoritması, parametreleri
+    (ağırlıklar gibi) veya öğrenme yapılarını (ağaçlar gibi) hesaplayarak modeli öğreniyor.
+  Algoritma, minimize edilecek bir puan veya kayıp fonksiyonuyla yönlendiriliyor. Ev fiyatı örneğinde makine, 
+  hesaplanmış ev fiyatı ile tahmini ev fiyatı arasındaki farkı minimize ediyor. Sonrasında tümüyle eğitilmiş
+  bu makine öğrenmesi modeli yeni veriler için tahmin yapmakta kullanılabiliyor.</p>
   
   <p>Ev fiyatlarının tahmini, ürün tavsiyeleri, trafik işaretlerinin tanınması, kredi temerrüt tahmini ve 
   dolandırıcı tespiti: Tüm bunların ortak noktası makine öğrenmesiyle çözülebilen problemler olmaları.
   Problemler farklı fakat yaklaşım aynı: <br />
-  Birinci adım: Veri toplama. Ne kadar fazla, o kadar iyi. Veri tahmin etmek istediğini sonucu ve tahmin yapmakta 
+  Birinci adım: Veri toplama. Ne kadar fazla, o kadar iyi. Veri tahmin etmek istediği sonucu ve tahmin yapmakta 
     kullanacağınız ek bilgileri içermeli. Trafik işareti tanıma sistemi için ("Bu fotoğrafta bir trafik
-    işareti var mı?" sorusuna cevap arıyoruz) sokak görüntüleri ve o görüntülerde herhangi bir trafik işareti
+    işareti var mı?" sorusuna cevap arıyoruz) sokak görüntülerini ve o görüntülerde herhangi bir trafik işareti
     olup olmadığına dair etiketlerin verisini toplarsınız. Kredi temerrüt tahmini için, geçmiş borçların ve 
     tahminini yapmanızda size yardım edecek gelir, geçmiş kredi temerrütleri gibi verilere ihtiyacınız var.
     Otomatik bir ev fiyatlandırma programı için geçmiş ev satışı verilerini ve büyüklük, lokasyon gibi emlak
     verilerini toplayabilirsiniz. <br />
     İkinci adım: Bu veriyi işaret tespit, kredi değerlendirme veya ev fiyatlandırma 
-    modeli oluşturacak bir makine öğrenmesi algoritmasına girme.
+    modeli oluşturacak bir makine öğrenmesi algoritmasına girme. <br />
     Üçüncü adım: Modeli yeni veriyle kullanma. Modeli kendini süren araba, kredi başvuru süreci veya
     emlak sitesi gibi bir ürüne veya sürece entegre edin.
   </p>
-  <p>Makineler birçok problemde insanları geçmiş durumda, satranç (ya da Go) oynamak veya hava durumunu tahmin etmek
-  gibi. Makine bir insan kadar veya ondan biraz daha kötü bir perfomans gösterse bile, hız, yeniden üretilebilirlik
-  ve iş büyütme gibi bağlamlarda insana göre avantajlılar. Bir kere hazırlanmış bir makine öğrenmesi modeli bir görevi 
-    insanlardan daha hızlı tamamlayabilir, güvenilir bir şekilde tutarlı sonuçlar verebilir ve sonsuz kez kopyalanabilir.
-  Bir makine öğrenmesi modelini kopyalamak kısa sürer ve ucuzdur. Bir insanın eğitilmesi on yıllar sürer (özellikle
-    gençse) ve çok pahalıdır. Makine öğrenmesinin büyük dezavantajı veri ve problemle ilgili içgörülerin fazlasıyla
+  <p>Makinelerin satranç (ya da Go) oynamak veya hava durumunu tahmin etmek
+  gibi birçok problemdeki performansı insanları geçmiş durumda. Makine bir insan kadar veya ondan biraz daha kötü bir perfomans
+    gösterse bile, hız, yeniden üretilebilirlik ve iş büyütme gibi bağlamlarda insana göre daha avantajlılar. Bir kere hazırlanmış bir
+    makine öğrenmesi modeli bir görevi insanlardan daha hızlı tamamlayabilir, güvenilir bir şekilde tutarlı sonuçlar verebilir ve sonsuz kez
+    kopyalanabilir. Bir makine öğrenmesi modelini kopyalamak kısa sürer ve ucuzken, bir insanın eğitilmesi on yıllar sürer (özellikle
+    gençse) ve çok pahalıdır. Makine öğrenmesinin büyük dezavantajı, veri ve problemle ilgili içgörülerin fazlasıyla
   karmaşık modellerin içinde saklanmasıdır. Bir derin öğrenme modelini tanımlamak için milyon tane sayıya ihtiyacınız
   var ve modeli tümüyle anlamak imkansız. Random forest gibi diğer modeller, belli tahminler için
     "oy kullanan" yüzlerce karar ağaçlarından oluşur. Kararın nasıl alındığını anlamak için yüzlerce ağacın
@@ -484,7 +484,7 @@ window.cookieconsent.initialise({
   çalışırsa çalışsın bu yöntem işe yaramaz. En iyi perfomans gösteren modeller, her model tek tek yorumlanabilse bile
     tümüyle yorumlanamayan, birkaç modelin birleşimi (ensemble) modellerdir. Eğer sadece performansa odaklanırsanız
   gittikçe daha gizemli modeller elde edersiniz. Makine öğrenmesi yarışmalarında kazanan modeller genelde ensemble
-  modeller veya boosted trees ya da deep neural networks gibi karmaşık modellerdir.</p>
+  modeller veya boosted trees ya da derin sinir ağları gibi karmaşık modellerdir.</p>
 <!--
 Just take a look at [interviews with winners on the kaggle.com machine learning competition platform](http://blog.kaggle.com/):
 -->
