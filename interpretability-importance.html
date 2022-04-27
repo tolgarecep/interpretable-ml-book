@@ -520,15 +520,15 @@ window.cookieconsent.initialise({
   </p>
   <p>
   Yorumlanabilirliğin neden önemli olduğunu daha derinden inceleyelim. Bir tahmin yapmak üzere model oluştururken, bir
-    değiş-tokuş yapmanız gerekir: Sadece <strong>neyin</strong> tahmin edildiğini mi anlamaya çalışıyorsunuz? Örneğin, 
-    the probability that a customer will churn or how effective some drug will be for a patient. Yoksa, bir ihtimal
+    değiş-tokuş yapmanız gerekir: Sadece <strong>neyin</strong> tahmin edildiğini mi anlamaya çalışıyorsunuz? Örneğin 
+    bir müşterinin vazgeçme olasılığını veya bir ilacın hastaya ne kadar iyi geleceğini tahmin etmek gibi. Yoksa, bir ihtimal
     modelin yorumlanabilir olması adına performanstan ödün vermek ve tahminlerin neden öyle yapıldıklarını öğrenmek
     mi istiyorsunuz? Bazı durumlarda kararların nasıl alındığı umrunuzda olmaz, modelin test verisindeki performansının
     iyi olması yeterlidir. Ama diğer durumlarda, "nedenleri" bilmek problem hakkında daha fazla şey öğrenmenize yardımcı
     olabilir. Bazı modeller düşük riskli ortamlarda çalıştırıldıklarından açıklanmaya ihtiyaç duymaz, yani böyle bir modelin
     yapacağı herhangi bir hatanın ciddi sonuçları yoktur (bir film tavsiye sisteminde olduğu gibi), ya da kullanılan metotun
     üstünde önceden genişçe bir çalışma yapılmış ve metot iyice değerlendirilmiştir (görsel karakter tanıma). Yorumlanabilirliğe
-    olan ihtiyaç problemlerin tanımlanmasındaki eksiklikten doğar (Doshi-Velez ve Kim 2017), yani belli problemler ve görevler
+    olan ihtiyaç, problemlerin tanımlanmasındaki eksiklikten doğar (Doshi-Velez ve Kim 2017), yani belli problemler ve görevler
     için tahminler ("Ne?" sorusunun cevabı) tek başına yeterli değildir. Model aynı zamanda tahminleri nasıl yaptığını 
     ("Nasıl?" sorusunu) da açıklamalıdır, çünkü doğru tahminler elinizdeki problemin yalnızca bir kısmını çözer. Aşağıdaki
     sebepler yorumlanabilirliğe ve açıklamalara olan talebi güçlendirir (Doshi-Velez ve Kim 2017, Miller 2017).
@@ -639,18 +639,18 @@ FIGURE 3.2: Elektrikli süpürgemiz Doge sıkıştı. Kazayı düz zemin gerekli
     Modeliniz, eğer kararlarını açıklayabiliyorsa, kredi başvurusunu reddettiği kişiye neden kredi vermediğini açıklayabilir, ve böylece
     bir insan kararın demografik (örneğin ırksal) ön yargıya dayanıp dayanmadığını kontrol edebilir.</li>
   <li>Gizlilik: Verideki hassas bilgilerin güvende olması.</li>
-    <li>Dayanıklılık: Girdideki küçük değişikliklerin çıktıda büyük değişikliklere sebep olmaması.<li>
+    <li>Dayanıklılık: Girdideki küçük değişikliklerin çıktıda büyük değişikliklere sebep olmaması.</li>
     <li>Nedensellik: Sadece nedensel ilişkilerin seçilmesi.</li>
 <li>Güvenilirlik: Kararlarını açıklayan bir sisteme güvenmek bir kara kutuya güvenmekten çok daha kolaydır.</li>
   </ul>
   <p><strong>Yorumlamaya ihtiyacımız olmayan durumlar:</strong></p>
 <p>Aşağıdaki senaryolar yorumlanabilirliğe ihtiyacımız olmayan hatta onu istemeyeceğimiz durumları örnekliyor.</p>
   <p>
-  Eğer modelin <strong>kayda değer bir etkisi yoksa</strong> yorumlanmasına ihtiyaç yoktur. Mike adından birisinin, Facebook verisini kullanarak
+  Eğer modelin <strong>kayda değer bir etkisi yoksa</strong> yorumlanmasına ihtiyaç yoktur. Mike adında birisinin, Facebook verisini kullanarak
     arkadaşlarının bir sonraki tatillerde nereye gideceklerini tahmin etmek üzere bir yan proje üzerinde çalıştığını hayal edin. Mike'ın tek istediği
     arkadaşlarını üstünde çalışılmış tahminlerle şaşırtmak. Modelin yanlış çalışması küçük bir utanç dışında hiçbir probleme sebep olmaz, ya da Mike'ın modelini
     açıklayamaması dert değildir. Böyle bir durumda yorumlanabilirliğin yokluğu kabul edilebilirdir. Eğer Mike bu model etrafında bir iş kurmaya başlarsa durum
-    değişir. Modelin yanlış çalışması işe para kaybettirebilir ya da ırksal ön yargıdan ötürü model bazı insanlar için kötü çalışabilir. Modelin etki alanı
+    değişir. Modelin yanlış çalışması para kaybettirebilir ya da ırksal ön yargıdan ötürü model bazı insanlar için kötü çalışabilir. Modelin etki alanı
     finansal ya da sosyal anlamda büyüdüğü an yorumlanabilirlik önemli hale gelir.</p>
   <p>
     Eğer eldeki <strong>problem iyice araştırılmışsa</strong> yorumlanabilirliğe ihtiyaç yoktur. Bazı durumlarda problem iyice araştırıldığından
@@ -660,11 +660,11 @@ FIGURE 3.2: Elektrikli süpürgemiz Doge sıkıştı. Kazayı düz zemin gerekli
   </p>
  <p>
   Yorumlanabilirlik, kişilerin veya programların <strong>sistemi manipüle etmesine</strong> olanak sağlayabilir.
-   Sistemi kandıran kullanıcı problemi, modelin üreticisinin ve kullanıcının hedefleri arasındaki uyumsuzluktan dolayı ortaya çıkıyor. Kredi puanı sistemi
-   bu probleme açık çünkü modelin sahibi bankanın hedefi krediyi ödeyecek kişiye vermekken, kullanıcının hedefi banka kredi vermek istemese de alabilmek.
+   Sistemi kandıran kullanıcı problemi, modelin üreticisinin ve kullanıcının hedefleri arasındaki uyumsuzluktan dolayı ortaya çıkar. Kredi puanı sistemi
+   bu probleme açık çünkü modelin sahibi bankanın hedefi krediyi ödeyecek kişiye vermekken, kullanıcının hedefi banka ona kredi vermek istemese de alabilmek.
    Bu amaçlar arasındaki uyumsuzluk kullanıcıları sisteme oyun oynayarak kredi başvurularının kabulü olasılığını arttırmaya teşvik ediyor. Eğer başvuran kişi
    ikiden fazla kredi kartına sahip olmanın kredi puanını negatif etkilediğini biliyorsa, üçüncü kartını iptal eder ve krediyi aldıktan sonra tekrar üçüncü bir kart
-   çıkartır. Sistemin gözünde puanı artsa da krediyi ödeme olasılığı değişmemiştir. Sistem ancak eğer girdiler nedensel bir nitelik için vekilse ama sonucun direkt
+   çıkartır. Sistemin gözünde puanı artsa da krediyi ödeme olasılığı değişmemiştir. Sistem ancak, eğer girdiler, nedensel bir nitelik için vekilse ama sonucun direkt
    bir nedeni değilse manipüle edilebilir. Eğer mümkünse vekil niteliklerden kaçınılmalıdır çünkü modelleri manipülasyona açık hale getirirler. Buna örnek olarak
    Google'ın grip salgınlarını tahmin etmek üzere geliştirdği Google Flu Trends gösterilebilir. Sistem Google aramalarının grip salgınlarıyla korelasyonuna odaklandı
    ve model kötü performans gösterdi. Arama dağılımı değişti ve sistem birçok salgını tahmin edemedi. Çünkü Google aramaları grip salgınlarının sebebi değildi. Kullanıcıların
