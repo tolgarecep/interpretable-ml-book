@@ -448,23 +448,23 @@ Bu kriter, yorumlamanın modelin karmaşıklığını azaltarak mı (içsel meto
   yoksa modeli eğittikten sonra analiz eden metotlar kullanarak mı (optimizasyon
   sonrası) yapıldığı arasında bir ayrım yapıyor. İçsel yorumlanabilirlik, basit yapıları
   sayesinde yorumlanabilir olan modellerde (kısa karar ağaçları ve aralıklı 
-  lineer modeller) bulunur. Optimizasyon sonrasında yorumlanabilirlik model eğitildikten sonra
-  yorumlama metotların uygulanmasıdır. Örneğin permutation feature importance, optimizasyon
+  lineer modeller) bulunur. Optimizasyon sonrasında yorumlanabilirlik, model eğitildikten sonra
+  yorumlama metotların uygulanmasıdır. Örneğin nitelik değer sıralamasının permütasyonları, optimizasyon
   sonrası uygulanan bir metottur. Bu metotlar aynı zamanda içsel olarak yorumlanabilen modellere
-  de uygulanabilir. Örneğin, p.f.i. karar ağaçları için hesaplanabilir. Kitabın bölümleri 
+  de uygulanabilir. Örneğin nitelik değer sıralamasının permütasyonları karar ağaçları için de hesaplanabilir. Kitabın bölümleri 
   <a href="simple.html#simple">içsel yorumlanabilirlik</a> ve <a href="agnostic.html#agnostic">optimizasyon sonrası (ve modelden bağımsız) yorumlama
   metotları</a> farkına göre düzenlendi.</p>
-<p><strong>Yorumlama metodunun sonucu</strong> 
+<p><strong>Yorumlama metodunun sonucu:</strong> 
   Farklı yorumlama metotları verdikleri sonuçlara göre kabaca sınıflandırılabilir.</p>
 <ul>
-  <li><strong>Özellik özet istatistiği:</strong> Bir çok yorumlama metodu özelliklerin özet
-    istatistiklerini verir. Bazıları özellik başına tek bir sayı verirken (feature importance)
-    "ikili özellik etkileşim güçleri" gibi bazıları daha karmaşık bir sonuç verir (her özellik çifti için bir sayı verir).
+  <li><strong>Nitelikleri özetleyen istatistikler:</strong> Bir çok yorumlama metodu nitelikleri özetleyen
+    istatistikler verir. Bazıları her nitelik başına bir sayı verirken (nitelik değeri),
+    nitelik çiftlerinin birbirine olan etkilerini inceleyen metot daha karmaşık bir sonuç verir (her özellik çifti için bir sayı).
     </li>
-  <li><strong>Özellik özet görselleştirmeleri:</strong>
-  Özellik özet istatistiklerinin çoğu görselleştirilebilir. Bazı özellik özetleri için tablo
-    yanlış seçim olup görselleştirmek anlamlı olan tek yoldur. Bir özelliğin kısmi 
-    bağımlılığı buna bir örnektir. Kısmi bağımlılık grafikleri özelliği ve tahmin edilen
+  <li><strong>Nitelikleri özetleyen görseller:</strong>
+  Nitelikleri özetleyen istatistiklerin çoğu görselleştirilebilirdir. Bazı nitelik özetleri için tablo
+    yanlış seçim olup görselleştirmek daha anlamlıdır. Bir niteliğin kısmi 
+    bağımlılığı buna bir örnektir. Kısmi bağımlılık grafikleri niteliği ve tahmin edilen
     ortalama değeri gösterir. Kısmi bağımlılıkları göstermenin en iyi yolu koordinatları
     yazdırmaktansa eğriyi çizmektir.
   </li>
@@ -472,37 +472,38 @@ Bu kriter, yorumlamanın modelin karmaşıklığını azaltarak mı (içsel meto
   İçsel yorumlanabilir modellerin yorumlanması bu kategoriye dahildir. Lineer modellerde
     öğrenilmiş ağırlıklar veya karar ağaçlarının öğrenilen ağaç yapıları
     (özellikler ve eşik değerleri) örnek verilebilir. Örneğin lineer modellerde dahili kısımlar
-    ve özellik özet istatistiği arasındaki fark belirsizdir çünkü ağırlıklar hem dahili kısımlar
-    olup hem de özellikler için özet istatistik değeri taşırlar. Dahili kısımları ortaya
-    koyan bir başka metot ise convolutional neural network'lerde öğrenilen özellik 
+    ve nitelikleri özetleyen istatistikler arasındaki fark belirsizdir çünkü ağırlıklar hem dahili kısımlar
+    olup hem de özet istatistik değeri taşırlar. Dahili kısımları ortaya
+    koyan bir başka metot ise convolutional sinir ağlarında öğrenilen özellik 
     dedektörlerini görselleştirmektir. Modelin dahili kısımlarını çıktı olarak veren
     metotlar tanım gereği modellere özgüdür (sonraki kriteri inceleyin).</li>
-  <li><strong>Veri noktası:</strong>
-  Bir veri noktası veren (var olan veya yeni oluşturulmuş) tüm metotlar bu kategoriye
-    dahildir. Bunlardan biri karşıolgusal açıklamalardır. Bir veri noktası dair tahmini açıklamak
+  <li><strong>Veri tanesi:</strong>
+  Var olan veya yeni oluşturulmuş bir veri örneği veren tüm metotlar bu kategoriye
+    dahildir. Bunlardan biri karşıolgusal açıklamalardır. Bir veri tanesine dair tahmini açıklamak
     için metot tahmin edilen sonucu değiştiren
-    özelliklerin değerini değiştirerek (ikili sınıflandırmada 0 yerine 1
-    tahmin edilmesi) başka bir veri noktası bulur. Bir başka örnek ise tahmin edilen
+    niteliklerin değerlerini değiştirerek (ikili sınıflandırmada 0 yerine 1
+    tahmin edilmesi) başka bir veri bulur. Bir başka örnek ise tahmin edilen
     sınıfların prototiplerinin belirlenmesidir. Kullanışlı olabilmeleri için 
-    yeni bir veri noktası oluşturan yorumlama metotlarının veri noktalarının yorumlanabilmesine
+    yeni bir veri tanesi oluşturan yorumlama metotlarının veri tanelerinin yorumlanabilmesine
     ihtiyaçları vardır. Bu metot görseller ve metin için iyi çalışsa da yüzlerce özelliğe
     sahip tablo verisinde pek kullanışlı değildir.
   </li>
   <li><strong>İçsel yorumlanabilir model:</strong> Kara kutu modelleri yorumlamanın bir diğer yöntemi ise 
-  onlara yorumlanabilir bir model ile yaklaşmaktır (global veya yerel olarak). 
-  Yorumlanabilir model dahili kısımlara ya da özellik özet istatistiklerine
+  onlara yorumlanabilir bir model ile yaklaşmaktır (evrensel veya yerel olarak). 
+  Bu yorumlanabilir model dahili kısımlara ya da niteliklerin özet istatisiklerine
   bakarak yorumlanır.</li>
+  </ul></p>
  <p><strong>Modele özel / modelden bağımsız?</strong>
   Modele özel yorumlama metotları belli model sınıflarına özgüdür. Tanım gereği
    içsel yorumlanabilir modellerin yorumlanması modele özel olduğundan bir lineer
-   modeldeki regression ağırlıklarının yorumlanması modele özel yorumlamadır. Örneğin sadece
-   neural network'lerin yorumlanmasına yarayan araçlar modele özel yorumlama metotlarıdır.
-   Modelden bağımsız metotlar her makine öğrenmesi modeline uygulanabilir ve model
+   modeldeki ağırlıkların yorumlanması modele özel yorumlamadır. Örneğin sadece
+   sinir ağlarının yorumlanmasına yarayan araçlar modele özel yorumlama metotlarıdır.
+   Modelden bağımsız metotlar ise her makine öğrenmesi modeline uygulanabilir ve model
    eğitildikten sonra uygulanırlar (optimizasyon sonrası). Bu agnostik metotlar genelde özellik
    girdilerini ve çıktı çiftlerini analiz eder. Tanım gereği bu metotlar modelin
-   parametreler veya yapısal detaylar gibi dahili kısımlarına erişim sağlayamaz.
+   parametreleri veya yapısal detayları gibi dahili kısımlarına erişim sağlayamaz.
   </p>
-<p><strong>Yerel / global?</strong> Yorumlama metodu bir veri noktası için yapılan
+<p><strong>Yerel / global?</strong> Yorumlama metodu bir veri tanesi için yapılan
   tahmini mi açıklıyor yoksa modelin tüm davranışını mı? Yoksa kapsam ikisinin arasında
   bir yerde mi? Kapsam kriteriyle ilgili daha fazlası için sonraki bölümü okuyun.</p>
 <!--{pagebreak}-->
