@@ -4,7 +4,7 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.1 Linear Regression | Interpretable Machine Learning</title>
+  <title>5.1 Lineer Regression | Yorumlanabilir Makine Öğrenmesi</title>
   <meta name="description" content="Machine learning algorithms usually operate as black boxes and it is unclear how they derived a certain decision. This book is a guide for practitioners to make machine learning decisions interpretable." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
@@ -159,103 +159,176 @@ window.cookieconsent.initialise({
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Interpretable machine learning</a></li>
+<li><a href="./">
+  <!--Interpretable machine learning-->
+  Yorumlanabilir Makine Öğrenmesi
+  </a></li>
 
 <li class="divider"></li>
-<li><a href="index.html#summary">Summary<span></span></a></li>
-<li class="chapter" data-level="1" data-path="preface-by-the-author.html"><a href="preface-by-the-author.html"><i class="fa fa-check"></i><b>1</b> Preface by the Author<span></span></a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction<span></span></a><ul>
-<li class="chapter" data-level="2.1" data-path="storytime.html"><a href="storytime.html"><i class="fa fa-check"></i><b>2.1</b> Story Time<span></span></a><ul>
-<li><a href="storytime.html#lightning-never-strikes-twice">Lightning Never Strikes Twice<span></span></a></li>
+<li><a href="index.html#summary"><!--Summary-->Özet<span></span></a></li>
+<li class="chapter" data-level="1" data-path="preface-by-the-author.html"><a href="preface-by-the-author.html"><i class="fa fa-check"></i><b>1</b>
+  <!--Preface by the Author-->Yazarın Önsözü<span></span></a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b><!--Introduction--> Giriş<span></span></a><ul>
+<li class="chapter" data-level="2.1" data-path="storytime.html"><a href="storytime.html"><i class="fa fa-check"></i><b>2.1</b>
+  <!--Story Time-->Hikaye Vakti<span></span></a><ul>
+<li><a href="storytime.html#lightning-never-strikes-twice"><!--Lightning Never Strikes Twice-->Yıldırım Aynı Yere İki Kez Düşmez<span></span></a></li>
 <li><a href="storytime.html#trust-fall">Trust Fall<span></span></a></li>
 <li><a href="storytime.html#fermis-paperclips">Fermi’s Paperclips<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="what-is-machine-learning.html"><a href="what-is-machine-learning.html"><i class="fa fa-check"></i><b>2.2</b> What Is Machine Learning?<span></span></a></li>
-<li class="chapter" data-level="2.3" data-path="terminology.html"><a href="terminology.html"><i class="fa fa-check"></i><b>2.3</b> Terminology<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="what-is-machine-learning.html"><a href="what-is-machine-learning.html"><i class="fa fa-check"></i><b>2.2</b>
+  <!--What Is Machine Learning?--> Makine Öğrenmesi Nedir?<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="terminology.html"><a href="terminology.html"><i class="fa fa-check"></i><b>2.3</b>
+  <!--Terminology-->Terminoloji<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="interpretability.html"><a href="interpretability.html"><i class="fa fa-check"></i><b>3</b> Interpretability<span></span></a><ul>
-<li class="chapter" data-level="3.1" data-path="interpretability-importance.html"><a href="interpretability-importance.html"><i class="fa fa-check"></i><b>3.1</b> Importance of Interpretability<span></span></a></li>
-<li class="chapter" data-level="3.2" data-path="taxonomy-of-interpretability-methods.html"><a href="taxonomy-of-interpretability-methods.html"><i class="fa fa-check"></i><b>3.2</b> Taxonomy of Interpretability Methods<span></span></a></li>
-<li class="chapter" data-level="3.3" data-path="scope-of-interpretability.html"><a href="scope-of-interpretability.html"><i class="fa fa-check"></i><b>3.3</b> Scope of Interpretability<span></span></a><ul>
-<li class="chapter" data-level="3.3.1" data-path="scope-of-interpretability.html"><a href="scope-of-interpretability.html#algorithm-transparency"><i class="fa fa-check"></i><b>3.3.1</b> Algorithm Transparency<span></span></a></li>
-<li class="chapter" data-level="3.3.2" data-path="scope-of-interpretability.html"><a href="scope-of-interpretability.html#global-holistic-model-interpretability"><i class="fa fa-check"></i><b>3.3.2</b> Global, Holistic Model Interpretability<span></span></a></li>
-<li class="chapter" data-level="3.3.3" data-path="scope-of-interpretability.html"><a href="scope-of-interpretability.html#global-model-interpretability-on-a-modular-level"><i class="fa fa-check"></i><b>3.3.3</b> Global Model Interpretability on a Modular Level<span></span></a></li>
-<li class="chapter" data-level="3.3.4" data-path="scope-of-interpretability.html"><a href="scope-of-interpretability.html#local-interpretability-for-a-single-prediction"><i class="fa fa-check"></i><b>3.3.4</b> Local Interpretability for a Single Prediction<span></span></a></li>
-<li class="chapter" data-level="3.3.5" data-path="scope-of-interpretability.html"><a href="scope-of-interpretability.html#local-interpretability-for-a-group-of-predictions"><i class="fa fa-check"></i><b>3.3.5</b> Local Interpretability for a Group of Predictions<span></span></a></li>
+<li class="chapter" data-level="3" data-path="interpretability.html"><a href="interpretability.html"><i class="fa fa-check"></i><b>3</b>
+  <!--Interpretability-->Yorumlanabilirlik<span></span></a><ul>
+<li class="chapter" data-level="3.1" data-path="interpretability-importance.html"><a href="interpretability-importance.html"><i class="fa fa-check"></i><b>3.1</b>
+  <!--Importance of Interpretability--> Yorumlanabilirliğin Önemi<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="taxonomy-of-interpretability-methods.html"><a href="taxonomy-of-interpretability-methods.html"><i class="fa fa-check"></i><b>3.2</b>
+  <!--Taxonomy of Interpretability Methods--> Yorumlama Metotlarının Sınıflandırılması<span></span></a></li>
+<li class="chapter" data-level="3.3" data-path="scope-of-interpretability.html"><a href="scope-of-interpretability.html"><i class="fa fa-check"></i><b>3.3</b>
+  <!--Scope of Interpretability--> Yorumlanabilirliğin Kapsamı<span></span></a><ul>
+<li class="chapter" data-level="3.3.1" data-path="scope-of-interpretability.html"><a href="scope-of-interpretability.html#algorithm-transparency"><i class="fa fa-check"></i><b>3.3.1</b>
+  <!--Algorithm Transparency--> Algoritmaların Şeffaflığı<span></span></a></li>
+<li class="chapter" data-level="3.3.2" data-path="scope-of-interpretability.html"><a href="scope-of-interpretability.html#global-holistic-model-interpretability"><i class="fa fa-check"></i><b>3.3.2</b>
+  Global, Holistic Model Interpretability<span></span></a></li>
+<li class="chapter" data-level="3.3.3" data-path="scope-of-interpretability.html"><a href="scope-of-interpretability.html#global-model-interpretability-on-a-modular-level"><i class="fa fa-check"></i><b>3.3.3</b>
+  Global Model Interpretability on a Modular Level<span></span></a></li>
+<li class="chapter" data-level="3.3.4" data-path="scope-of-interpretability.html"><a href="scope-of-interpretability.html#local-interpretability-for-a-single-prediction"><i class="fa fa-check"></i><b>3.3.4</b>
+  Local Interpretability for a Single Prediction<span></span></a></li>
+<li class="chapter" data-level="3.3.5" data-path="scope-of-interpretability.html"><a href="scope-of-interpretability.html#local-interpretability-for-a-group-of-predictions"><i class="fa fa-check"></i><b>3.3.5</b>
+  Local Interpretability for a Group of Predictions<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="evaluation-of-interpretability.html"><a href="evaluation-of-interpretability.html"><i class="fa fa-check"></i><b>3.4</b> Evaluation of Interpretability<span></span></a></li>
-<li class="chapter" data-level="3.5" data-path="properties.html"><a href="properties.html"><i class="fa fa-check"></i><b>3.5</b> Properties of Explanations<span></span></a></li>
-<li class="chapter" data-level="3.6" data-path="explanation.html"><a href="explanation.html"><i class="fa fa-check"></i><b>3.6</b> Human-friendly Explanations<span></span></a><ul>
-<li class="chapter" data-level="3.6.1" data-path="explanation.html"><a href="explanation.html#what-is-an-explanation"><i class="fa fa-check"></i><b>3.6.1</b> What Is an Explanation?<span></span></a></li>
-<li class="chapter" data-level="3.6.2" data-path="explanation.html"><a href="explanation.html#good-explanation"><i class="fa fa-check"></i><b>3.6.2</b> What Is a Good Explanation?<span></span></a></li>
+<li class="chapter" data-level="3.4" data-path="evaluation-of-interpretability.html"><a href="evaluation-of-interpretability.html"><i class="fa fa-check"></i><b>3.4</b>
+  <!--Evaluation of Interpretability--> Yorumlanabilirliğin Değerlendirilmesi<span></span></a></li>
+<li class="chapter" data-level="3.5" data-path="properties.html"><a href="properties.html"><i class="fa fa-check"></i><b>3.5</b>
+  <!--Properties of Explanations--> Açıklamaların Özellikleri<span></span></a></li>
+<li class="chapter" data-level="3.6" data-path="explanation.html"><a href="explanation.html"><i class="fa fa-check"></i><b>3.6</b>
+  <!--Human-friendly Explanations--> İnsan Dostu Açıklamalar<span></span></a><ul>
+<li class="chapter" data-level="3.6.1" data-path="explanation.html"><a href="explanation.html#what-is-an-explanation"><i class="fa fa-check"></i><b>3.6.1</b>
+  <!--What Is an Explanation?--> Açıklama Nedir?<span></span></a></li>
+<li class="chapter" data-level="3.6.2" data-path="explanation.html"><a href="explanation.html#good-explanation"><i class="fa fa-check"></i><b>3.6.2</b>
+  <!--What Is a Good Explanation?-->İyi Açıklama Nasıl Olur?<span></span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>4</b> Datasets<span></span></a><ul>
-<li class="chapter" data-level="4.1" data-path="bike-data.html"><a href="bike-data.html"><i class="fa fa-check"></i><b>4.1</b> Bike Rentals (Regression)<span></span></a></li>
-<li class="chapter" data-level="4.2" data-path="spam-data.html"><a href="spam-data.html"><i class="fa fa-check"></i><b>4.2</b> YouTube Spam Comments (Text Classification)<span></span></a></li>
-<li class="chapter" data-level="4.3" data-path="cervical.html"><a href="cervical.html"><i class="fa fa-check"></i><b>4.3</b> Risk Factors for Cervical Cancer (Classification)<span></span></a></li>
+<li class="chapter" data-level="4" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>4</b><!--Datasets--> Veriler<span></span></a><ul>
+<li class="chapter" data-level="4.1" data-path="bike-data.html"><a href="bike-data.html"><i class="fa fa-check"></i><b>4.1</b>
+  <!--Bike Rentals (Regression)--> Bisiklet Kiralama (Regression)<span></span></a></li>
+<li class="chapter" data-level="4.2" data-path="spam-data.html"><a href="spam-data.html"><i class="fa fa-check"></i><b>4.2</b>
+  <!--YouTube Spam Comments (Text Classification)--> Youtube Spam Yorumlar (Metin Sınıflandırması)<span></span></a></li>
+<li class="chapter" data-level="4.3" data-path="cervical.html"><a href="cervical.html"><i class="fa fa-check"></i><b>4.3</b>
+  <!--Risk Factors for Cervical Cancer (Classification)--> Rahim Ağzı Kanseri (Sınıflandırma)<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="simple.html"><a href="simple.html"><i class="fa fa-check"></i><b>5</b> Interpretable Models<span></span></a><ul>
-<li class="chapter" data-level="5.1" data-path="limo.html"><a href="limo.html"><i class="fa fa-check"></i><b>5.1</b> Linear Regression<span></span></a><ul>
-<li class="chapter" data-level="5.1.1" data-path="limo.html"><a href="limo.html#interpretation"><i class="fa fa-check"></i><b>5.1.1</b> Interpretation<span></span></a></li>
-<li class="chapter" data-level="5.1.2" data-path="limo.html"><a href="limo.html#example"><i class="fa fa-check"></i><b>5.1.2</b> Example<span></span></a></li>
-<li class="chapter" data-level="5.1.3" data-path="limo.html"><a href="limo.html#visual-interpretation"><i class="fa fa-check"></i><b>5.1.3</b> Visual Interpretation<span></span></a></li>
-<li class="chapter" data-level="5.1.4" data-path="limo.html"><a href="limo.html#explain-individual-predictions"><i class="fa fa-check"></i><b>5.1.4</b> Explain Individual Predictions<span></span></a></li>
-<li class="chapter" data-level="5.1.5" data-path="limo.html"><a href="limo.html#cat-code"><i class="fa fa-check"></i><b>5.1.5</b> Encoding of Categorical Features<span></span></a></li>
-<li class="chapter" data-level="5.1.6" data-path="limo.html"><a href="limo.html#do-linear-models-create-good-explanations"><i class="fa fa-check"></i><b>5.1.6</b> Do Linear Models Create Good Explanations?<span></span></a></li>
-<li class="chapter" data-level="5.1.7" data-path="limo.html"><a href="limo.html#sparse-linear"><i class="fa fa-check"></i><b>5.1.7</b> Sparse Linear Models<span></span></a></li>
-<li class="chapter" data-level="5.1.8" data-path="limo.html"><a href="limo.html#advantages"><i class="fa fa-check"></i><b>5.1.8</b> Advantages<span></span></a></li>
-<li class="chapter" data-level="5.1.9" data-path="limo.html"><a href="limo.html#disadvantages"><i class="fa fa-check"></i><b>5.1.9</b> Disadvantages<span></span></a></li>
+<li class="chapter" data-level="5" data-path="simple.html"><a href="simple.html"><i class="fa fa-check"></i><b>5</b> 
+  <!--Interpretable Models-->Yorumlanabilir Modeller<span></span></a><ul>
+<li class="chapter" data-level="5.1" data-path="limo.html"><a href="limo.html"><i class="fa fa-check"></i><b>5.1</b> 
+  Linear Regression<span></span></a><ul>
+<li class="chapter" data-level="5.1.1" data-path="limo.html"><a href="limo.html#interpretation"><i class="fa fa-check"></i><b>5.1.1</b> 
+  <!--Interpretation--> Yorumlama<span></span></a></li>
+<li class="chapter" data-level="5.1.2" data-path="limo.html"><a href="limo.html#example"><i class="fa fa-check"></i><b>5.1.2</b>
+  <!--Example--> Örnek<span></span></a></li>
+<li class="chapter" data-level="5.1.3" data-path="limo.html"><a href="limo.html#visual-interpretation"><i class="fa fa-check"></i><b>5.1.3</b>
+  <!--Visual Interpretation--> Görsel Yorumlama<span></span></a></li>
+<li class="chapter" data-level="5.1.4" data-path="limo.html"><a href="limo.html#explain-individual-predictions"><i class="fa fa-check"></i><b>5.1.4</b>
+  <!--Explain Individual Predictions-->Özel Tahminleri Açıklama<span></span></a></li>
+<li class="chapter" data-level="5.1.5" data-path="limo.html"><a href="limo.html#cat-code"><i class="fa fa-check"></i><b>5.1.5</b>
+  <!--Encoding of Categorical Features--> Kategorik Özniteliklerin Şifrelenmesi<span></span></a></li>
+<li class="chapter" data-level="5.1.6" data-path="limo.html"><a href="limo.html#do-linear-models-create-good-explanations"><i class="fa fa-check"></i><b>5.1.6</b>
+  <!--Do Linear Models Create Good Explanations?--> Lineer Modeller İyi Açıklamalar Meydana Getirir Mi?<span></span></a></li>
+<li class="chapter" data-level="5.1.7" data-path="limo.html"><a href="limo.html#sparse-linear"><i class="fa fa-check"></i><b>5.1.7</b> 
+  <!--Sparse Linear Models--> Aralıklı Lineer Modeller<span></span></a></li>
+<li class="chapter" data-level="5.1.8" data-path="limo.html"><a href="limo.html#advantages"><i class="fa fa-check"></i><b>5.1.8</b> 
+  <!--Advantages--> Avantajlar<span></span></a></li>
+<li class="chapter" data-level="5.1.9" data-path="limo.html"><a href="limo.html#disadvantages"><i class="fa fa-check"></i><b>5.1.9</b>
+  <!--Disadvantages--> Dezavantajlar<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>5.2</b> Logistic Regression<span></span></a><ul>
-<li class="chapter" data-level="5.2.1" data-path="logistic.html"><a href="logistic.html#what-is-wrong-with-linear-regression-for-classification"><i class="fa fa-check"></i><b>5.2.1</b> What is Wrong with Linear Regression for Classification?<span></span></a></li>
-<li class="chapter" data-level="5.2.2" data-path="logistic.html"><a href="logistic.html#theory"><i class="fa fa-check"></i><b>5.2.2</b> Theory<span></span></a></li>
-<li class="chapter" data-level="5.2.3" data-path="logistic.html"><a href="logistic.html#interpretation-1"><i class="fa fa-check"></i><b>5.2.3</b> Interpretation<span></span></a></li>
-<li class="chapter" data-level="5.2.4" data-path="logistic.html"><a href="logistic.html#example-1"><i class="fa fa-check"></i><b>5.2.4</b> Example<span></span></a></li>
-<li class="chapter" data-level="5.2.5" data-path="logistic.html"><a href="logistic.html#advantages-and-disadvantages"><i class="fa fa-check"></i><b>5.2.5</b> Advantages and Disadvantages<span></span></a></li>
-<li class="chapter" data-level="5.2.6" data-path="logistic.html"><a href="logistic.html#software"><i class="fa fa-check"></i><b>5.2.6</b> Software<span></span></a></li>
+<li class="chapter" data-level="5.2.1" data-path="logistic.html"><a href="logistic.html#what-is-wrong-with-linear-regression-for-classification"><i class="fa fa-check"></i><b>5.2.1</b>
+  <!--What is Wrong with Linear Regression for Classification?--> Linear Regression ile Sınıflandırmanın Problemi Ne?<span></span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="logistic.html"><a href="logistic.html#theory"><i class="fa fa-check"></i><b>5.2.2</b>
+  <!--Theory--> Teori<span></span></a></li>
+<li class="chapter" data-level="5.2.3" data-path="logistic.html"><a href="logistic.html#interpretation-1"><i class="fa fa-check"></i><b>5.2.3</b>
+  <!--Interpretation--> Yorumlama<span></span></a></li>
+<li class="chapter" data-level="5.2.4" data-path="logistic.html"><a href="logistic.html#example-1"><i class="fa fa-check"></i><b>5.2.4</b>
+  <!--Example--> Örnek<span></span></a></li>
+<li class="chapter" data-level="5.2.5" data-path="logistic.html"><a href="logistic.html#advantages-and-disadvantages"><i class="fa fa-check"></i><b>5.2.5</b>
+  <!--Advantages and Disadvantages--> Avantajlar ve Dezavantajlar<span></span></a></li>
+<li class="chapter" data-level="5.2.6" data-path="logistic.html"><a href="logistic.html#software"><i class="fa fa-check"></i><b>5.2.6</b>
+  <!--Software--> Yazılım<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="extend-lm.html"><a href="extend-lm.html"><i class="fa fa-check"></i><b>5.3</b> GLM, GAM and more<span></span></a><ul>
-<li class="chapter" data-level="5.3.1" data-path="extend-lm.html"><a href="extend-lm.html#glm"><i class="fa fa-check"></i><b>5.3.1</b> Non-Gaussian Outcomes - GLMs<span></span></a></li>
-<li class="chapter" data-level="5.3.2" data-path="extend-lm.html"><a href="extend-lm.html#lm-interact"><i class="fa fa-check"></i><b>5.3.2</b> Interactions<span></span></a></li>
-<li class="chapter" data-level="5.3.3" data-path="extend-lm.html"><a href="extend-lm.html#gam"><i class="fa fa-check"></i><b>5.3.3</b> Nonlinear Effects - GAMs<span></span></a></li>
-<li class="chapter" data-level="5.3.4" data-path="extend-lm.html"><a href="extend-lm.html#advantages-1"><i class="fa fa-check"></i><b>5.3.4</b> Advantages<span></span></a></li>
-<li class="chapter" data-level="5.3.5" data-path="extend-lm.html"><a href="extend-lm.html#disadvantages-1"><i class="fa fa-check"></i><b>5.3.5</b> Disadvantages<span></span></a></li>
-<li class="chapter" data-level="5.3.6" data-path="extend-lm.html"><a href="extend-lm.html#software-1"><i class="fa fa-check"></i><b>5.3.6</b> Software<span></span></a></li>
-<li class="chapter" data-level="5.3.7" data-path="extend-lm.html"><a href="extend-lm.html#more-lm-extension"><i class="fa fa-check"></i><b>5.3.7</b> Further Extensions<span></span></a></li>
+<li class="chapter" data-level="5.3" data-path="extend-lm.html"><a href="extend-lm.html"><i class="fa fa-check"></i><b>5.3</b> 
+  <!--GLM, GAM and more-->GLM, GAM ve daha fazlası<span></span></a><ul>
+<li class="chapter" data-level="5.3.1" data-path="extend-lm.html"><a href="extend-lm.html#glm"><i class="fa fa-check"></i><b>5.3.1</b>
+  <!--Non-Gaussian Outcomes - GLMs--> Non-Gaussian Sonuçlar - GLM'ler<span></span></a></li>
+<li class="chapter" data-level="5.3.2" data-path="extend-lm.html"><a href="extend-lm.html#lm-interact"><i class="fa fa-check"></i><b>5.3.2</b>
+  <!--Interactions--> Etkileşimler<span></span></a></li>
+<li class="chapter" data-level="5.3.3" data-path="extend-lm.html"><a href="extend-lm.html#gam"><i class="fa fa-check"></i><b>5.3.3</b>
+  <!--Nonlinear Effects - GAMs--> Non-lineer etkiler - GAM'lar<span></span></a></li>
+<li class="chapter" data-level="5.3.4" data-path="extend-lm.html"><a href="extend-lm.html#advantages-1"><i class="fa fa-check"></i><b>5.3.4</b>
+  <!--Advantages--> Avantajlar<span></span></a></li>
+<li class="chapter" data-level="5.3.5" data-path="extend-lm.html"><a href="extend-lm.html#disadvantages-1"><i class="fa fa-check"></i><b>5.3.5</b>
+  <!--Disadvantages--> Dezavantajlar<span></span></a></li>
+<li class="chapter" data-level="5.3.6" data-path="extend-lm.html"><a href="extend-lm.html#software-1"><i class="fa fa-check"></i><b>5.3.6</b>
+  <!--Software--> Yazılım<span></span></a></li>
+<li class="chapter" data-level="5.3.7" data-path="extend-lm.html"><a href="extend-lm.html#more-lm-extension"><i class="fa fa-check"></i><b>5.3.7</b>
+  <!--Further Extensions--> İlaveler<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="tree.html"><a href="tree.html"><i class="fa fa-check"></i><b>5.4</b> Decision Tree<span></span></a><ul>
-<li class="chapter" data-level="5.4.1" data-path="tree.html"><a href="tree.html#interpretation-2"><i class="fa fa-check"></i><b>5.4.1</b> Interpretation<span></span></a></li>
-<li class="chapter" data-level="5.4.2" data-path="tree.html"><a href="tree.html#example-2"><i class="fa fa-check"></i><b>5.4.2</b> Example<span></span></a></li>
-<li class="chapter" data-level="5.4.3" data-path="tree.html"><a href="tree.html#advantages-2"><i class="fa fa-check"></i><b>5.4.3</b> Advantages<span></span></a></li>
-<li class="chapter" data-level="5.4.4" data-path="tree.html"><a href="tree.html#disadvantages-2"><i class="fa fa-check"></i><b>5.4.4</b> Disadvantages<span></span></a></li>
-<li class="chapter" data-level="5.4.5" data-path="tree.html"><a href="tree.html#software-2"><i class="fa fa-check"></i><b>5.4.5</b> Software<span></span></a></li>
+<li class="chapter" data-level="5.4" data-path="tree.html"><a href="tree.html"><i class="fa fa-check"></i><b>5.4</b>
+  <!--Decision Tree--> Karar Ağaçları<span></span></a><ul>
+<li class="chapter" data-level="5.4.1" data-path="tree.html"><a href="tree.html#interpretation-2"><i class="fa fa-check"></i><b>5.4.1</b>
+  <!--Interpretation--> Yorumlama<span></span></a></li>
+<li class="chapter" data-level="5.4.2" data-path="tree.html"><a href="tree.html#example-2"><i class="fa fa-check"></i><b>5.4.2</b>
+  <!--Example--> Yorumlama<span></span></a></li>
+<li class="chapter" data-level="5.4.3" data-path="tree.html"><a href="tree.html#advantages-2"><i class="fa fa-check"></i><b>5.4.3</b>
+  <!--Advantages--> Avantajlar<span></span></a></li>
+<li class="chapter" data-level="5.4.4" data-path="tree.html"><a href="tree.html#disadvantages-2"><i class="fa fa-check"></i><b>5.4.4</b>
+  <!--Disadvantages--> Dezavantajlar<span></span></a></li>
+<li class="chapter" data-level="5.4.5" data-path="tree.html"><a href="tree.html#software-2"><i class="fa fa-check"></i><b>5.4.5</b>
+  <!--Software--> Yazılım<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="rules.html"><a href="rules.html"><i class="fa fa-check"></i><b>5.5</b> Decision Rules<span></span></a><ul>
-<li class="chapter" data-level="5.5.1" data-path="rules.html"><a href="rules.html#learn-rules-from-a-single-feature-oner"><i class="fa fa-check"></i><b>5.5.1</b> Learn Rules from a Single Feature (OneR)<span></span></a></li>
+<li class="chapter" data-level="5.5" data-path="rules.html"><a href="rules.html"><i class="fa fa-check"></i><b>5.5</b>
+  <!--Decision Rules--> Karar Kuralları<span></span></a><ul>
+<li class="chapter" data-level="5.5.1" data-path="rules.html"><a href="rules.html#learn-rules-from-a-single-feature-oner"><i class="fa fa-check"></i><b>5.5.1</b>
+  <!--Learn Rules from a Single Feature (OneR)--> Yalnızca Bir Öznitelikten Kural Öğrenme (OneR)<span></span></a></li>
 <li class="chapter" data-level="5.5.2" data-path="rules.html"><a href="rules.html#sequential-covering"><i class="fa fa-check"></i><b>5.5.2</b> Sequential Covering<span></span></a></li>
-<li class="chapter" data-level="5.5.3" data-path="rules.html"><a href="rules.html#bayesian-rule-lists"><i class="fa fa-check"></i><b>5.5.3</b> Bayesian Rule Lists<span></span></a></li>
-<li class="chapter" data-level="5.5.4" data-path="rules.html"><a href="rules.html#advantages-3"><i class="fa fa-check"></i><b>5.5.4</b> Advantages<span></span></a></li>
-<li class="chapter" data-level="5.5.5" data-path="rules.html"><a href="rules.html#disadvantages-3"><i class="fa fa-check"></i><b>5.5.5</b> Disadvantages<span></span></a></li>
-<li class="chapter" data-level="5.5.6" data-path="rules.html"><a href="rules.html#software-and-alternatives"><i class="fa fa-check"></i><b>5.5.6</b> Software and Alternatives<span></span></a></li>
+<li class="chapter" data-level="5.5.3" data-path="rules.html"><a href="rules.html#bayesian-rule-lists"><i class="fa fa-check"></i><b>5.5.3</b> 
+  <!--Bayesian Rule Lists-->Bayes-yan Kural Listeleri<span></span></a></li>
+<li class="chapter" data-level="5.5.4" data-path="rules.html"><a href="rules.html#advantages-3"><i class="fa fa-check"></i><b>5.5.4</b>
+  <!--Advantages--> Avantajlar<span></span></a></li>
+<li class="chapter" data-level="5.5.5" data-path="rules.html"><a href="rules.html#disadvantages-3"><i class="fa fa-check"></i><b>5.5.5</b>
+  <!--Disadvantages--> Dezavantajlar<span></span></a></li>
+<li class="chapter" data-level="5.5.6" data-path="rules.html"><a href="rules.html#software-and-alternatives"><i class="fa fa-check"></i><b>5.5.6</b>
+  <!--Software and Alternatives--> Yazılım ve alternatifler<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="rulefit.html"><a href="rulefit.html"><i class="fa fa-check"></i><b>5.6</b> RuleFit<span></span></a><ul>
-<li class="chapter" data-level="5.6.1" data-path="rulefit.html"><a href="rulefit.html#interpretation-and-example"><i class="fa fa-check"></i><b>5.6.1</b> Interpretation and Example<span></span></a></li>
-<li class="chapter" data-level="5.6.2" data-path="rulefit.html"><a href="rulefit.html#theory-1"><i class="fa fa-check"></i><b>5.6.2</b> Theory<span></span></a></li>
-<li class="chapter" data-level="5.6.3" data-path="rulefit.html"><a href="rulefit.html#advantages-4"><i class="fa fa-check"></i><b>5.6.3</b> Advantages<span></span></a></li>
-<li class="chapter" data-level="5.6.4" data-path="rulefit.html"><a href="rulefit.html#disadvantages-4"><i class="fa fa-check"></i><b>5.6.4</b> Disadvantages<span></span></a></li>
-<li class="chapter" data-level="5.6.5" data-path="rulefit.html"><a href="rulefit.html#software-and-alternative"><i class="fa fa-check"></i><b>5.6.5</b> Software and Alternative<span></span></a></li>
+<li class="chapter" data-level="5.6.1" data-path="rulefit.html"><a href="rulefit.html#interpretation-and-example"><i class="fa fa-check"></i><b>5.6.1</b>
+  <!--Interpretation and Example--> Yorumlama ve Örnek<span></span></a></li>
+<li class="chapter" data-level="5.6.2" data-path="rulefit.html"><a href="rulefit.html#theory-1"><i class="fa fa-check"></i><b>5.6.2</b>
+  <!--Theory--> Teori<span></span></a></li>
+<li class="chapter" data-level="5.6.3" data-path="rulefit.html"><a href="rulefit.html#advantages-4"><i class="fa fa-check"></i><b>5.6.3</b> 
+  <!--Advantages-->Avantajlar<span></span></a></li>
+<li class="chapter" data-level="5.6.4" data-path="rulefit.html"><a href="rulefit.html#disadvantages-4"><i class="fa fa-check"></i><b>5.6.4</b>
+  <!--Disadvantages-->Dezavantajlar<span></span></a></li>
+<li class="chapter" data-level="5.6.5" data-path="rulefit.html"><a href="rulefit.html#software-and-alternative"><i class="fa fa-check"></i><b>5.6.5</b>
+  <!--Software and Alternative-->Yazıım ve alternatif<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.7" data-path="other-interpretable.html"><a href="other-interpretable.html"><i class="fa fa-check"></i><b>5.7</b> Other Interpretable Models<span></span></a><ul>
-<li class="chapter" data-level="5.7.1" data-path="other-interpretable.html"><a href="other-interpretable.html#naive-bayes-classifier"><i class="fa fa-check"></i><b>5.7.1</b> Naive Bayes Classifier<span></span></a></li>
+<li class="chapter" data-level="5.7" data-path="other-interpretable.html"><a href="other-interpretable.html"><i class="fa fa-check"></i><b>5.7</b>
+  <!--Other Interpretable Models--> Diğer Yorumlanabilir Modeller<span></span></a><ul>
+<li class="chapter" data-level="5.7.1" data-path="other-interpretable.html"><a href="other-interpretable.html#naive-bayes-classifier"><i class="fa fa-check"></i><b>5.7.1</b>
+  <!--Naive Bayes Classifier--> Naive Bayes ile Sınıflandırma<span></span></a></li>
 <li class="chapter" data-level="5.7.2" data-path="other-interpretable.html"><a href="other-interpretable.html#k-nearest-neighbors"><i class="fa fa-check"></i><b>5.7.2</b> K-Nearest Neighbors<span></span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="agnostic.html"><a href="agnostic.html"><i class="fa fa-check"></i><b>6</b> Model-Agnostic Methods<span></span></a></li>
-<li class="chapter" data-level="7" data-path="example-based.html"><a href="example-based.html"><i class="fa fa-check"></i><b>7</b> Example-Based Explanations<span></span></a></li>
-<li class="chapter" data-level="8" data-path="global-methods.html"><a href="global-methods.html"><i class="fa fa-check"></i><b>8</b> Global Model-Agnostic Methods<span></span></a><ul>
-<li class="chapter" data-level="8.1" data-path="pdp.html"><a href="pdp.html"><i class="fa fa-check"></i><b>8.1</b> Partial Dependence Plot (PDP)<span></span></a><ul>
-<li class="chapter" data-level="8.1.1" data-path="pdp.html"><a href="pdp.html#pdp-based-feature-importance"><i class="fa fa-check"></i><b>8.1.1</b> PDP-based Feature Importance<span></span></a></li>
+<li class="chapter" data-level="6" data-path="agnostic.html"><a href="agnostic.html"><i class="fa fa-check"></i><b>6</b> 
+  <!--Model-Agnostic Methods-->Modelden Bağımsız Metotlar<span></span></a></li>
+<li class="chapter" data-level="7" data-path="example-based.html"><a href="example-based.html"><i class="fa fa-check"></i><b>7</b> 
+  <!--Example-Based Explanations-->Örneklere Dayalı Açıklamalar<span></span></a></li>
+<li class="chapter" data-level="8" data-path="global-methods.html"><a href="global-methods.html"><i class="fa fa-check"></i><b>8</b> 
+  <!--Global Model-Agnostic Methods-->Modelden Bağımsız Evrensel Metotlar<span></span></a><ul>
+<li class="chapter" data-level="8.1" data-path="pdp.html"><a href="pdp.html"><i class="fa fa-check"></i><b>8.1</b> 
+  <!--Partial Dependence Plot (PDP)-->Kısmi Bağımlılık Grafiği (PDP)<span></span></a><ul>
+<li class="chapter" data-level="8.1.1" data-path="pdp.html"><a href="pdp.html#pdp-based-feature-importance"><i class="fa fa-check"></i><b>8.1.1</b> 
+  <!--PDP-based Feature Importance-->PDP Tabanlı Nitelik Değerleri<span></span></a></li>
 <li class="chapter" data-level="8.1.2" data-path="pdp.html"><a href="pdp.html#examples"><i class="fa fa-check"></i><b>8.1.2</b> Examples<span></span></a></li>
 <li class="chapter" data-level="8.1.3" data-path="pdp.html"><a href="pdp.html#advantages-5"><i class="fa fa-check"></i><b>8.1.3</b> Advantages<span></span></a></li>
 <li class="chapter" data-level="8.1.4" data-path="pdp.html"><a href="pdp.html#disadvantages-5"><i class="fa fa-check"></i><b>8.1.4</b> Disadvantages<span></span></a></li>
@@ -315,7 +388,8 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="8.7.5" data-path="proto.html"><a href="proto.html#code-and-alternatives"><i class="fa fa-check"></i><b>8.7.5</b> Code and Alternatives<span></span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="local-methods.html"><a href="local-methods.html"><i class="fa fa-check"></i><b>9</b> Local Model-Agnostic Methods<span></span></a><ul>
+<li class="chapter" data-level="9" data-path="local-methods.html"><a href="local-methods.html"><i class="fa fa-check"></i><b>9</b> 
+  <!--Local Model-Agnostic Methods-->Modelden Bağımsız Yerel Metotlar<span></span></a><ul>
 <li class="chapter" data-level="9.1" data-path="ice.html"><a href="ice.html"><i class="fa fa-check"></i><b>9.1</b> Individual Conditional Expectation (ICE)<span></span></a><ul>
 <li class="chapter" data-level="9.1.1" data-path="ice.html"><a href="ice.html#examples-4"><i class="fa fa-check"></i><b>9.1.1</b> Examples<span></span></a></li>
 <li class="chapter" data-level="9.1.2" data-path="ice.html"><a href="ice.html#advantages-12"><i class="fa fa-check"></i><b>9.1.2</b> Advantages<span></span></a></li>
@@ -439,43 +513,62 @@ window.cookieconsent.initialise({
 
             <section class="normal" id="section-">
 <div id="limo" class="section level2 hasAnchor">
-<h2><span class="header-section-number">5.1</span> Linear Regression<a href="limo.html#limo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>A linear regression model predicts the target as a weighted sum of the feature inputs.
-The linearity of the learned relationship makes the interpretation easy.
-Linear regression models have long been used by statisticians, computer scientists and other people who tackle quantitative problems.</p>
-<p>Linear models can be used to model the dependence of a regression target y on some features x.
-The learned relationships are linear and can be written for a single instance i as follows:</p>
-<p><span class="math display">\[y=\beta_{0}+\beta_{1}x_{1}+\ldots+\beta_{p}x_{p}+\epsilon\]</span></p>
-<p>The predicted outcome of an instance is a weighted sum of its p features.
-The betas (<span class="math inline">\(\beta_{j}\)</span>) represent the learned feature weights or coefficients.
-The first weight in the sum (<span class="math inline">\(\beta_0\)</span>) is called the intercept and is not multiplied with a feature.
-The epsilon (<span class="math inline">\(\epsilon\)</span>) is the error we still make, i.e. the difference between the prediction and the actual outcome.
-These errors are assumed to follow a Gaussian distribution, which means that we make errors in both negative and positive directions and make many small errors and few large errors.</p>
-<p>Various methods can be used to estimate the optimal weight.
-The ordinary least squares method is usually used to find the weights that minimize the squared differences between the actual and the estimated outcomes:</p>
-<p><span class="math display">\[\hat{\boldsymbol{\beta}}=\arg\!\min_{\beta_0,\ldots,\beta_p}\sum_{i=1}^n\left(y^{(i)}-\left(\beta_0+\sum_{j=1}^p\beta_jx^{(i)}_{j}\right)\right)^{2}\]</span></p>
-<p>We will not discuss in detail how the optimal weights can be found, but if you are interested, you can read chapter 3.2 of the book “The Elements of Statistical Learning” (Friedman, Hastie and Tibshirani 2009)<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a> or one of the other online resources on linear regression models.</p>
-<p>The biggest advantage of linear regression models is linearity:
-It makes the estimation procedure simple and, most importantly, these linear equations have an easy to understand interpretation on a modular level (i.e. the weights).
-This is one of the main reasons why the linear model and all similar models are so widespread in academic fields such as medicine, sociology, psychology, and many other quantitative research fields.
-For example, in the medical field, it is not only important to predict the clinical outcome of a patient, but also to quantify the influence of the drug and at the same time take sex, age, and other features into account in an interpretable way.</p>
-<p>Estimated weights come with confidence intervals.
-A confidence interval is a range for the weight estimate that covers the “true” weight with a certain confidence.
-For example, a 95% confidence interval for a weight of 2 could range from 1 to 3.
-The interpretation of this interval would be:
-If we repeated the estimation 100 times with newly sampled data, the confidence interval would include the true weight in 95 out of 100 cases, given that the linear regression model is the correct model for the data.</p>
-<p>Whether the model is the “correct” model depends on whether the relationships in the data meet certain assumptions, which are linearity, normality, homoscedasticity, independence, fixed features, and absence of multicollinearity.</p>
-<p><strong>Linearity</strong><br />
-The linear regression model forces the prediction to be a linear combination of features, which is both its greatest strength and its greatest limitation.
-Linearity leads to interpretable models.
-Linear effects are easy to quantify and describe.
-They are additive, so it is easy to separate the effects.
-If you suspect feature interactions or a nonlinear association of a feature with the target value, you can add interaction terms or use regression splines.</p>
-<p><strong>Normality</strong><br />
-It is assumed that the target outcome given the features follows a normal distribution.
-If this assumption is violated, the estimated confidence intervals of the feature weights are invalid.</p>
-<p><strong>Homoscedasticity</strong> (constant variance)<br />
-The variance of the error terms is assumed to be constant over the entire feature space.
+<h2><span class="header-section-number">5.1</span> Lineer Regression<a href="limo.html#limo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Bir lineer regression modeli hedefi, nitelik girdilerinin ağırlıklandırılmış toplamı olarak
+  tahmin etmeye çalışır. Öğrenilen ilişkinin lineer olması yorumlanabilirliği kolaylaştırır.
+  Lineer regression modelleri uzun süre istatistikçiler, bilgisayar bilimcileri ve
+  sayısal problemlerle uğraşan diğer insanlar tarafından kullanılmıştır.</p>
+<p>Lineer modeller, sürekli bir hedef olan y'nin x niteliklerine olan bağlılığını modellemek için
+  kullanılabilir. Öğrenilen ilişkiler lineerdir ve tekil bir örnek için şöyle gösterilir:
+</p>
+  <p><span class="math display">\[y=\beta_{0}+\beta_{1}x_{1}+\ldots+\beta_{p}x_{p}+\epsilon\]</span></p>
+<p>Bir veri tanesinin sonucu için yapılan tahmin, verinin sahip olduğu p tane niteliğin 
+  ağırlıklandırılmış toplamıdır. Beta'lar (<span class="math inline">\(\beta_{j}\)</span>)
+  öğrenilen ağırlıkları ya da katsayıları ifade eder. Toplamdaki ilk ağırlığa
+  (<span class="math inline">\(\beta_0\)</span>) intercept denir ve herhangi bir nitelikle
+  çarpılmaz. Epsilon (<span class="math inline">\(\epsilon\)</span>) parametreler
+  öğrendiğimiz halde hala yaptığımız hata miktarı, yani tahmin ve asıl sonuç arasındaki
+  farktır. Bu hataların Gaussian bir dağılımı takip ettiği varsayılır, yani hem negatif
+  hem de pozitif yönde ve çok sayıda küçük - az sayıda büyük hata yaparız.</p> 
+<p>Optimal ağırlıkları hesaplamak için çeşitli metotlar kullanılabilir. En küçük kareler
+  metodu genellikle hesaplanan ve asıl sonuçlar arasındaki farkların karelerinin toplamını
+  minimize eden ağırlıkları bulmak için kullanılır: </p>
+  <p><span class="math display">\[\hat{\boldsymbol{\beta}}=\arg\!\min_{\beta_0,\ldots,\beta_p}\sum_{i=1}^n\left(y^{(i)}-\left(\beta_0+\sum_{j=1}^p\beta_jx^{(i)}_{j}\right)\right)^{2}\]</span></p>
+<p>Optimal ağırlıkların nasıl elde edileceğinin detayına girmeyeceğiz, ama eğer ilginizi
+  çektiyse  “The Elements of Statistical Learning” (Friedman, Hastie and Tibshirani 2009)<a
+  href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a> 
+  kitabındaki 3.2. bölümü ya da lineer regression modelleriyle ilgili diğer online
+  kaynakları okuyabilirsiniz.</p>
+<p>Lineer regression modellerinin en büyük avantajı lineerliktir: Tahmin etme sürecini
+  basitleştirirler ve en önemlisi, bu lineer denklemlerin modüler seviyede yorumlanabilmesi
+  (ağırlıkların yorumlanması) çok kolaydır. Lineer ve benzer modellerin, sosyoloji,
+  psikoloji ve diğer sayısal araştırma alanlarında sıkça başvuruluyor olmasının temel
+  sebebi budur. Örneğin, tıpta, hastanın klinik sonucunu tahmin etmek tek önemli şey değildir,
+  aynı cinsiyet, yaş ve diğer niteliklerde ilacın etkisini yorumlanabilir bir şekilde
+  hesaplamak da önemlidir.</p>
+<p>Ağırlıklar tahmini karar aralıklarıyla beraber gelir. Karar aralıkları, ağırlık tahmini
+  için "doğru" ağırlığı belli bir kararlılıkla içeren aralıktır. Örneğin, 2 ağırlığı için
+  %95 karar aralığı 1'den 3'e olabilir. Bu aralığın yorumlanması şöyle olur: Bu tahmini
+  yeni veriler için 100 kez tekrarlasaydık, karar aralığı 100 durumdan 95'inde doğru ağırlığı
+  içerirdi (lineer regression'ın eldeki veri için doğru model olması durumunda).</p>
+<p>Modelin "doğru" model olup olmadığı, verideki ilişkilerin yapılan varsayımlarla tutarlı olup
+  olmadığına bağlıdır. Bu varsayımlar lineerlik, normallik, homoskedastisite (sabit
+  varyans), bağımsızlık,
+  sabit nitelikler ve multicollinearity'nin olmaması.
+<p><strong>Lineerlik</strong><br />
+Lineer regression modeli, tahmini niteliklerin bir lineer kombinasyonu olmaya zorlar; bu
+  hem en güçlü hem de en zayıf yanıdır. Lineerlik yorumlanabilirliği sağlar. Lineer etkileri
+  hesaplamak ve açıklamak kolaydır. Toplama içerdiklerinden faktörler kolayca ayırt edilebilir.
+  Eğer niteliklerin birbiriyle ilişkili olduklarından veya bir niteliğin hedef değişkenle
+  lineer olmayan bir ilişkisi olduğundan şüpheleniyorsanız, etkileşim terimleri ekleyebilir
+  veya regression spline'lar kullanabilirsiniz.</p>
+<p><strong>Normallik</strong><br />
+  Eldeki niteliklere göre hedef değişkenin normal dağılımda olduğu varsayılır. Eğer bu 
+  varsayılım ihlal edilirse, ağırlıklar için tahmin edilen karar aralıkları geçersizdir.
+<p><strong>Homoskedastisite</strong> (sabit varyans)<br />
+
+  
+  The variance of the error terms is assumed to be constant over the entire feature space.
 Suppose you want to predict the value of a house given the living area in square meters.
 You estimate a linear model that assumes that, regardless of the size of the house, the error around the predicted response has the same variance.
 This assumption is often violated in reality.
