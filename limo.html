@@ -564,94 +564,83 @@ Lineer regression modeli, tahmini niteliklerin bir lineer kombinasyonu olmaya zo
   veya regression spline'lar kullanabilirsiniz.</p>
 <p><strong>Normallik</strong><br />
   Eldeki niteliklere göre hedef değişkenin normal dağılımda olduğu varsayılır. Eğer bu 
-  varsayılım ihlal edilirse, ağırlıklar için tahmin edilen karar aralıkları geçersizdir.
+  varsayım ihlal edilirse, ağırlıklar için hesaplanan karar aralıkları geçersizdir.
 <p><strong>Homoskedastisite</strong> (sabit varyans)<br />
+  Hata terimlerinin varyansının tüm nitelik uzayı boyunca sabit olduğu varsayılır. Bir evin fiyatını evin büyüklüğünden (metrekare) tahmin etmeye çalıştığınızı düşünün.
+  Evin büyüklüğünden bağımsız olarak tahmindeki hatanın sabit varyansa sahip olduğunu varsayan bir lineer model oluşturuyorsunuz. Bu varsayım pratikte genellikle
+  geçersizdir. Ev örneğinde, tahmindeki hataların büyük evler için daha yüksek varyansa sahip olması mantıklıdır, çünkü fiyatlar daha yüksektir ve 
+  fiyattaki dalgalanmalar daha olasıdır. Lineer modelinizdeki ortalama hatanın (tahmin ve gerçek fiyat arasındaki ortalama fark) 50,000 Euro olduğunu düşünün.
+  Eğer homoskedastisite varsayarsanız, ortalama hata olan 50,000 Euro'nun hem 1 milyonluk bir ev hem de 40,000 Euro'luk bir ev için aynı
+  olduğunu varsaymış olursunuz. Bu mantıksızdır çünkü negatif fiyatların olabileceği anlamına gelir.</p>
+<p><strong>Bağımsızlık</strong><br />
+  Tüm veri örneklerinin diğerlerinden bağımsız olduğu varsayılır. Eğer tekrar tekrar ölçüm yaparsanız, bir hasta için birden çok kan testi yapmak gibi,
+  veri taneleri (gözlemler) bağımsız değildir. Bağımsız olmayan veriler için karışık etki modelleri veya GEE'ler gibi özel bir lineer regression modeline
+  ihtiyacınız olur. Eğer "normal" lineer regression kullanırsanız, modelden yanlış sonuçlar elde edebilirsiniz.</p>
+<p><strong>Sabit nitelikler</strong><br />
+  Girdi nitelikler "sabit" kabul edilirler. Buradaki sabit, niteliklerin istatiktiksel değişkenler olarak değil, eldeki sabitler olarak kabul edildiği anlamına gelir.
+  Bu, niteliklerin ölçümünde hata olmayacağı anlamına gelen gerçek dışı bir varsayımdır. Ancak, bu varsayımı yapmazsanız, girdilerdeki hata paylarını dikkate alan
+  çok karmaşık hata modelleri kullanmanız gerekir; genelde bu istenmeyen bir durumdur.</p>
+<p><strong>Multicollinearity'nin olmaması</strong><br />
+  Ağırlıkların hesaplanmasını karıştıracağından, aralarında güçlü korelasyonlar olan niteliklerle çalışmak istemezsiniz. İki niteliğin arasında güçlü
+  korelasyonun olduğu bir durumda ağırlıkları hesaplamak sorunlu hale gelir çünkü niteliklerin etkileri toplamsaldır ve etkilerin hangi niteliğe atfedileceği belirsiz hale gelir.</p>
 
-  
-  The variance of the error terms is assumed to be constant over the entire feature space.
-Suppose you want to predict the value of a house given the living area in square meters.
-You estimate a linear model that assumes that, regardless of the size of the house, the error around the predicted response has the same variance.
-This assumption is often violated in reality.
-In the house example, it is plausible that the variance of error terms around the predicted price is higher for larger houses, since prices are higher and there is more room for price fluctuations.
-Suppose the average error (difference between predicted and actual price) in your linear regression model is 50,000 Euros.
-If you assume homoscedasticity, you assume that the average error of 50,000 is the same for houses that cost 1 million and for houses that cost only 40,000.
-This is unreasonable because it would mean that we can expect negative house prices.</p>
-<p><strong>Independence</strong><br />
-It is assumed that each instance is independent of any other instance.
-If you perform repeated measurements, such as multiple blood tests per patient, the data points are not independent.
-For dependent data you need special linear regression models, such as mixed effect models or GEEs.
-If you use the “normal” linear regression model, you might draw wrong conclusions from the model.</p>
-<p><strong>Fixed features</strong><br />
-The input features are considered “fixed”.
-Fixed means that they are treated as “given constants” and not as statistical variables.
-This implies that they are free of measurement errors.
-This is a rather unrealistic assumption.
-Without that assumption, however, you would have to fit very complex measurement error models that account for the measurement errors of your input features.
-And usually you do not want to do that.</p>
-<p><strong>Absence of multicollinearity</strong><br />
-You do not want strongly correlated features, because this messes up the estimation of the weights.
-In a situation where two features are strongly correlated, it becomes problematic to estimate the weights because the feature effects are additive and it becomes indeterminable to which of the correlated features to attribute the effects.</p>
-<div id="interpretation" class="section level3 hasAnchor">
-<h3><span class="header-section-number">5.1.1</span> Interpretation<a href="limo.html#interpretation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The interpretation of a weight in the linear regression model depends on the type of the corresponding feature.</p>
+  <div id="interpretation" class="section level3 hasAnchor">
+<h3><span class="header-section-number">5.1.1</span> Yorumlama<a href="limo.html#interpretation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Bir lineer regression modelindeki ağırlığın yorumlanması, o ağırlığa karşılık gelen niteliğin türüne bağlıdır.</p>
 <ul>
-<li>Numerical feature: Increasing the numerical feature by one unit changes the estimated outcome by its weight.
-An example of a numerical feature is the size of a house.</li>
-<li>Binary feature: A feature that takes one of two possible values for each instance.
-An example is the feature “House comes with a garden”.
-One of the values counts as the reference category (in some programming languages encoded with 0), such as “No garden”.
-Changing the feature from the reference category to the other category changes the estimated outcome by the feature’s weight.</li>
-<li>Categorical feature with multiple categories:
-A feature with a fixed number of possible values.
-An example is the feature “floor type”, with possible categories “carpet”, “laminate” and “parquet”.
-A solution to deal with many categories is the one-hot-encoding, meaning that each category has its own binary column.
-For a categorical feature with L categories, you only need L-1 columns, because the L-th column would have redundant information (e.g. when columns 1 to L-1 all have value 0 for one instance, we know that the categorical feature of this instance takes on category L).
-The interpretation for each category is then the same as the interpretation for binary features.
-Some languages, such as R, allow you to encode categorical features in various ways, as <a href="limo.html#cat-code">described later in this chapter</a>.</li>
+<li>Sayısal nitelik: Sayısal niteliğin bir birim artması tahmin edilen sonucu niteliğin ağırlığı kadar değiştirir. Sayısal niteliklere örnek olarak
+  bir evin büyüklüğü düşünülebilir.</li>
+<li>İkili nitelik: Herhangi bir veri örneği için iki değerden birini alan niteliklerdir. "Evin bahçesi var" niteliği bu tür niteliklere örnek verilebilir.
+  Değerlerden biri referans kategorisi olarak adlandırılır (bazı programlama dillerinde 0 ile kodlanır), "Bahçe yok" gibi. Niteliği referans kategorisinden diğerine
+  değiştirmek hesaplanan sonucu niteliğin ağırlığı kadar değiştirir.</li>
+<li>Birden çok kategoriye sahip kategorik nitelik: Sınırlı sayıda değer alabilen niteliklerdir. "Halı, laminat, parke" kategorilerine sahio "zemin türü" niteliği
+  örnek verilebilir. Çok kategorili bir nitelikle başa çıkmanın bir yolu, her kategorinin kendi ikili sütununa sahip olduğu one-hot kodlamadır.
+  L tane kategoriye sahip bir kategorik nitelik için sadece L-1 tane sütuna ihtiyacınız vardır, çünkü L tane sütun kullandığınızda L. sütun gereksiz bilgi
+  içerir (örneğin, bir veri örneği için 1'den L-1'e tüm sütunlar 0 değerine sahipse, bu niteliğin o veri örneği için değerinin L kategorisi olduğu anlaşılır).
+  Her bir kategorinin yorumlanması, ikili niteliklerin yorumlanmasıyla aynıdır. R gibi bazı programlama dilleri, kategorik nitelikleri farklı şekillerde
+  kodlamanıza olana sağlar; <a href="limo.html#cat-code">bunu bölümün ilerleyen kısımlarında inceleyeceğiz</a>.</li>
 <li>Intercept <span class="math inline">\(\beta_0\)</span>:
-The intercept is the feature weight for the “constant feature”, which is always 1 for all instances.
-Most software packages automatically add this “1”-feature to estimate the intercept.
-The interpretation is:
-For an instance with all numerical feature values at zero and the categorical feature values at the reference categories, the model prediction is the intercept weight.
-The interpretation of the intercept is usually not relevant because instances with all features values at zero often make no sense.
-The interpretation is only meaningful when the features have been standardised (mean of zero, standard deviation of one).
-Then the intercept reflects the predicted outcome of an instance where all features are at their mean value.</li>
+  Intercept, tüm veriler için 1 değerini alan "sabit niteliğin" ağırlığıdır. Çoğu program intercept'i hesaplamak için bu "1" niteliğini otomatik olarak ekler.
+  Yorumlanması ise şu şekildedir: Tüm sayısal nitelikleri sıfır ve kategorik nitelikleri referans kategorisi olan bir veri örneği için modelin yapacağı tahmin
+  intercept ağırlığıdır. Intercept'in yorumlanması genellikle önemsizdir çünkü tüm değerleri sıfır olan bir gözlem anlamsızdır. Nitelikler standardize edildiğinde
+  (ortalama 0, standart sapma 1) yorumlama anlamlı olur: O zaman intercept değeri, tüm değerleri niteliklerin ortalama değeri olan veri için
+  yapılan tahmini temsil eder.</li>
 </ul>
-<p>The interpretation of the features in the linear regression model can be automated by using following text templates.</p>
-<p><strong>Interpretation of a Numerical Feature</strong></p>
-<p>An increase of feature <span class="math inline">\(x_{k}\)</span> by one unit increases the prediction for y by <span class="math inline">\(\beta_k\)</span> units when all other feature values remain fixed.</p>
-<p><strong>Interpretation of a Categorical Feature</strong></p>
-<p>Changing feature <span class="math inline">\(x_{k}\)</span> from the reference category to the other category increases the prediction for y by <span class="math inline">\(\beta_{k}\)</span> when all other features remain fixed.</p>
-<p>Another important measurement for interpreting linear models is the R-squared measurement.
-R-squared tells you how much of the total variance of your target outcome is explained by the model.
-The higher R-squared, the better your model explains the data.
-The formula for calculating R-squared is:</p>
-<p><span class="math display">\[R^2=1-SSE/SST\]</span></p>
-<p>SSE is the squared sum of the error terms:</p>
+    
+<p>Bir lineer regression modelindeki nitelikler, aşağıdaki şablonlarla otomatik olarak yorumlanabilir.</p>
+<p><strong>Sayısal bir niteliğin yorumlanması</strong></p>
+<p>Diğer tüm niteliklerin değerleri sabit tutulduğunda, <span class="math inline">\(x_{k}\)</span> niteliğindeki bir birimlik bir artış, y için yapılan tahmini <span class="math inline">\(\beta_k\)</span> birim
+  arttırır.</p>
+<p><strong>Kategorik bir niteliğin yorumlanması</strong></p>
+<p>Diğer tüm niteliklerin değerleri sabit tutulduğunda, <span class="math inline">\(x_{k}\)</span> niteliğini referans kategorisinden diğer kategoriye değiştirmek, y için yapılan tahmini <span class="math inline">\(\beta_{k}\)</span> birim
+  arttırır.</p>
+
+<p>Lineer modellerin yorumlanmasında bir diğer ölçü R-kare'dir. R-kare, hedef değişkenin toplam varyansının ne kadarının model tarafından açıklandığını
+  ölçer. R-kare değeriniz ne kadar fazlaysa, modeliniz veriyi o kadar iyi açıklıyor demektir. Formülü şu şekildedir:</p>
+<p><span class="math display">\[R^2=1-HKT/VKT\]</span></p>
+<p>HKT, hata terimlerinin karelerinin toplamıdır:</p>
 <p><span class="math display">\[SSE=\sum_{i=1}^n(y^{(i)}-\hat{y}^{(i)})^2\]</span></p>
-<p>SST is the squared sum of the data variance:</p>
+<p>VKT, verideki varyansın kareleri toplamıdır:</p>
 <p><span class="math display">\[SST=\sum_{i=1}^n(y^{(i)}-\bar{y})^2\]</span></p>
-<p>The SSE tells you how much variance remains after fitting the linear model, which is measured by the squared differences between the predicted and actual target values.
-SST is the total variance of the target outcome.
-R-squared tells you how much of your variance can be explained by the linear model.
-R-squared usually ranges between 0 for models where the model does not explain the data at all and 1 for models that explain all of the variance in your data. It is also possible for R-squared to take on a negative value without violating any mathematical rules.
-This happens when SSE is greater than SST which means that a model does not capture the trend of the data and fits to the data worse than using the mean of the target as the prediction.</p>
-<p>There is a catch, because R-squared increases with the number of features in the model, even if they do not contain any information about the target value at all.
-Therefore, it is better to use the adjusted R-squared, which accounts for the number of features used in the model.
-Its calculation is:</p>
+    
+<p>HKT, modeli oluşturduktan sonra geride kalan varyansı temsil eder; gerçek ve tahmini değerlerin farklarının kareleriyle hesaplanır. VKT, hedef değişkenin
+  toplam varyansıdır. R-kare, elinizdeki varyansın ne kadarının oluşturduğunuz lineer model tarafından açıklanabileceğini söyler. R-kare genellikle 0 ve 1 arasında;
+  veriyi hiç açıklamayan modeller için 0, verideki tüm varyansı açıklayabilen modeller için 1 olmak üzere değer alır. R-kare'nin herhangi bir matematiksel
+  hata olmadan negatif bir değer alması da mümkündür; bu durum HKT VKT'den büyük olduğunda, yani model verideki trendi açıklamadığında ve hedefin ortalamasını
+  tahmin olarak kullanmaktan daha kötü sonuç verdiğinde gözlemlenir.</p>
+<p>Bu haliyle formülde bir sıkıntı vardır çünkü R-kare değeri, modeldeki nitelik sayısıyla beraber, bu nitelikler hedef hakkında hiçbir bilgi
+  vermeyen nitelikler de olsa artar. Bu yüzden modelde kullanılan nitelik sayısını da hesaba katan, ayarlanmış R-kare değerini kullanmak daha uygundur: 
+    p niteliklerin sayısı ve n veri sayısı olmak üzere</p>
 <p><span class="math display">\[\bar{R}^2=1-(1-R^2)\frac{n-1}{n-p-1}\]</span></p>
-<p>where p is the number of features and n the number of instances.</p>
-<p>It is not meaningful to interpret a model with very low (adjusted) R-squared, because such a model basically does not explain much of the variance.
-Any interpretation of the weights would not be meaningful.</p>
-<p><strong>Feature Importance</strong></p>
-<p>The importance of a feature in a linear regression model can be measured by the absolute value of its t-statistic.
-The t-statistic is the estimated weight scaled with its standard error.</p>
+    
+<p>Çok düşük (ayarlanmış) R-kare değerine sahip modelleri yorumlamak anlamsızdır, çünkü bu modeller varyansın büyük çoğunluğunu açıklamaz. Bu tür bir
+  modelin ağırlıklarını yorumlamak anlamsız olacaktır.</p>
+<p><strong>Niteliklerin Önemi</strong></p>
+<p>Bir lineer regression modelindeki bir niteliğin önemi, niteliğin t-istatistiğinin mutlak değeriyle ölçülebilir. t-istatistiği, hesaplanan
+  ağırlığın standart hatayla ölçeklendirilmiş halidir.</p>
 <p><span class="math display">\[t_{\hat{\beta}_j}=\frac{\hat{\beta}_j}{SE(\hat{\beta}_j)}\]</span></p>
-<p>Let us examine what this formula tells us:
-The importance of a feature increases with increasing weight.
-This makes sense.
-The more variance the estimated weight has (= the less certain we are about the correct value), the less important the feature is.
-This also makes sense.</p>
+<p>Bu formülün bize ne söylediğini inceleyelim: Bir niteliğin önemi ağırlığı arttıkça artar; bu gayet mantıklı. Hesaplanan ağırlığın varyansı arttıkça
+  (ki bu doğru değerden gittikçe daha az emin olduğumuz anlamına gelir) niteliğin önemi azalır; bu da gayet mantıklıdır.</p>
 </div>
 <div id="example" class="section level3 hasAnchor">
 <h3><span class="header-section-number">5.1.2</span> Example<a href="limo.html#example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
