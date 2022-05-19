@@ -222,7 +222,7 @@ window.cookieconsent.initialise({
 <li class="chapter" data-level="5" data-path="simple.html"><a href="simple.html"><i class="fa fa-check"></i><b>5</b> 
   <!--Interpretable Models-->Yorumlanabilir Modeller<span></span></a><ul>
 <li class="chapter" data-level="5.1" data-path="limo.html"><a href="limo.html"><i class="fa fa-check"></i><b>5.1</b> 
-  Linear Regression<span></span></a><ul>
+  Lineer Regression<span></span></a><ul>
 <li class="chapter" data-level="5.1.1" data-path="limo.html"><a href="limo.html#interpretation"><i class="fa fa-check"></i><b>5.1.1</b> 
   <!--Interpretation--> Yorumlama<span></span></a></li>
 <li class="chapter" data-level="5.1.2" data-path="limo.html"><a href="limo.html#example"><i class="fa fa-check"></i><b>5.1.2</b>
@@ -619,9 +619,9 @@ Lineer regression modeli, tahmini niteliklerin bir lineer kombinasyonu olmaya zo
   ölçer. R-kare değeriniz ne kadar fazlaysa, modeliniz veriyi o kadar iyi açıklıyor demektir. Formülü şu şekildedir:</p>
 <p><span class="math display">\[R^2=1-HKT/VKT\]</span></p>
 <p>HKT, hata terimlerinin karelerinin toplamıdır:</p>
-<p><span class="math display">\[SSE=\sum_{i=1}^n(y^{(i)}-\hat{y}^{(i)})^2\]</span></p>
+<p><span class="math display">\[HKT=\sum_{i=1}^n(y^{(i)}-\hat{y}^{(i)})^2\]</span></p>
 <p>VKT, verideki varyansın kareleri toplamıdır:</p>
-<p><span class="math display">\[SST=\sum_{i=1}^n(y^{(i)}-\bar{y})^2\]</span></p>
+<p><span class="math display">\[VKT=\sum_{i=1}^n(y^{(i)}-\bar{y})^2\]</span></p>
     
 <p>HKT, modeli oluşturduktan sonra geride kalan varyansı temsil eder; gerçek ve tahmini değerlerin farklarının kareleriyle hesaplanır. VKT, hedef değişkenin
   toplam varyansıdır. R-kare, elinizdeki varyansın ne kadarının oluşturduğunuz lineer model tarafından açıklanabileceğini söyler. R-kare genellikle 0 ve 1 arasında;
@@ -643,21 +643,21 @@ Lineer regression modeli, tahmini niteliklerin bir lineer kombinasyonu olmaya zo
   (ki bu doğru değerden gittikçe daha az emin olduğumuz anlamına gelir) niteliğin önemi azalır; bu da gayet mantıklıdır.</p>
 </div>
 <div id="example" class="section level3 hasAnchor">
-<h3><span class="header-section-number">5.1.2</span> Example<a href="limo.html#example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In this example, we use the linear regression model to predict the <a href="bike-data.html#bike-data">number of rented bikes</a> on a particular day, given weather and calendar information.
-For the interpretation, we examine the estimated regression weights.
-The features consist of numerical and categorical features.
-For each feature, the table shows the estimated weight, the standard error of the estimate (SE), and the absolute value of the t-statistic (|t|).</p>
+  
+<h3><span class="header-section-number">5.1.2</span> Örnek<a href="limo.html#example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Bu örnekte hava durumu ve takvim bilgilerini kullanarak belli bir günde <a href="bike-data.html#bike-data">kiralanan bisiklet sayısını</a> lineer regression
+  modeliyle tahmin etmeye çalışacağız. Yorumlama için, hesaplanan regression ağırlıklarını kullanacağız. Nitelikler sayısal ve kategorik niteliklerden oluşuyor.
+  Tabloda her bir nitelik için hesaplanan ağırlık, hesaplamanın standart hatası (SH) ve t-istatistiğinin mutlak değeri yer alıyor (|t|).</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
 </th>
 <th style="text-align:right;">
-Weight
+Ağırlık
 </th>
 <th style="text-align:right;">
-SE
+SH
 </th>
 <th style="text-align:right;">
 |t|
@@ -835,57 +835,55 @@ days_since_2011
 </tr>
 </tbody>
 </table>
-<p>Interpretation of a numerical feature (temperature):
-An increase of the temperature by 1 degree Celsius increases the predicted number of bicycles by 110.7, when all other features remain fixed.</p>
-<p>Interpretation of a categorical feature (“weathersit”):
-The estimated number of bicycles is -1901.5 lower when it is raining, snowing or stormy, compared to good weather – again assuming that all other features do not change.
-When the weather is misty, the predicted number of bicycles is -379.4 lower compared to good weather, given all other features remain the same.</p>
-<p>All the interpretations always come with the footnote that “all other features remain the same”.
-This is because of the nature of linear regression models.
-The predicted target is a linear combination of the weighted features.
-The estimated linear equation is a hyperplane in the feature/target space (a simple line in the case of a single feature).
-The weights specify the slope (gradient) of the hyperplane in each direction.
-The good side is that the additivity isolates the interpretation of an individual feature effect from all other features.
-That is possible because all the feature effects (= weight times feature value) in the equation are combined with a plus.
-On the bad side of things, the interpretation ignores the joint distribution of the features.
-Increasing one feature, but not changing another, can lead to unrealistic or at least unlikely data points.
-For example increasing the number of rooms might be unrealistic without also increasing the size of a house.</p>
+  <!--Sırasıyla: Intercept, ilkbahar, yaz, sonbahar, tatil, iş günü, (hava durumu) sisli, (hava durumu) yağışlı/fırtınalı/karlı, sıcaklık, nem, rüzgar hızı, 2011'den
+itibaren geçen gün sayısı-->
+<p>Sayısal niteliğin yorumlanması (sıcaklık): Diğer tüm nitelikler sabit tutulduğunda, sıcaklıktaki 1 derece Celsius artış,
+  tahmini kiralanan bisiklet sayısını 110.7 arttırır.
+<p>Kategorik niteliğin yorumlanması (hava durumu):
+  Interpretation of a categorical feature (“weathersit”): Diğer niteliklerin değişmediği varsayıldığında, havanın yağışlı/fırtınalı/karlı olması
+  tahmini kiralanan bisiklet sayısını -1905.5 düşürür. Hava sisli olduğunda kiralanan bisiklet sayısı hava iyi olduğunda kiralanan bisiklet sayısından
+  -379.4 daha azdır.</p>
+<p>Lineer regression modellerinin doğası gereği, yapılan her yorum "diğer tüm nitelikler sabitken" dipnotunu beraberinde getirir.
+  Tahmini değer niteliklerin lineer kombinasyonudur. Elde edilen lineer denklem, nitelik/hedef uzayında bir hiperdüzlem belirtir (bir niteliğe sahip bir
+  model için basit bir doğru gibi). Ağırlıklar, bu hiperdüzlemin belli yönlerdeki eğimleridir (gradyan). Bu tür modellerin iyi bir yanı, toplamsallıklarının
+  her niteliğin yorumlanmasını diğerlerinden bağımsız kılmasıdır; denklemde niteliklerin etkileri (ağırlık çarpı niteliğin değeri) bir toplamla bir araya getirildiğinden
+  bu böyledir. Bunun kötü yanı, yorumlamaların, niteliklerin ortak dağılımlarını görmezden gelmesidir. Bir niteliğin artıp diğerinin sabit kalması gerçekçi olmayan
+  ya da çok düşük ihtimalle karşılaşabileceğimiz veri örneklerine denk gelir, örneğin evdeki oda sayısının artması evin büyüklüğü artmadan mümkün değildir.</p>
 </div>
 <div id="visual-interpretation" class="section level3 hasAnchor">
-<h3><span class="header-section-number">5.1.3</span> Visual Interpretation<a href="limo.html#visual-interpretation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Various visualizations make the linear regression model easy and quick to grasp for humans.</p>
+<h3><span class="header-section-number">5.1.3</span> Görsel Yorumlama<a href="limo.html#visual-interpretation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Lineer regression modellerini kolayca anlaşılabilir kılan birçok görselleştirme metodu vardır.</p>
 <div id="weight-plot" class="section level4 hasAnchor">
-<h4><span class="header-section-number">5.1.3.1</span> Weight Plot<a href="limo.html#weight-plot" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The information of the weight table (weight and variance estimates) can be visualized in a weight plot.
-The following plot shows the results from the previous linear regression model.</p>
+<h4><span class="header-section-number">5.1.3.1</span> Ağırlık Grafiği<a href="limo.html#weight-plot" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Ağırlık tablosundaki bilgiler (ağırlıklar ve varyans hesapları) bir ağırlık grafiğinde görselleştirilebilir. Aşağıdaki tablo
+  yukarıda incelediğimiz lineer regression modelinin sonuçlarını gösterir.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:linear-weights-plot"></span>
 <img src="images/linear-weights-plot-1.png" alt="Weights are displayed as points and the 95\% confidence intervals as lines." width="\textwidth" />
 <p class="caption">
-FIGURE 5.1: Weights are displayed as points and the 95% confidence intervals as lines.
+FIGURE 5.1: Noktalar ağırlıkları, çizgiler %95 karar aralıklarını temsil eder. 
 </p>
 </div>
-<p>The weight plot shows that rainy/snowy/stormy weather has a strong negative effect on the predicted number of bikes.
-The weight of the working day feature is close to zero and zero is included in the 95% interval, which means that the effect is not statistically significant.
-Some confidence intervals are very short and the estimates are close to zero, yet the feature effects were statistically significant.
-Temperature is one such candidate.
-The problem with the weight plot is that the features are measured on different scales.
-While for the weather the estimated weight reflects the difference between good and rainy/stormy/snowy weather, for temperature it only reflects an increase of 1 degree Celsius.
-You can make the estimated weights more comparable by scaling the features (zero mean and standard deviation of one) before fitting the linear model.</p>
+<p>Grafik, yağışlı/karlı/fırtınalı havanın tahmini kiralanan bisiklet sayısına güçlü bir şekilde negatif yönde etki ettiğini gösteriyor. İş günü niteliğinin
+  ağırlığının sıfıra çok yakın ve sıfırın karar aralığının içinde olması, niteliğin istatistiksel anlamda önemsiz olduğunu söylüyor. Sıcaklık gibi
+  bazı nitelikler için karar aralığı çok kısa ve hesaplar sıfıra yakın, ama buna rağmen niteliğin istatistiksel anlamda etkisi önemli. Burada ağırlık grafiğiyle
+  ilgili problem, niteliklerin farklı ölçü birimlerinde olması. Hava durumu nitelikleri için hesaplanan ağırlık iyi bir hava ile yağışlı/karlı/fırtınalı bir
+  hava arasındaki farkı temsil ederken, sıcaklık niteliğinin ağırlığı 1 derece Celsius artışın etkisini temsil eder. Ağırlıkları karşılaştırılabilir kılmanın
+  yolu, lineer modeli hesaplamadan önce nitelikleri ölçeklemektir (ortalamayı 0, standart sapmayı 1 yapacak şekilde).</p>
 </div>
 <div id="effect-plot" class="section level4 hasAnchor">
-<h4><span class="header-section-number">5.1.3.2</span> Effect Plot<a href="limo.html#effect-plot" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The weights of the linear regression model can be more meaningfully analyzed when they are multiplied by the actual feature values.
-The weights depend on the scale of the features and will be different if you have a feature that measures e.g. a person’s height and you switch from meter to centimeter.
-The weight will change, but the actual effects in your data will not.
-It is also important to know the distribution of your feature in the data, because if you have a very low variance, it means that almost all instances have similar contribution from this feature.
-The effect plot can help you understand how much the combination of weight and feature contributes to the predictions in your data.
-Start by calculating the effects, which is the weight per feature times the feature value of an instance:</p>
-<p><span class="math display">\[\text{effect}_{j}^{(i)}=w_{j}x_{j}^{(i)}\]</span></p>
-<p>The effects can be visualized with boxplots.
-A box in a boxplot contains the effect range for half of your data (25% to 75% effect quantiles).
-The vertical line in the box is the median effect, i.e. 50% of the instances have a lower and the other half a higher effect on the prediction.
-The horizontal lines extend to <span class="math inline">\(\pm1.5\text{IQR}/\sqrt{n}\)</span>, with IQR being the inter quartile range (75% quantile minus 25% quantile).
-The dots are outliers.
+<h4><span class="header-section-number">5.1.3.2</span> Etki Grafiği<a href="limo.html#effect-plot" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Ağırlıklar nitelik değerleriyle çarpıldığında daha anlamlı yorumlanabilirler. Ağırlıklar niteliklerin ölçeklerine bağlıdırlar, örneğin bir insanın
+  boyunu ölçüyorsanız metre yerine santimetre kullanmanız bu niteliğe karşılık gelen ağırlığı değiştirir; ama etkisi aynıdır. Niteliğin verideki
+  dağılımını da bilmeniz oldukça önemlidir, çünkü örneğin niteliğin düşük bir varyansa sahip olması, neredeyse her veri örneğinin bu nitelik için
+  aynı etkiye sahip olduğu anlamına gelir. Etki grafiği, ağırlık ve nitelik kombinasyonunun yapılan tahmine ne kadar etki ettiğini anlamanızı sağlar.
+  Etki grafiğini çizebilmek için etkileri hesaplamak gerekir: Etki, ağırlık çarpı niteliğin o veri tanesi için aldığı değerdir.</p>
+<p><span class="math display">\[\text{etki}_{j}^{(i)}=w_{j}x_{j}^{(i)}\]</span></p>
+<p>Daha sonra etkiler kutu grafikleriyle çizilebilir. Kutu grafiklerindeki kutular, elinizdeki verinin yarısı için etki aralığını içerir
+  (%25'den %75'e etki çeyrekliği). Kutunun içindeki dik çizgi medyan etkisini, yani verilerin %50'sinin daha fazla etkiye sahip ve diğer
+  %50'sinin daha az etkiye sahip olduğu değeri temsil eder. ÇAA çeyrekler arası aralık olmak üzere yatay çizgiler
+  <span class="math inline">\(\pm1.5\text{ÇAA}/\sqrt{n}\)</span> arasındadır (ÇAA, %75 çeyreklik ile %25 çeyreklik arasındaki farktır).
+  Noktalar outlier değerleri temsil eder.
+  
 The categorical feature effects can be summarized in a single boxplot, compared to the weight plot, where each category has its own row.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:linear-effects"></span>
 <img src="images/linear-effects-1.png" alt="The feature effect plot shows the distribution of effects (= feature value times feature weight) across the data per feature." width="\textwidth" />
