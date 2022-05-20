@@ -860,7 +860,7 @@ itibaren geçen gün sayısı-->
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:linear-weights-plot"></span>
 <img src="images/linear-weights-plot-1.png" alt="Weights are displayed as points and the 95\% confidence intervals as lines." width="\textwidth" />
 <p class="caption">
-FIGURE 5.1: Noktalar ağırlıkları, çizgiler %95 karar aralıklarını temsil eder. 
+ŞEKİL 5.1: Noktalar ağırlıkları, çizgiler %95 karar aralıklarını temsil eder. 
 </p>
 </div>
 <p>Grafik, yağışlı/karlı/fırtınalı havanın tahmini kiralanan bisiklet sayısına güçlü bir şekilde negatif yönde etki ettiğini gösteriyor. İş günü niteliğinin
@@ -882,30 +882,27 @@ FIGURE 5.1: Noktalar ağırlıkları, çizgiler %95 karar aralıklarını temsil
   (%25'den %75'e etki çeyrekliği). Kutunun içindeki dik çizgi medyan etkisini, yani verilerin %50'sinin daha fazla etkiye sahip ve diğer
   %50'sinin daha az etkiye sahip olduğu değeri temsil eder. ÇAA çeyrekler arası aralık olmak üzere yatay çizgiler
   <span class="math inline">\(\pm1.5\text{ÇAA}/\sqrt{n}\)</span> arasındadır (ÇAA, %75 çeyreklik ile %25 çeyreklik arasındaki farktır).
-  Noktalar outlier değerleri temsil eder.
-  
-The categorical feature effects can be summarized in a single boxplot, compared to the weight plot, where each category has its own row.</p>
+  Noktalar outlier değerleri temsil eder. Kategorik niteliklerin etkileri -her kategorinin kendisine özel satıra sahip olduğu
+  ağırlık grafiğinin aksine- tek bir kutu grafiğinde özetlenebilir.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:linear-effects"></span>
 <img src="images/linear-effects-1.png" alt="The feature effect plot shows the distribution of effects (= feature value times feature weight) across the data per feature." width="\textwidth" />
 <p class="caption">
-FIGURE 5.2: The feature effect plot shows the distribution of effects (= feature value times feature weight) across the data per feature.
+ŞEKİL 5.2: Etki grafiği, her nitelik için veri boyunca etkilerin (= niteliğin değeri çarpı ağırlığı) dağılımını gösterir. 
 </p>
 </div>
-<p>The largest contributions to the expected number of rented bicycles comes from the temperature feature and the days feature, which captures the trend of bike rentals over time.
-The temperature has a broad range of how much it contributes to the prediction.
-The day trend feature goes from zero to large positive contributions, because the first day in the dataset (01.01.2011) has a very small trend effect and the estimated weight for this feature is positive (4.93).
-This means that the effect increases with each day and is highest for the last day in the dataset (31.12.2012).
-Note that for effects with a negative weight, the instances with a positive effect are those that have a negative feature value.
-For example, days with a high negative effect of windspeed are the ones with high wind speeds.</p>
+<p>Tahmin edilen kiralık bisiklet sayısına en büyük katkıyı sıcaklık ve hedef değişkenin trendini içeren geçen gün sayısı niteliği sağlıyor. Sıcaklık özelliğinin
+  etkisi büyük bir aralık içinde değişiyor. Geçen gün sayısının etkisi sıfırdan büyük pozitif sayılara değişiyor; verideki ilk günün (01.01.2011) çok düşük
+  bir trend etkisi var ve niteliğin ağırlığı pozitif (4.93). Bu, etkinin her geçen gün arttığını ve en yüksek değerini verideki son gün için aldığını gösteriyor 
+  (31.12.2012).
+  Negatif etkiye sahip ağırlıklarda pozitif etkiye sahip veri örnekleri, negatif nitelik değerine sahip olan veriler olacaktır. Örneğin, rüzgar hızının 
+  yüksek negatif etkiye sahip olduğu günler (örnekler) rüzgar hızının yüksek olduğu günlerdir.</p>
 </div>
 </div>
 <div id="explain-individual-predictions" class="section level3 hasAnchor">
-<h3><span class="header-section-number">5.1.4</span> Explain Individual Predictions<a href="limo.html#explain-individual-predictions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>How much has each feature of an instance contributed to the prediction?
-This can be answered by computing the effects for this instance.
-An interpretation of instance-specific effects only makes sense in comparison to the distribution of the effect for each feature.
-We want to explain the prediction of the linear model for the 6-th instance from the bicycle dataset.
-The instance has the following feature values.</p>
+<h3><span class="header-section-number">5.1.4</span> Tekil Tahminlerin Açıklanması<a href="limo.html#explain-individual-predictions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>"Bir veri örneğinin nitelikleri, onun için yapılan tahmini ne kadar etkiledi?" sorusunu bu veri için etkileri hesaplayarak bulabiliriz. Tekil veri
+  için etkilerin yorumlanması ancak diğer niteliklerin etkilerinin dağılımıyla karşılaştırıldığında anlamlıdır. Diyelim ki, lineer modelin verideki
+  6. örnek için yaptığı tahmini açıklamak istiyoruz. Verinin nitelik değerleri şu şekilde:</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:linear-effects-single-table">TABLE 5.1: </span>Feature values for instance 6
@@ -1019,24 +1016,21 @@ days_since_2011
 </tr>
 </tbody>
 </table>
-<p>To obtain the feature effects of this instance, we have to multiply its feature values by the corresponding weights from the linear regression model.
-For the value “WORKING DAY” of feature “workingday”, the effect is, 124.9.
-For a temperature of 1.6 degrees Celsius, the effect is 177.6.
-We add these individual effects as crosses to the effect plot, which shows us the distribution of the effects in the data.
-This allows us to compare the individual effects with the distribution of effects in the data.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:linear-effects-single"></span>
+<p>Niteliklerin etkilerini hesaplamak için nitelik değerleri ile modeldeki ağırlıkları çarpmalıyız. "workingday" (iş günü) niteliğinin
+  "WORKING DAY" değeri için etki 124.9 olarak bulunur. 1.6 derece Celsius sıcaklık için etki 177.6 olarak hesaplanır. Bu tekil etkileri
+  etkilerin tüm verideki dağılımlarını gösteren etki grafiğinde çarpıyla göstermek, tekil etkileri etkilerin dağılımıyla karşılaştırmamıza
+  olanak sağlar.</p>
+  <div class="figure" style="text-align: center"><span style="display:block;" id="fig:linear-effects-single"></span>
 <img src="images/linear-effects-single-1.png" alt="The effect plot for one instance shows the effect distribution and highlights the effects of the instance of interest." width="\textwidth" />
 <p class="caption">
-FIGURE 5.3: The effect plot for one instance shows the effect distribution and highlights the effects of the instance of interest.
+ŞEKİL 5.3: Tekil veri için etki grafiği, etki dağılımını verinin kendi etkileriyle beraber gösterir. 
 </p>
 </div>
-<p>If we average the predictions for the training data instances, we get an average of 4504.
-In comparison, the prediction of the 6-th instance is small, since only 1571 bicycle rents are predicted.
-The effect plot reveals the reason why.
-The boxplots show the distributions of the effects for all instances of the dataset, the crosses show the effects for the 6-th instance.
-The 6-th instance has a low temperature effect because on this day the temperature was 2 degrees, which is low compared to most other days (and remember that the weight of the temperature feature is positive).
-Also, the effect of the trend feature “days_since_2011” is small compared to the other data instances because this instance is from early 2011 (5 days) and the trend feature also has a positive weight.</p>
-</div>
+<p>Tüm veri için yapılan tahminlerin ortalaması 4504 bisiklettir. Bu sayıyla karşılaştırıldığında 6. veri örneği için yapılan tahmin, 1571, 
+  küçük bir sayıdır; etki grafiği bunun nedenin bize gösterebilir. Grafikte gözlemlenebileceği üzere, 6. veri örneği düşük sıcaklık etkisine sahiptir
+  çünkü o günün sıcaklık değeri 2 derece olup verideki çoğu günün sıcaklığından düşüktür (ve modelde sıcaklığın ağırlığı pozitiftir). Aynı zamanda, geçen gün sayısı
+  niteliğinin etkisi diğer verilere göre daha düşüktür çünkü bu veri örneği 2011'in 5. gününe denk gelir, burada da bu niteliğin ağırlığı pozitiftir.</p>
+  </div>
 <div id="cat-code" class="section level3 hasAnchor">
 <h3><span class="header-section-number">5.1.5</span> Encoding of Categorical Features<a href="limo.html#cat-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are several ways to encode a categorical feature, and the choice influences the interpretation of the weights.</p>
