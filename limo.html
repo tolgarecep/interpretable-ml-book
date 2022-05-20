@@ -554,7 +554,7 @@ window.cookieconsent.initialise({
 <p>Modelin "doğru" model olup olmadığı, verideki ilişkilerin yapılan varsayımlarla tutarlı olup
   olmadığına bağlıdır. Bu varsayımlar lineerlik, normallik, homoskedastisite (sabit
   varyans), bağımsızlık,
-  sabit nitelikler ve multicollinearity'nin olmaması.
+  niteliklerin sabitliği ve çoklu doğrusal bağlılığın yokluğu.
 <p><strong>Lineerlik</strong><br />
 Lineer regression modeli, tahmini niteliklerin bir lineer kombinasyonu olmaya zorlar; bu
   hem en güçlü hem de en zayıf yanıdır. Lineerlik yorumlanabilirliği sağlar. Lineer etkileri
@@ -576,11 +576,11 @@ Lineer regression modeli, tahmini niteliklerin bir lineer kombinasyonu olmaya zo
   Tüm veri örneklerinin diğerlerinden bağımsız olduğu varsayılır. Eğer tekrar tekrar ölçüm yaparsanız, bir hasta için birden çok kan testi yapmak gibi,
   veri taneleri (gözlemler) bağımsız değildir. Bağımsız olmayan veriler için karışık etki modelleri veya GEE'ler gibi özel bir lineer regression modeline
   ihtiyacınız olur. Eğer "normal" lineer regression kullanırsanız, modelden yanlış sonuçlar elde edebilirsiniz.</p>
-<p><strong>Sabit nitelikler</strong><br />
+<p><strong>Niteliklerin sabitliği</strong><br />
   Girdi nitelikler "sabit" kabul edilirler. Buradaki sabit, niteliklerin istatiktiksel değişkenler olarak değil, eldeki sabitler olarak kabul edildiği anlamına gelir.
   Bu, niteliklerin ölçümünde hata olmayacağı anlamına gelen gerçek dışı bir varsayımdır. Ancak, bu varsayımı yapmazsanız, girdilerdeki hata paylarını dikkate alan
   çok karmaşık hata modelleri kullanmanız gerekir; genelde bu istenmeyen bir durumdur.</p>
-<p><strong>Multicollinearity'nin olmaması</strong><br />
+<p><strong>Çoklu doğrusal bağlılığın yokluğu</strong><br />
   Ağırlıkların hesaplanmasını karıştıracağından, aralarında güçlü korelasyonlar olan niteliklerle çalışmak istemezsiniz. İki niteliğin arasında güçlü
   korelasyonun olduğu bir durumda ağırlıkları hesaplamak sorunlu hale gelir çünkü niteliklerin etkileri toplamsaldır ve etkilerin hangi niteliğe atfedileceği belirsiz hale gelir.</p>
 
@@ -1032,32 +1032,33 @@ days_since_2011
   niteliğinin etkisi diğer verilere göre daha düşüktür çünkü bu veri örneği 2011'in 5. gününe denk gelir, burada da bu niteliğin ağırlığı pozitiftir.</p>
   </div>
 <div id="cat-code" class="section level3 hasAnchor">
-<h3><span class="header-section-number">5.1.5</span> Encoding of Categorical Features<a href="limo.html#cat-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>There are several ways to encode a categorical feature, and the choice influences the interpretation of the weights.</p>
-<p>The standard in linear regression models is treatment coding, which is sufficient in most cases.
-Using different encodings boils down to creating different (design) matrices from a single column with the categorical feature.
-This section presents three different encodings, but there are many more.
-The example used has six instances and a categorical feature with three categories.
-For the first two instances, the feature takes category A;
-for instances three and four, category B;
-and for the last two instances, category C.</p>
-<p><strong>Treatment coding</strong></p>
-<p>In treatment coding, the weight per category is the estimated difference in the prediction between the corresponding category and the reference category.
-The intercept of the linear model is the mean of the reference category (when all other features remain the same).
-The first column of the design matrix is the intercept, which is always 1.
-Column two indicates whether instance i is in category B, column three indicates whether it is in category C.
-There is no need for a column for category A, because then the linear equation would be overspecified and no unique solution for the weights can be found.
-It is sufficient to know that an instance is neither in category B or C.</p>
-<p>Feature matrix: <span class="math display">\[\begin{pmatrix}1&amp;0&amp;0\\1&amp;0&amp;0\\1&amp;1&amp;0\\1&amp;1&amp;0\\1&amp;0&amp;1\\1&amp;0&amp;1\\\end{pmatrix}\]</span></p>
-<p><strong>Effect coding</strong></p>
-<p>The weight per category is the estimated y-difference from the corresponding category to the overall mean (given all other features are zero or the reference category).
+<h3><span class="header-section-number">5.1.5</span> Kategorik Niteliklerin Şifrelenmesi<a href="limo.html#cat-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Kategorik nitelikleri şifrelemek için birkaç yöntem var ve ağırlıkların yorumlanması seçtiğiniz yönteme göre değişiklik gösterir. </p>
+<p>Lineer regression modelleri için standart yöntem tedavi şifrelemesidir, ve çoğu durumda yeterli bir çözümdür. Farklı şifreleme
+  yöntemleri, kategorik niteliğin sütunundaki değerleri tasarım matrisine yerleştirme şekillerinde ayrışır. Bu kısımda üç farklı şifreleme yöntemine bakacağız,
+  ama tüm metotlar bunlarla sınırlı değil. İlk iki veri örneği için nitelik A kategorisi, üçüncü ve dördüncü için nitelik B kategorisi ve son ikisi
+  için C kategorisi değerini alır.</p>
+  
+<p><strong>Tedavi şifrelemesi</strong></p>
+<p>Tedavi şifrelemesinde ağırlıklar, referans kategorisi ve eldeki kategori arasında tahmin değerinde oluşan farktır. Modeldeki intercept terimi,
+  diğer tüm nitelikler aynı kaldığında, referans kategorisinin ortalamasıdır. Tasarım matrisinin ilk sütunu intercept, yani tamamı 1'lerden oluşan bir sütundur.
+  İkinci sütun verinin B kategorisinde olup olmadığını, üçüncü sütun ise C kategorisinde olup olmadığını belirtir. A kategorisi için bir sütuna
+  ihtiyaç yoktur, çünkü bu durumda lineer denklem "overspecified" olur ve ağırlıklar için biricik çözüm bulunamaz.
+  Verinin ne B ne de C kategorisinde olmadığını bilmek yeterlidir.</p>
+<p>Nitelik matrisi: <span class="math display">\[\begin{pmatrix}1&amp;0&amp;0\\1&amp;0&amp;0\\1&amp;1&amp;0\\1&amp;1&amp;0\\1&amp;0&amp;1\\1&amp;0&amp;1\\\end{pmatrix}\]</span></p>
+
+  <p><strong>Etki şifrelemesi</strong></p>
+<p>Bu durumda ağırlık, hedef ile tüm kategorilerin ortalama hedefi arasındaki farktır. 
+  
+  The weight per category is the estimated y-difference from the corresponding category to the overall mean (given all other features are zero or the reference category).
 The first column is used to estimate the intercept.
 The weight <span class="math inline">\(\beta_{0}\)</span> associated with the intercept represents the overall mean and <span class="math inline">\(\beta_{1}\)</span>, the weight for column two, is the difference between the overall mean and category B.
 The total effect of category B is <span class="math inline">\(\beta_{0}+\beta_{1}\)</span>.
 The interpretation for category C is equivalent.
 For the reference category A, <span class="math inline">\(-(\beta_{1}+\beta_{2})\)</span> is the difference to the overall mean and <span class="math inline">\(\beta_{0}-(\beta_{1}+\beta_{2})\)</span> the overall effect.</p>
-<p>Feature matrix: <span class="math display">\[\begin{pmatrix}1&amp;-1&amp;-1\\1&amp;-1&amp;-1\\1&amp;1&amp;0\\1&amp;1&amp;0\\1&amp;0&amp;1\\1&amp;0&amp;1\\\end{pmatrix}\]</span></p>
-<p><strong>Dummy coding</strong></p>
+<p>Nitelik matrisi: <span class="math display">\[\begin{pmatrix}1&amp;-1&amp;-1\\1&amp;-1&amp;-1\\1&amp;1&amp;0\\1&amp;1&amp;0\\1&amp;0&amp;1\\1&amp;0&amp;1\\\end{pmatrix}\]</span></p>
+
+  <p><strong>Dummy coding</strong></p>
 <p>The <span class="math inline">\(\beta\)</span> per category is the estimated mean value of y for each category (given all other feature values are zero or the reference category).
 Note that the intercept has been omitted here so that a unique solution can be found for the linear model weights.
 Another way to mitigate this multicollinearity problem is to leave out one of the categories.</p>
@@ -1066,6 +1067,7 @@ Another way to mitigate this multicollinearity problem is to leave out one of th
 <a href="http://heidiseibold.github.io/page7/">this blog post</a>.</p>
 </div>
 <div id="do-linear-models-create-good-explanations" class="section level3 hasAnchor">
+  
 <h3><span class="header-section-number">5.1.6</span> Do Linear Models Create Good Explanations?<a href="limo.html#do-linear-models-create-good-explanations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Judging by the attributes that constitute a good explanation, as presented <a href="explanation.html#good-explanation">in the Human-Friendly Explanations chapter</a>, linear models do not create the best explanations.
 They are contrastive, but the reference instance is a data point where all numerical features are zero and the categorical features are at their reference categories.
