@@ -1048,70 +1048,63 @@ days_since_2011
 <p>Nitelik matrisi: <span class="math display">\[\begin{pmatrix}1&amp;0&amp;0\\1&amp;0&amp;0\\1&amp;1&amp;0\\1&amp;1&amp;0\\1&amp;0&amp;1\\1&amp;0&amp;1\\\end{pmatrix}\]</span></p>
 
   <p><strong>Etki şifrelemesi</strong></p>
-<p>Bu durumda ağırlık, hedef ile tüm kategorilerin ortalama hedefi arasındaki farktır. 
-  
-  The weight per category is the estimated y-difference from the corresponding category to the overall mean (given all other features are zero or the reference category).
-The first column is used to estimate the intercept.
-The weight <span class="math inline">\(\beta_{0}\)</span> associated with the intercept represents the overall mean and <span class="math inline">\(\beta_{1}\)</span>, the weight for column two, is the difference between the overall mean and category B.
-The total effect of category B is <span class="math inline">\(\beta_{0}+\beta_{1}\)</span>.
-The interpretation for category C is equivalent.
-For the reference category A, <span class="math inline">\(-(\beta_{1}+\beta_{2})\)</span> is the difference to the overall mean and <span class="math inline">\(\beta_{0}-(\beta_{1}+\beta_{2})\)</span> the overall effect.</p>
+<p>Her kategori için ağırlık, diğer nitelikler sıfır veya referans değerini aldığında, o kategoriyle genel ortalama arasında tahmindeki farktır. İlk sütun
+  intercept'i hesaplamak için kullanılır. Intercept'in ağırlığı olan <span class="math inline">\(\beta_{0}\)</span> genel ortalamadır ve ikinci sütunun ağırlığı 
+  <span class="math inline">\(\beta_{1}\)</span>, genel ortalama ve B kategorisi arasındaki farktır. B kategorisinin toplam etkisi <span class="math inline">\(\beta_{0}+\beta_{1}\)</span> olur.
+  C kategorisinin yorumlanması da benzer şekilde yapılabilir. Referans kategorisi olan A için <span class="math inline">\(-(\beta_{1}+\beta_{2})\)</span>
+  genel ortalamayla aradaki fark ve <span class="math inline">\(\beta_{0}-(\beta_{1}+\beta_{2})\)</span> genel etkidir.
 <p>Nitelik matrisi: <span class="math display">\[\begin{pmatrix}1&amp;-1&amp;-1\\1&amp;-1&amp;-1\\1&amp;1&amp;0\\1&amp;1&amp;0\\1&amp;0&amp;1\\1&amp;0&amp;1\\\end{pmatrix}\]</span></p>
 
-  <p><strong>Dummy coding</strong></p>
-<p>The <span class="math inline">\(\beta\)</span> per category is the estimated mean value of y for each category (given all other feature values are zero or the reference category).
-Note that the intercept has been omitted here so that a unique solution can be found for the linear model weights.
-Another way to mitigate this multicollinearity problem is to leave out one of the categories.</p>
-<p>Feature matrix: <span class="math display">\[\begin{pmatrix}1&amp;0&amp;0\\1&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;1\\0&amp;0&amp;1\\\end{pmatrix}\]</span></p>
-<p>If you want to dive a little deeper into the different encodings of categorical features, checkout <a href="http://stats.idre.ucla.edu/r/library/r-library-contrast-coding-systems-for-categorical-variables/">this overview webpage</a> and
-<a href="http://heidiseibold.github.io/page7/">this blog post</a>.</p>
+  <p><strong>Kukla şifrelemesi</strong></p>
+<p>Her kategori için <span class="math inline">\(\beta\)</span>, o kategori için hesaplanan ortalama y değeridir (diğer tüm niteliklerin
+  değerlerinin sıfır veya referans değeri olduğu varsayımıyla). Burada lineer modelin ağırlıklarının biricik bir çözümünü bulabilmek adına
+  intercept ihmal edilir. Bu çoklu doğrusal bağlılık problemi herhangi bir kategoriyi ihmal ederek de çözülebilir.</p>
+<p>Nitelik matrisi: <span class="math display">\[\begin{pmatrix}1&amp;0&amp;0\\1&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;1\\0&amp;0&amp;1\\\end{pmatrix}\]</span></p>
+<p>Kategorik niteliklerin farklı şifrelenme yöntemlerini incelemek istiyorsanız, 
+  <a href="http://stats.idre.ucla.edu/r/library/r-library-contrast-coding-systems-for-categorical-variables/">bu sayfaya</a> ve 
+  <a href="http://heidiseibold.github.io/page7/">şu blog yazısına</a> bakabilirsiniz.</p>
 </div>
 <div id="do-linear-models-create-good-explanations" class="section level3 hasAnchor">
   
-<h3><span class="header-section-number">5.1.6</span> Do Linear Models Create Good Explanations?<a href="limo.html#do-linear-models-create-good-explanations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Judging by the attributes that constitute a good explanation, as presented <a href="explanation.html#good-explanation">in the Human-Friendly Explanations chapter</a>, linear models do not create the best explanations.
-They are contrastive, but the reference instance is a data point where all numerical features are zero and the categorical features are at their reference categories.
-This is usually an artificial, meaningless instance that is unlikely to occur in your data or reality.
-There is an exception:
-If all numerical features are mean centered (feature minus mean of feature) and all categorical features are effect coded, the reference instance is the data point where all the features take on the mean feature value.
-This might also be a non-existent data point, but it might at least be more likely or more meaningful.
-In this case, the weights times the feature values (feature effects) explain the contribution to the predicted outcome contrastive to the “mean-instance”.
-Another aspect of a good explanation is selectivity, which can be achieved in linear models by using less features or by training sparse linear models.
-But by default, linear models do not create selective explanations.
-Linear models create truthful explanations, as long as the linear equation is an appropriate model for the relationship between features and outcome.
-The more non-linearities and interactions there are, the less accurate the linear model will be and the less truthful the explanations become.
-Linearity makes the explanations more general and simpler.
-The linear nature of the model, I believe, is the main factor why people use linear models for explaining relationships.</p>
+<h3><span class="header-section-number">5.1.6</span> Lineer Modeller İyi Açıklamalar Meydana Getirir Mi?<a href="limo.html#do-linear-models-create-good-explanations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="explanation.html#good-explanation">İnsan dostu açıklamalar</a> kısmında bahsettiğimiz iyi bir açıklamanın gereklilikleri incelendiğinde,
+  lineer modellerin en iyi açıklamalar için uygun olmadıkları görülür. Karşıtlıklardan faydalanırlar ama referans alınan veri örneği tüm sayısal değerlerin
+  sıfır ve tüm kategorik değerlerin referans kategorisinde olduğu bir örnek olduğundan yapay ve anlamsızdır ve gerçekte verinizin içinde bulunma
+  olasılığı çok düşüktür; bir istina dışında: Eğer tüm sayısal niteliklerde değerler ortalama merkezli hale getirilirse (niteliğin değeri eksi ortalama) ve
+  tüm kategorik nitelikler etki şifrelemesiyle şifrelenirse, referans örneği tüm niteliklerin ortalama değerini aldığı örnek olur. Bu da var olmayan bir 
+  örnek olabilir, ama en azından karşılaşması daha olası ve daha anlamlıdır. Bu durumda hesaplanan nitelik etkileri, tahmine olan katkıyı bu "ortalam örneğe"
+  bağıl olarak temsil eder. İyi bir açıklamanın diğer özelliği seçilebilirliktir ve lineer modellerde daha az nitelik kullanarak veya aralıklı lineer modeller
+  kullanarak elde edilebilir. Ama normal halleriyle lineer modeller farklı açıklamalar için seçenekler sunan açıklamalar oluşturmaz. Lineer modeller, lineer denklem
+  nitelikler ve hedef değişken arasındaki ilişki için uygun olduğu durumlarda gerçekçi açıklamalar oluştururlar. Lineer olmayan ilişkilerin ve birbiriyle etkileşimli
+  niteliklerin sayısı arttıkça, lineer model daha kötü performans gösterecek ve açıklamalar daha az gerçekçi olacaktır. Lineerlik, açıklamaların daha genel ve 
+  basit olmasını sağlar, ki bence modellerin bu yapısı insanların açıklamalarda lineer modeller kullanmasının temel sebebidir.</p>
 </div>
 <div id="sparse-linear" class="section level3 hasAnchor">
-<h3><span class="header-section-number">5.1.7</span> Sparse Linear Models<a href="limo.html#sparse-linear" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The examples of the linear models that I have chosen all look nice and neat, do they not?
-But in reality you might not have just a handful of features, but hundreds or thousands.
-And your linear regression models?
-Interpretability goes downhill.
-You might even find yourself in a situation where there are more features than instances, and you cannot fit a standard linear model at all.
-The good news is that there are ways to introduce sparsity (= few features) into linear models.</p>
-<div id="lasso" class="section level4 hasAnchor">
+<h3><span class="header-section-number">5.1.7</span> Aralıklı Lineer Modeller<a href="limo.html#sparse-linear" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Şimdiye kadar seçtiğim örnekler gayet hoş duruyordu değil mi? Gerçekte, elinizdeki niteliklerin sayısı birkaç tane değil yüzlerce hatta binlerce olabilir.
+  Peki o zaman lineer regression modelleri işe yarar mı? Yorumlanabilirlikleri hızla düşecektir. Niteliklerin örneklerden daha fazla olduğu durumlarla bile
+  karşılaşabilirsiniz, o zaman standart bir lineer modeli hesaplayamazsınız bile. Bu durumlarda bizi kurtaracak olan şey modele aralıklılık 
+  (daha az nitelikle çalışabilmeyi) getirecek yöntemlerdir. </p> 
+  
+  <div id="lasso" class="section level4 hasAnchor">
 <h4><span class="header-section-number">5.1.7.1</span> Lasso<a href="limo.html#lasso" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Lasso is an automatic and convenient way to introduce sparsity into the linear regression model.
-Lasso stands for “least absolute shrinkage and selection operator” and, when applied in a linear regression model, performs feature selection and regularization of the selected feature weights.
-Let us consider the minimization problem that the weights optimize:</p>
+<p>Lasso, lineer modelleri aralıklı yapmak için otomatik ve elverişli bir yöntemdir. Açılımı "en küçük mutlak küçülme ve seçim operatörü"dür ve bir lineer regression
+  modeline uygulandığında, nitelik seçimini ve ağırlıkların regularization'ını sağlar. Ağırlıkları optimize edeceğimiz şu minimizasyon problemini düşünelim:</p>
 <p><span class="math display">\[min_{\boldsymbol{\beta}}\left(\frac{1}{n}\sum_{i=1}^n(y^{(i)}-x_i^T\boldsymbol{\beta})^2\right)\]</span></p>
-<p>Lasso adds a term to this optimization problem.</p>
+<p>Lasso bu optimizasyon problemine bir terim ekler:</p>
 <p><span class="math display">\[min_{\boldsymbol{\beta}}\left(\frac{1}{n}\sum_{i=1}^n(y^{(i)}-x_{i}^T\boldsymbol{\beta})^2+\lambda||\boldsymbol{\beta}||_1\right)\]</span></p>
-<p>The term <span class="math inline">\(||\boldsymbol{\beta}||_1\)</span>, the L1-norm of the feature vector, leads to a penalization of large weights.
-Since the L1-norm is used, many of the weights receive an estimate of 0 and the others are shrunk.
-The parameter lambda (<span class="math inline">\(\lambda\)</span>) controls the strength of the regularizing effect and is usually tuned by cross-validation.
-Especially when lambda is large, many weights become 0.
-The feature weights can be visualized as a function of the penalty term lambda.
-Each feature weight is represented by a curve in the following figure.</p>
+<p><span class="math inline">\(||\boldsymbol{\beta}||_1\)</span> terimi, nitelik vektörünün L1-normu, büyük ağırlık değerlerinin seçilmesini önler.
+  L1-normu kullanıldığından çoğu ağırlık sıfır değerini alır, diğerleriyse küçülür. Lambda parametresi (<span class="math inline">\(\lambda\)</span>)
+  regularization etkisinin gücünü kontrol eder ve genelde çapraz doğrulama ile ayarlanır. Özellikle lambda büyük olduğunda çoğu
+  ağırlık sıfır değerini alır. Niteliklerin ağırlıkları lambda teriminin bir fonksiyonu olarak görselleştirilebilir. Her bir ağırlık aşağıdaki
+  şekilde bir eğriyle gösterilmiştir:</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:lasso-path"></span>
 <img src="images/lasso-path-1.png" alt="With increasing penalty of the weights, fewer and fewer features receive a non-zero weight estimate. These curves are also called regularization paths. The number above the plot is the number of non-zero weights." width="\textwidth" />
 <p class="caption">
-FIGURE 5.4: With increasing penalty of the weights, fewer and fewer features receive a non-zero weight estimate. These curves are also called regularization paths. The number above the plot is the number of non-zero weights.
+ŞEKİL 5.4: Lambda değeri arttıkça daha az nitelik sıfır olmayan bir ağırlık alır. Bu eğrilere regularization yolları da denir. Grafiğin üstündeki sayı sıfır olmayan ağırlık sayısıdır.
 </p>
 </div>
-<p>What value should we choose for lambda?
+<p>Peki lambda değerini nasıl seçmeliyiz?
 If you see the penalization term as a tuning parameter, then you can find the lambda that minimizes the model error with cross-validation.
 You can also consider lambda as a parameter to control the interpretability of the model.
 The larger the penalization, the fewer features are present in the model (because their weights are zero) and the better the model can be interpreted.</p>
