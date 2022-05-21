@@ -1104,15 +1104,13 @@ days_since_2011
 ŞEKİL 5.4: Lambda değeri arttıkça daha az nitelik sıfır olmayan bir ağırlık alır. Bu eğrilere regularization yolları da denir. Grafiğin üstündeki sayı sıfır olmayan ağırlık sayısıdır.
 </p>
 </div>
-<p>Peki lambda değerini nasıl seçmeliyiz?
-If you see the penalization term as a tuning parameter, then you can find the lambda that minimizes the model error with cross-validation.
-You can also consider lambda as a parameter to control the interpretability of the model.
-The larger the penalization, the fewer features are present in the model (because their weights are zero) and the better the model can be interpreted.</p>
-<p><strong>Example with Lasso</strong></p>
-<p>We will predict bicycle rentals using Lasso.
-We set the number of features we want to have in the model beforehand.
-Let us first set the number to 2 features:</p>
-<table class="table" style="margin-left: auto; margin-right: auto;">
+<p>Peki lambda değerini nasıl seçmeliyiz? Terimi parametre kabul edip çapraz doğrulama yaparsak hatayı minimize eden lambda değerini bulabiliriz.
+  Lambda, modelin yorumlanabilirliğini kontrol eden bir parametre olarak da düşünülebilir; değeri arttıkça model daha az nitelikle çalışır 
+  (çünkü bazı niteliklerin katsayıları sıfır olur) ve daha yorumlanabilir bir hale gelir.</p>
+<p><strong>Lasso'yla bir örnek</strong></p>
+<p>Lasso'yu kullanarak kiralanan bisiklet sayısını tahmin etmeye çalışacağız. Modelde kullanmak istediğimiz nitelik sayısını önceden 2 olarak
+  belirleyelim.
+    <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -1221,8 +1219,8 @@ days_since_2011
 </tr>
 </tbody>
 </table>
-<p>The first two features with non-zero weights in the Lasso path are temperature (“temp”) and the time trend (“days_since_2011”).</p>
-<p>Now, let us select 5 features:</p>
+<p>Lasso'nun sıfır olmayan bir ağırlık vermeyi seçtiği ilk iki nitelik sıcaklık ve geçen gün sayısı nitelikleri.</p>
+<p>Şimdi de 5 nitelikle deneyelim:</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1332,61 +1330,53 @@ days_since_2011
 </tr>
 </tbody>
 </table>
-<p>Note that the weights for “temp” and “days_since_2011” differ from the model with two features.
-The reason for this is that by decreasing lambda even features that are already “in” the model are penalized less and may get a larger absolute weight.
-The interpretation of the Lasso weights corresponds to the interpretation of the weights in the linear regression model.
-You only need to pay attention to whether the features are standardized or not, because this affects the weights.
-In this example, the features were standardized by the software, but the weights were automatically transformed back for us to match the original feature scales.</p>
-<p><strong>Other methods for sparsity in linear models</strong></p>
-<p>A wide spectrum of methods can be used to reduce the number of features in a linear model.</p>
-<p>Pre-processing methods:</p>
+<p>Burada sıcaklık ve geçen gün sayısı niteliklerine verilen ağırlıkların farklı olduğuna dikkat edelim. Bunun sebebi lambdanın düşmesi "zaten" modelde
+  olan nitelikleri daha az cezalandırır ve bu yüzden daha fazla mutlak değere sahip bir ağırlık verebilir. Lasso'nun verdiği ağırlıklar aynen normal lineer regression
+  durumundaki ağırlıklar gibi yorumlanır. Sadece niteliklerin standardize edilip edilmediğini dikkat etmeniz gerekir, çünkü bu ağırlıkları etkiler. Bu örnekte
+  nitelikler yazılım tarafından standardize edildi ama ağırlıklar orijinal ölçeklere uyacak şekilde geri dönüştürüldü.
+  Note that the weights for “temp” and “days_since_2011” differ from the model with two features.</p>
+<p><strong>Lineer modelleri aralıklandırmak için diğer yöntemler:</strong></p>
+<p>Bir lineer modelin nitelik sayısını düşürmek için kullanabileceğiniz çokça metot vardır.</p>
+<p>Önişleme metotları:</p>
 <ul>
-<li>Manually selected features:
-You can always use expert knowledge to select or discard some features.
-The big drawback is that it cannot be automated and you need to have access to someone who understands the data.</li>
-<li>Univariate selection:
-An example is the correlation coefficient.
-You only consider features that exceed a certain threshold of correlation between the feature and the target.
-The disadvantage is that it only considers the features individually.
-Some features might not show a correlation until the linear model has accounted for some other features.
-Those ones you will miss with univariate selection methods.</li>
+<li>Nitelikleri elle seçme: Nitelikleri seçmek için bir uzmana başvurabilirsiniz. Bu yöntemin kötü yanı otomatikleştirilememesi ve veriden
+  anlayan birisine ihtiyacınızın olması.</li>
+<li>Tek değişkenli seçim: Bir örneği korelasyon katsayısıdır. Hedef değişkenle arasında belli bir değerin yukarısında korelasyon olan
+  nitelikleri alırsınız. Dezavantajı nitelikleri tek başlarına değerlendiriyor olmasıdır; bazı nitelikler, lineer model onu diğerleriyle birlikte
+  hesaba katmadan önce iyi bir korelasyon gösteremeyebilir. Bu tür nitelikleri tek değişkenli seçim metotlarını kullandığınızda gözden kaçırırsınız.</li>
 </ul>
-<p>Step-wise methods:</p>
+<p>Adımlı metotlar:</p>
 <ul>
-<li>Forward selection:
-Fit the linear model with one feature.
-Do this with each feature.
-Select the model that works best (e.g. highest R-squared).
-Now again, for the remaining features, fit different versions of your model by adding each feature to your current best model.
-Select the one that performs best.
-Continue until some criterion is reached, such as the maximum number of features in the model.</li>
-<li>Backward selection:
-Similar to forward selection.
-But instead of adding features, start with the model that contains all features and try out which feature you have to remove to get the highest performance increase.
-Repeat this until some stopping criterion is reached.</li>
+<li>İleri yönlü seçim: Lineer modeli her nitelik için sadece o niteliği kullanarak hesaplayın ve en iyi çalışanı seçin (en yüksek R-kare değerine
+  sahip olanı). Daha sonra bu modele diğer nitelikleri teker teker ekleyerek en iyi çalışanla sürece devam edin. Maksimum nitelik sayısı gibi
+  bir kritere ulaştığınızda işlemi sonlandırın.</li>
+<li>Geri yönlü seçim: İleri yönlü seçime benzerdir, ama burada nitelik eklemek yerine tüm nitelikleri içeren modelle başlayıp en iyi performansa erişmek için
+  hangisini çıkartmanız gerektiğini ararsınız. Yine bir kritere ulaşana kadar süreci devam ettirirsiniz.</li>
 </ul>
-<p>I recommend using Lasso, because it can be automated, considers all features simultaneously, and can be controlled via lambda.
-It also works for the <a href="logistic.html#logistic">logistic regression model</a> for classification.</p>
-</div>
+<p>Benim tavsiyem Lasso'dur, çünkü otomatiktir, tüm nitelikleri aynı anda değerlendirir ve lambda terimiyle kontrol edilebilir. Aynı zamanda
+  <a href="logistic.html#logistic">logistic regression</a>'la sınıflandırma için de çalışır.</div>
 </div>
 <div id="advantages" class="section level3 hasAnchor">
-<h3><span class="header-section-number">5.1.8</span> Advantages<a href="limo.html#advantages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The modeling of the predictions as a <strong>weighted sum</strong> makes it transparent how predictions are produced.
-And with Lasso we can ensure that the number of features used remains small.</p>
-<p>Many people use linear regression models.
-This means that in many places it is <strong>accepted</strong> for predictive modeling and doing inference.
-There is a <strong>high level of collective experience and expertise</strong>, including teaching materials on linear regression models and software implementations.
-Linear regression can be found in R, Python, Java, Julia, Scala, Javascript, …</p>
-<p>Mathematically, it is straightforward to estimate the weights and you have a <strong>guarantee to find optimal weights</strong> (given all assumptions of the linear regression model are met by the data).</p>
-<p>Together with the weights you get confidence intervals, tests, and solid statistical theory.
-There are also many extensions of the linear regression model (see <a href="extend-lm.html#extend-lm">chapter on GLM, GAM and more</a>).</p>
+<h3><span class="header-section-number">5.1.8</span> Avantajlar<a href="limo.html#advantages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Tahminlerin <strong>ağırlıklandırılmış bir toplamla</strong> modellenmesi tahmin etme sürecini saydam kılar, ve Lasso ile 
+  kullanılan nitelik sayısının az olduğundan emin olabiliriz.</p>
+<p>Lineer regression modellerinin kullanımı oldukça yaygın olduğundan birçok yerde tahmin amaçlı modelleme ve çıkarım için kullanılması 
+  <strong>uygun görülmüştür</strong>. Öğrenim materyalleri ve yazılım da dahil olmak üzere, üzerinde <strong>yüksek seviyede bir kolektif tecrübe ve uzmanlık
+  </strong> vardır. R, Python, Java, Julia, Scala, Javascript gibi birçok programlama dilinde bulunabilir.</p> 
+  
+<p>Matematiksel olarak bu ağırlıkları hesaplamak kolaydır ve <strong>optimal ağırlıkları bulacağınızın garantisi büyüktür</strong> 
+  (lineer regression varsayımlarının veriyle uyuşması halinde).</p>
+<p>Ağırlıklarla birlikte karar aralıklarını, testleri ve sağlam istatistik teorisini elde edersiniz. Aynı zamanda lineer regression'ın birçok
+  uzantısı vardır (<a href="extend-lm.html#extend-lm">GLM, GAM ve daha fazlası</a>).</p>
 </div>
 <div id="disadvantages" class="section level3 hasAnchor">
-<h3><span class="header-section-number">5.1.9</span> Disadvantages<a href="limo.html#disadvantages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Linear regression models can only represent linear relationships, i.e. a weighted sum of the input features.
-Each <strong>nonlinearity or interaction has to be hand-crafted</strong> and explicitly given to the model as an input feature.</p>
-<p>Linear models are also often <strong>not that good regarding predictive performance</strong>, because the relationships that can be learned are so restricted and usually oversimplify how complex reality is.</p>
-<p>The interpretation of a weight <strong>can be unintuitive</strong> because it depends on all other features.
+<h3><span class="header-section-number">5.1.9</span> Dezavantajlar<a href="limo.html#disadvantages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Lineer regression modeleri yalnızca lineer ilişkileri, yani niteliklerin ağırlıklandırılmış toplamı olan hedefleri temsil edebilirler.
+  <strong>Lineer olmayan veya niteliklerin birbiriyle etkileşimiyle ifade edilebilecek her değişkenin elle oluşturulması</strong>
+  ve modele girdi olarka eklenmesi gerekir.</p>
+<p>Aynı zamanda lineer modeller <strong>genelde iyi performans göstermezler</strong>, çünkü öğrenebilecekleri ilişkiler sınırlıdır ve
+  gerçekliğin karmaşıklığını fazla basite indirgerler.</p>
+<p>Ağırlıkların yorumlanması <strong>anlamsız gelebilir</strong> çünkü her biri diğer niteliklere bağlıdır. 
 A feature with high positive correlation with the outcome y and another feature might get a negative weight in the linear model, because, given the other correlated feature, it is negatively correlated with y in the high-dimensional space.
 Completely correlated features make it even impossible to find a unique solution for the linear equation.
 An example:
