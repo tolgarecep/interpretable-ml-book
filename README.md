@@ -1,3 +1,17 @@
+# Yorumlanabilir Makine Öğrenmesi
+
+Makine öğrenmesi modellerini anlamlandırma rehberi. 
+
+Orijinal (İngilizce) hali: https://christophm.github.io/interpretable-ml-book/
+
+## Çevirmenin Notu
+
+Kullanım alanı artan makine öğrenmesi modellerini anlamlandırmak oldukça kritik. Bu kitapla temel algoritmalardan derin öğrenmeye modelleri nasıl yorumlayabileceğinizi öğrenebilirsiniz. Okurken sadece bu kaynakla ve sadece Türkçe kaynaklarla sınırlı kalmamak kaydıyla herhangi bir ön bilgiye ihtiyacınız yok. 
+
+Tolga Recep Uçar // https://tolgarecep.github.io
+
+Orijinal README.md: 
+
 # Interpretable machine learning
 
 Explaining the decisions and behaviour of machine learning models.
