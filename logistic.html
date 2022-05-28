@@ -562,64 +562,55 @@ window.cookieconsent.initialise({
 <p class="caption">
 ŞEKİL 5.7: Logistic regression modeli, iyi ve kötü huylu tümörler arasındaki doğru karar sınırını bulur.</p>
 </div>
-<p>Classification works better with logistic regression and we can use 0.5 as a threshold in both cases. The inclusion of additional points does not really affect the estimated curve.</p>
+<p>Logistic regression modeli sınıflandırma için daha uygundur ve 0.5 değeri her iki durumda da eşik değeri olarak çalışabilir. Eklenen veri noktaları
+  hesaplanan eğriyi fazla etkilemez.</p>
 </div>
 <div id="interpretation-1" class="section level3 hasAnchor">
-<h3><span class="header-section-number">5.2.3</span> Interpretation<a href="logistic.html#interpretation-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The interpretation of the weights in logistic regression differs from the interpretation of the weights in linear regression, since the outcome in logistic regression is a probability between 0 and 1.
-The weights do not influence the probability linearly any longer.
-The weighted sum is transformed by the logistic function to a probability.
-Therefore we need to reformulate the equation for the interpretation so that only the linear term is on the right side of the formula.</p>
+<h3><span class="header-section-number">5.2.3</span> Yorumlama<a href="logistic.html#interpretation-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Logistic regression modelinde çıktı 0 ve 1 arasında bir olasılık değeri olduğundan ağırlıkların yorumlanışı lineer regression modelinden farklıdır.
+  Artık ağırlıklar olasılığı lineer olarak etkilemez. Ağırlıklandırılmış toplam logistic fonksiyonu ile bir olasılık değerine dönüştürülür. 
+  Yorumlayabilmek adına denklemi sadece lineer terim sağ tarafta kalacak şekilde tekrar yazmamız gerekir.</p>
 <p><span class="math display">\[ln\left(\frac{P(y=1)}{1-P(y=1)}\right)=log\left(\frac{P(y=1)}{P(y=0)}\right)=\beta_{0}+\beta_{1}x_{1}+\ldots+\beta_{p}x_{p}\]</span></p>
-<p>We call the term in the ln() function “odds” (probability of event divided by probability of no event) and wrapped in the logarithm it is called log odds.</p>
-<p>This formula shows that the logistic regression model is a linear model for the log odds.
-Great!
-That does not sound helpful!
-With a little shuffling of the terms, you can figure out how the prediction changes when one of the features <span class="math inline">\(x_j\)</span> is changed by 1 unit.
-To do this, we can first apply the exp() function to both sides of the equation:</p>
+<p>ln() fonksiyonunun içindeki terime "odds" (bir olayın olma olasılığı bölü olmama olasılığı) denir ve logaritması alındığında log odds olur.</p>
+<p>Bu formülde logistic regression modelinin log odds için bir lineer model olduğunu görüyoruz, ama bu hala işe yarar durmuyor. Terimleri biraz karıştırarak
+  tahminin niteliklerden (<span class="math inline">\(x_j\)</span>) biri 1 birim değiştiğinde nasıl değiştiğini görebilirsiniz. Bunun için denklemin
+  her iki tarafını exp() fonksiyonuna alalım:</p>
 <p><span class="math display">\[\frac{P(y=1)}{1-P(y=1)}=odds=exp\left(\beta_{0}+\beta_{1}x_{1}+\ldots+\beta_{p}x_{p}\right)\]</span></p>
-<p>Then we compare what happens when we increase one of the feature values by 1.
-But instead of looking at the difference, we look at the ratio of the two predictions:</p>
+<p>Şimdi de niteliklerden biri 1 birim arttığında gerçekleşen değişime bakalım, ama fark yerine oranı hesaplayalım:</p>
 <p><span class="math display">\[\frac{odds_{x_j+1}}{odds}=\frac{exp\left(\beta_{0}+\beta_{1}x_{1}+\ldots+\beta_{j}(x_{j}+1)+\ldots+\beta_{p}x_{p}\right)}{exp\left(\beta_{0}+\beta_{1}x_{1}+\ldots+\beta_{j}x_{j}+\ldots+\beta_{p}x_{p}\right)}\]</span></p>
-<p>We apply the following rule:</p>
+<p>Aşağıdaki kuralı uygulayalım:</p>
 <p><span class="math display">\[\frac{exp(a)}{exp(b)}=exp(a-b)\]</span></p>
-<p>And we remove many terms:</p>
+<p>Ve terimleri çıkaralım:</p>
 <p><span class="math display">\[\frac{odds_{x_j+1}}{odds}=exp\left(\beta_{j}(x_{j}+1)-\beta_{j}x_{j}\right)=exp\left(\beta_j\right)\]</span></p>
-<p>In the end, we have something as simple as exp() of a feature weight.
-A change in a feature by one unit changes the odds ratio (multiplicative) by a factor of <span class="math inline">\(\exp(\beta_j)\)</span>.
-We could also interpret it this way:
-A change in <span class="math inline">\(x_j\)</span> by one unit increases the log odds ratio by the value of the corresponding weight.
-Most people interpret the odds ratio because thinking about the ln() of something is known to be hard on the brain.
-Interpreting the odds ratio already requires some getting used to.
-For example, if you have odds of 2, it means that the probability for y=1 is twice as high as y=0.
-If you have a weight (= log odds ratio) of 0.7, then increasing the respective feature by one unit multiplies the odds by exp(0.7) (approximately 2) and the odds change to 4.
-But usually you do not deal with the odds and interpret the weights only as the odds ratios.
-Because for actually calculating the odds you would need to set a value for each feature, which only makes sense if you want to look at one specific instance of your dataset.</p>
-<p>These are the interpretations for the logistic regression model with different feature types:</p>
+<p>Sonunda bir niteliğin ağırlığının exp() fonksiyonundaki değeri gibi sade bir değer elde ettik. Herhangi bir nitelikteki 1 birimlik değişim, odds oranını (çarpımsal)
+  <span class="math inline">\(\exp(\beta_j)\)</span> kat değiştirir. Bunu şu şekilde de yorumlayabiliriz: <span class="math inline">\(x_j\)</span> niteliğindeki
+  1 birimlik bir değişim log odds değerini o niteliğe karşılık gelen ağırlık kadar arttırır. Odds oranına sıklıkla başvurulur çünkü bir değerin ln() fonksiyonundaki
+  değerini düşünmek zihin için zordur, ama odds oranını yorumlamak kolaydır. Örneğin, odds değeri 2 ise, y=1'in olasılığı y=0'ın olasılığından iki kat daha fazladır.
+  Eğer ağırlık (= log odds oranı) 0.7 ise, karşılık gelen niteliği 1 birim arttırmak odds değerini exp(0.7) ile (yaklaşık 2 ile) çarpar ve odds değeri 4 olur.
+  Ama genelde odds değeriyle değil odds oranı olarak ağırlıklarla ilgilenirsiniz, çünkü odds değerini hesaplamak için her niteliğin değerini bilmeniz gerekir, ki
+  bu da tekil bir veri noktasıyla ilgileniyorsanız anlamlıdır.</p>
+<p>Farklı tipte niteliklere sahip logistic regression modelleri için yorumlama şu şekilde olur:</p>
 <ul>
-<li>Numerical feature:
-If you increase the value of feature <span class="math inline">\(x_{j}\)</span> by one unit, the estimated odds change by a factor of <span class="math inline">\(\exp(\beta_{j})\)</span></li>
-<li>Binary categorical feature:
-One of the two values of the feature is the reference category (in some languages, the one encoded in 0).
-Changing the feature <span class="math inline">\(x_{j}\)</span> from the reference category to the other category changes the estimated odds by a factor of <span class="math inline">\(\exp(\beta_{j})\)</span>.</li>
-<li>Categorical feature with more than two categories:
-One solution to deal with multiple categories is one-hot-encoding, meaning that each category has its own column.
-You only need L-1 columns for a categorical feature with L categories, otherwise it is over-parameterized.
-The L-th category is then the reference category.
-You can use any other encoding that can be used in linear regression.
-The interpretation for each category then is equivalent to the interpretation of binary features.</li>
-<li>Intercept <span class="math inline">\(\beta_{0}\)</span>:
-When all numerical features are zero and the categorical features are at the reference category, the estimated odds are <span class="math inline">\(\exp(\beta_{0})\)</span>.
-The interpretation of the intercept weight is usually not relevant.</li>
+<li>Sayısal nitelik: Eğer <span class="math inline">\(x_{j}\)</span> niteliğinin değerini 1 birim arttırırsanız, hesaplanan odds değeri
+  <span class="math inline">\(\exp(\beta_{j})\)</span> kat değişir.</li>
+<li>İkili kategorik nitelik: Niteliğin değerlerinden biri referans kategorisi (bazı dillerde 0 ile şifrelenen kategori) olarak adlandırılır.
+  <span class="math inline">\(x_{j}\)</span> niteliğini referans kategorisinden diğerine değiştirmek hesaplanan odds değerini <span class="math inline">\(\exp(\beta_{j})\)</span> kat değiştirir.</li>
+<li>İki kategoriden daha fazla değere sahip kategorik nitelikler: Çok kategoriyle başa çıkmanın bir yolu one hot şifrelemedir, bu durumda her kategorinin kendi
+  sütunu olur. L kategoriye sahip bir nitelik için sadece L-1 sütuna ihtiyacınız vardır, yoksa aşırı parametrize etmiş olursunuz. L. kategori referans kategorisi
+  olarak adlandırılır. Lineer regression'da kullanılan herhangi bir şifreleme metodunu burada da kullanabilirsiniz. Şifreleme tamamlandığında her bir kategorinin
+  yorumlanması ikili kategorik nitelikteki gibi olur.</li>
+<li>Intercept <span class="math inline">\(\beta_{0}\)</span>: Tüm sayısal niteliklerin değerleri sıfır ve tüm kategorik nitelikler referans kategorisinde
+  olduğunda, odds değeri <span class="math inline">\(\exp(\beta_{0})\)</span> olur. Intercept ağırlığının yorumlanması genelde önemsizdir.</li>
 </ul>
 </div>
 <div id="example-1" class="section level3 hasAnchor">
-<h3><span class="header-section-number">5.2.4</span> Example<a href="logistic.html#example-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>We use the logistic regression model to predict <a href="cervical.html#cervical">cervical cancer</a> based on some risk factors.
-The following table shows the estimate weights, the associated odds ratios, and the standard error of the estimates.</p>
+<h3><span class="header-section-number">5.2.4</span> Örnek<a href="logistic.html#example-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Bazı risk faktörlerine dayanarak <a href="cervical.html#cervical">rahim ağzı kanseri</a> varlığını tahmin etmek için logistic regression kullanacağız.
+  Aşağıdaki tabloda hesaplanan ağırlıklar, ilgili odds oranları ve tahminlerin standart hataları yer alıyor.</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:logistic-example">TABLE 5.2: </span>The results of fitting a logistic regression model on the cervical cancer dataset. Shown are the features used in the model, their estimated weights and corresponding odds ratios, and the standard errors of the estimated weights.
+<span id="tab:logistic-example">TABLO 5.2: </span>
+  Rahim ağzı kanserinde logistic regression modelinin sonuçları.
 </caption>
 <thead>
 <tr>
@@ -723,34 +714,30 @@ Intrauterine device y/n
 </tr>
 </tbody>
 </table>
-<p>Interpretation of a numerical feature (“Num. of diagnosed STDs”):
-An increase in the number of diagnosed STDs (sexually transmitted diseases) changes (increases) the odds of cancer vs. no cancer by a factor of 2.27, when all other features remain the same.
-Keep in mind that correlation does not imply causation.</p>
-<p>Interpretation of a categorical feature (“Hormonal contraceptives y/n”):
-For women using hormonal contraceptives, the odds for cancer vs. no cancer are by a factor of 0.89 lower, compared to women without hormonal contraceptives, given all other features stay the same.</p>
-<p>Like in the linear model, the interpretations always come with the clause that ‘all other features stay the same’.</p>
+<p>Sayısal bir niteliğin yorumlanması ("Teşhis edilen STD sayısı"): Diğer tüm nitelikler sabitken, teşhis edilen STD (cinsel yolla bulaşan hastalıklar) sayısındaki artış kanser olasığı için
+  odds değerini (kanser olma olasılığı bölü olmama olasılığı) 2.27 kat arttırır. Burada korelasyonun zorunlu olarak nedensellik belirtmediğini hatırlayalım.</p>
+<p>Kategorik bir niteliğin yorumlanmnası (“Hormonal kontraseptifler (evet/hayır)”): Hormonal kontraseptif kullanan kadınlar için odds değeri kullanmayan
+  kadınlara göre 0.89 kat daha azdır; diğer tüm niteliklerin sabit olduğunu varsayarsak.</p>
+<p>Lineer modellerde olduğu gibi tüm yorumlar "diğer tüm nitelikler sabitken" varsayımını içerir.</p>
 </div>
 <div id="advantages-and-disadvantages" class="section level3 hasAnchor">
-<h3><span class="header-section-number">5.2.5</span> Advantages and Disadvantages<a href="logistic.html#advantages-and-disadvantages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Many of the pros and cons of the <a href="limo.html#limo">linear regression model</a> also apply to the logistic regression model.
-Logistic regression has been widely used by many different people, but it struggles with its restrictive expressiveness (e.g. interactions must be added manually) and other models may have better predictive performance.</p>
-<p>Another disadvantage of the logistic regression model is that the interpretation is more difficult because the interpretation of the weights is multiplicative and not additive.</p>
-<p>Logistic regression can suffer from <strong>complete separation</strong>.
-If there is a feature that would perfectly separate the two classes, the logistic regression model can no longer be trained.
-This is because the weight for that feature would not converge, because the optimal weight would be infinite.
-This is really a bit unfortunate, because such a feature is really useful.
-But you do not need machine learning if you have a simple rule that separates both classes.
-The problem of complete separation can be solved by introducing penalization of the weights or defining a prior probability distribution of weights.</p>
-<p>On the good side, the logistic regression model is not only a classification model, but also gives you probabilities.
-This is a big advantage over models that can only provide the final classification.
-Knowing that an instance has a 99% probability for a class compared to 51% makes a big difference.</p>
-<p>Logistic regression can also be extended from binary classification to multi-class classification.
-Then it is called Multinomial Regression.</p>
+<h3><span class="header-section-number">5.2.5</span> Avantajlar ve dezavantajlar<a href="logistic.html#advantages-and-disadvantages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="limo.html#limo">Lineer regression modelinin</a> avantaj ve dezavantajlarının çoğu logistic regression için de geçerlidir.
+  Logistic regression geniş çapta çokça kullanılıyor olsa da, eldeki durumu açıklarken kısıtlı özgürlüğe sahiptir (etkileşim niteliklerini
+  kendiniz eklemeniz gerekir) ve daha iyi performans gösteren modeller mümkündür. 
+<p>Bir diğer dezavantaj ise, ağırlıkların yorumu çarpımsal ilişki barındırdığından yorumlamanın zor olmasıdır.</p>
+<p>Logistic regression modelleri, <strong>mutlak ayrılmaya</strong> maruz kalabilir. Eğer elinizde hedef değişkeni çok iyi sınıflandırabilecek bir nitelik varsa
+  logistic regression modeli hesaplanamaz, çünkü bu durumda o niteliğin ağırlığının sonsuz olması gerekir ve çözüme yaklaşılamaz. Böyle işe yarar bir
+  niteliği kullanamamak kötüdür, ama zaten böyle bir durumda makine öğrenmesine ihtiyacınız kalmaz. Mutlak ayrılma ağırlıkların değer aralığına bir
+  sınırlandırma getirerek (regularization) ya da ağırlıklar için önceden bir olasılık dağılımı tanımlayarak çözülebilir.</p>
+<p>Logistic regression modellerinin iyi yanı modelin sınıflandırma yapmanın yanında size olasılık değerleri vermesidir. Bu sadece sınıflandırma kararını
+  çıktı veren modellere göre bir avantajdır. Bir verinin %99 ihtimalle bir sınıfa ait olması, %51 ihtimalle o sınıfa ait olmasından çok farklıdır.</p>
+<p>Logistic regression ikili sınıflandırmanın yanında çoklu sınıflandırma da yapabilir. Buna çok terimli regression denir.</p> 
 </div>
 <div id="software" class="section level3 hasAnchor">
-<h3><span class="header-section-number">5.2.6</span> Software<a href="logistic.html#software" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>I used the <code>glm</code> function in R for all examples.
-You can find logistic regression in any programming language that can be used for performing data analysis, such as Python, Java, Stata, Matlab, …</p>
+<h3><span class="header-section-number">5.2.6</span> Yazılım<a href="logistic.html#software" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Örnekleri hazırlarken R'deki <code>glm</code> fonksiyonunu kullandım. Logistic regression modelini veri analizi yapabilen Python, Java, Stata, Matlab gibi 
+  programlama dillerinde bulabilirsiniz.</p>
 
 <div style="page-break-after: always;"></div>
 </div>
