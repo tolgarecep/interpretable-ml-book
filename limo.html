@@ -546,10 +546,10 @@ window.cookieconsent.initialise({
   sebebi budur. Örneğin, tıpta, hastanın klinik sonucunu tahmin etmek tek önemli şey değildir,
   aynı cinsiyet, yaş ve diğer niteliklerde ilacın etkisini yorumlanabilir bir şekilde
   hesaplamak da önemlidir.</p>
-<p>Ağırlıklar tahmini karar aralıklarıyla beraber gelir. Karar aralıkları, ağırlık tahmini
+<p>Ağırlıklar tahmini güven aralıklarıyla beraber gelir. Güven aralıkları, ağırlık tahmini
   için "doğru" ağırlığı belli bir kararlılıkla içeren aralıktır. Örneğin, 2 ağırlığı için
-  %95 karar aralığı 1'den 3'e olabilir. Bu aralığın yorumlanması şöyle olur: Bu tahmini
-  yeni veriler için 100 kez tekrarlasaydık, karar aralığı 100 durumdan 95'inde doğru ağırlığı
+  %95 güven aralığı 1'den 3'e olabilir. Bu aralığın yorumlanması şöyle olur: Bu tahmini
+  yeni veriler için 100 kez tekrarlasaydık, güven aralığı 100 durumdan 95'inde doğru ağırlığı
   içerirdi (lineer regression'ın eldeki veri için doğru model olması durumunda).</p>
 <p>Modelin "doğru" model olup olmadığı, verideki ilişkilerin yapılan varsayımlarla tutarlı olup
   olmadığına bağlıdır. Bu varsayımlar lineerlik, normallik, homoskedastisite (sabit
@@ -564,7 +564,7 @@ Lineer regression modeli, tahmini niteliklerin bir lineer kombinasyonu olmaya zo
   veya regression spline'lar kullanabilirsiniz.</p>
 <p><strong>Normallik</strong><br />
   Eldeki niteliklere göre hedef değişkenin normal dağılımda olduğu varsayılır. Eğer bu 
-  varsayım ihlal edilirse, ağırlıklar için hesaplanan karar aralıkları geçersizdir.
+  varsayım ihlal edilirse, ağırlıklar için hesaplanan güven aralıkları geçersizdir.
 <p><strong>Homoskedastisite</strong> (sabit varyans)<br />
   Hata terimlerinin varyansının tüm nitelik uzayı boyunca sabit olduğu varsayılır. Bir evin fiyatını evin büyüklüğünden (metrekare) tahmin etmeye çalıştığınızı düşünün.
   Evin büyüklüğünden bağımsız olarak tahmindeki hatanın sabit varyansa sahip olduğunu varsayan bir lineer model oluşturuyorsunuz. Bu varsayım pratikte genellikle
@@ -860,12 +860,12 @@ itibaren geçen gün sayısı-->
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:linear-weights-plot"></span>
 <img src="images/linear-weights-plot-1.png" alt="Weights are displayed as points and the 95\% confidence intervals as lines." width="\textwidth" />
 <p class="caption">
-ŞEKİL 5.1: Noktalar ağırlıkları, çizgiler %95 karar aralıklarını temsil eder. 
+ŞEKİL 5.1: Noktalar ağırlıkları, çizgiler %95 güven aralıklarını temsil eder. 
 </p>
 </div>
 <p>Grafik, yağışlı/karlı/fırtınalı havanın tahmini kiralanan bisiklet sayısına güçlü bir şekilde negatif yönde etki ettiğini gösteriyor. İş günü niteliğinin
-  ağırlığının sıfıra çok yakın ve sıfırın karar aralığının içinde olması, niteliğin istatistiksel anlamda önemsiz olduğunu söylüyor. Sıcaklık gibi
-  bazı nitelikler için karar aralığı çok kısa ve hesaplar sıfıra yakın, ama buna rağmen niteliğin istatistiksel anlamda etkisi önemli. Burada ağırlık grafiğiyle
+  ağırlığının sıfıra çok yakın ve sıfırın güven aralığının içinde olması, niteliğin istatistiksel anlamda önemsiz olduğunu söylüyor. Sıcaklık gibi
+  bazı nitelikler için güven aralığı çok kısa ve hesaplar sıfıra yakın, ama buna rağmen niteliğin istatistiksel anlamda etkisi önemli. Burada ağırlık grafiğiyle
   ilgili problem, niteliklerin farklı ölçü birimlerinde olması. Hava durumu nitelikleri için hesaplanan ağırlık iyi bir hava ile yağışlı/karlı/fırtınalı bir
   hava arasındaki farkı temsil ederken, sıcaklık niteliğinin ağırlığı 1 derece Celsius artışın etkisini temsil eder. Ağırlıkları karşılaştırılabilir kılmanın
   yolu, lineer modeli hesaplamadan önce nitelikleri ölçeklemektir (ortalamayı 0, standart sapmayı 1 yapacak şekilde).</p>
@@ -1366,7 +1366,7 @@ days_since_2011
   
 <p>Matematiksel olarak bu ağırlıkları hesaplamak kolaydır ve <strong>optimal ağırlıkları bulacağınızın garantisi büyüktür</strong> 
   (lineer regression varsayımlarının veriyle uyuşması halinde).</p>
-<p>Ağırlıklarla birlikte karar aralıklarını, testleri ve sağlam istatistik teorisini elde edersiniz. Aynı zamanda lineer regression'ın birçok
+<p>Ağırlıklarla birlikte güven aralıklarını, testleri ve sağlam istatistik teorisini elde edersiniz. Aynı zamanda lineer regression'ın birçok
   uzantısı vardır (<a href="extend-lm.html#extend-lm">GLM, GAM ve daha fazlası</a>).</p>
 </div>
 <div id="disadvantages" class="section level3 hasAnchor">
