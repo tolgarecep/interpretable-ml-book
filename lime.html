@@ -477,61 +477,66 @@ window.cookieconsent.initialise({
   ağırlıklar vermeye başlar. K tane özniteliğe ulaştığınızda istediğiniz sayıda özniteliğe sahipsiniz demektir. İleri ya da geri yönlü öznitelik
   seçimi diğer yöntemlerdir: Ya tüm öznitelikleri içeren tam modelle başlayıp öznitelik çıkartarak, ya da sadece intercept değerine sahip modelle başlayıp
   öznitelik ekleyerek performansa en iyi katkıyı hangi özniteliğin yaptığına göre karar verip K tane özniteliğe ulaşana kadar devam edebilirsiniz.</p>
-<p>Peki verinin varyasyonlarını nasıl elde edilir? Bu verinin türüne bağlıdır, veri metin, görsel veya tablo verisi olabilir. Metin ve görseller için
-  çözüm, kelimeleri veya süper-pikselleri açıp kapamaktır. Tablo verisinde ise LIME, her bir özniteliği, özniteliğin ortalama ve standart sapma değerlerine sahip
+<p>Peki verinin varyasyonlarını nasıl elde edilir? Bu verinin türüne bağlıdır; veri metin, görsel veya tablo verisi olabilir. Metin ve görseller için
+  çözüm, kelimeleri veya süper-pikselleri açıp kapatmaktır. Tablo verisinde ise LIME, her bir özniteliği, özniteliğin ortalama ve standart sapma değerlerine sahip
   normal dağılımla hafifçe değiştirerek yeni örnekler oluşturur.</p>
 <div id="lime-for-tabular-data" class="section level3 hasAnchor">
-<h3><span class="header-section-number">9.2.1</span> LIME for Tabular Data<a href="lime.html#lime-for-tabular-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Tabular data is data that comes in tables, with each row representing an instance and each column a feature.
-LIME samples are not taken around the instance of interest, but from the training data’s mass center, which is problematic.
-But it increases the probability that the result for some of the sample points predictions differ from the data point of interest and that LIME can learn at least some explanation.</p>
-<p>It is best to visually explain how sampling and local model training works:</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:lime-fitting"></span>
+  
+<h3><span class="header-section-number">9.2.1</span>
+  Tablo verisi için LIME<a href="lime.html#lime-for-tabular-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Tablo verisinde her satır bir örneği ve her sütun bir özniteliği temsil eder. LIME örnekleri açıklamak istediğimiz örneğin çevresinden değil, 
+  eğitim verisinin kütle merkezinden alınır, bu durumu biraz problematiktir ama bazı örneklerin tahminleri için elde edilen sonucun
+  ilgilendiğimiz örneğin tahmini için bulunan sonuçtan farklı olması olasılığını arttırdığından bu sayede LIME garanti olarak bir açıklama öğrenebilir.
+  
+<p>Örneklemenin ve modeli yerel bir bölgede eğitmenin nasıl çalıştığını görsellerle daha iyi anlayabiliriz:</p>
+
+  <div class="figure" style="text-align: center"><span style="display:block;" id="fig:lime-fitting"></span>
 <img src="images/lime-fitting-1.png" alt="LIME algorithm for tabular data. A) Random forest predictions given features x1 and x2. Predicted classes: 1 (dark) or 0 (light). B) Instance of interest (big dot) and data sampled from a normal distribution (small dots). C) Assign higher weight to points near the instance of interest. D) Signs of the grid show the classifications of the locally learned model from the weighted samples. The white line marks the decision boundary (P(class=1) = 0.5)." width="\textwidth" />
 <p class="caption">
-FIGURE 9.5: LIME algorithm for tabular data. A) Random forest predictions given features x1 and x2. Predicted classes: 1 (dark) or 0 (light). B) Instance of interest (big dot) and data sampled from a normal distribution (small dots). C) Assign higher weight to points near the instance of interest. D) Signs of the grid show the classifications of the locally learned model from the weighted samples. The white line marks the decision boundary (P(class=1) = 0.5).
-</p>
+ŞEKİL 9.5:
+  Tablo verisi için LIME algoritması.
+  A) Rastgele orman algoritmasının x1 ve x2 öznitelikleriyle yaptığı tahminler. Tahmin edilen sınıflar: 1 (karanlık) ya da 0 (aydınlık).
+  B) İlgilendiğimiz örnek (büyük nokta) ve normal dağılımdan örneklenen veriler (küçük noktalar).
+  C) İlgilendiğimiz örneğe daha yakın örneklere daha büyük ağırlıklar verilir.
+  D) + ve - işaretleri yerelde, ağırlıklandırılmış örneklerle eğitilen modelin sınıflandırmasını gösterir. Beyaz çizgi karar sınırını belirtir
+  (P(class=1) = 0.5).</p>
 </div>
-<p>As always, the devil is in the detail.
-Defining a meaningful neighborhood around a point is difficult.
-LIME currently uses an exponential smoothing kernel to define the neighborhood.
-A smoothing kernel is a function that takes two data instances and returns a proximity measure.
-The kernel width determines how large the neighborhood is:
-A small kernel width means that an instance must be very close to influence the local model, a larger kernel width means that instances that are farther away also influence the model.
-If you look at <a href="https://github.com/marcotcr/lime/tree/ce2db6f20f47c3330beb107bb17fd25840ca4606">LIME’s Python implementation (file lime/lime_tabular.py)</a> you will see that it uses an exponential smoothing kernel (on the normalized data) and the kernel width is 0.75 times the square root of the number of columns of the training data.
-It looks like an innocent line of code, but it is like an elephant sitting in your living room next to the good porcelain you got from your grandparents.
-The big problem is that we do not have a good way to find the best kernel or width.
-And where does the 0.75 even come from?
-In certain scenarios, you can easily turn your explanation around by changing the kernel width, as shown in the following figure:</p>
+<p>Her zaman olduğu gibi, şeytan ayrıntıda gizlidir. Bir noktanın etrafında anlamlı bir komşuluk tanımlamak zordur. LIME bu komşuluğu belirlemek için
+  eksponansiyel yumuşatma kernel'ı kullanır. Yumuşatma kernel'ı iki veri örneğini alıp bir uzaklık ölçüsü veren bir fonksiyondur. Kernel genişliği
+  komşuluğun büyüklüğünü belirler: Küçük kernel genişliği, bir örneğin yerel modeli etkileyebilmesi için çok yakın olması gerektiği; büyük kernel
+  genişliği, uzaktaki örneklerin de modeli etkileyeceği anlamına gelir. <a href="https://github.com/marcotcr/lime/tree/ce2db6f20f47c3330beb107bb17fd25840ca4606">LIME'ın Python koduna(file lime/lime_tabular.py)</a>
+  bir göz atarsanız eksponansiyel yumuşatma kernel'ı kullandığını ve kernel genişliğinin eğitim verisindeki sütun sayısının karekökünün 0.75 katı olduğunu
+  göreceksiniz. Masum bir kod gibi görünse de, odadaki fil şudur ki en iyi kernel fonksiyonunu ya da genişliğini bulmak bir problemdir. 0.75 de nereden
+  çıktı? Belli senaryolarda kernel genişliğini değiştirerek açıklamanızı tam tersine çevirebilirsiniz:</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:lime-fail"></span>
 <img src="images/lime-fail-1.png" alt="Explanation of the prediction of instance x = 1.6. The predictions of the black box model depending on a single feature is shown as a thick line and the distribution of the data is shown with rugs. Three local surrogate models with different kernel widths are computed. The resulting linear regression model depends on the kernel width: Does the feature have a negative, positive or no effect for x = 1.6?" width="\textwidth" />
 <p class="caption">
-FIGURE 9.6: Explanation of the prediction of instance x = 1.6. The predictions of the black box model depending on a single feature is shown as a thick line and the distribution of the data is shown with rugs. Three local surrogate models with different kernel widths are computed. The resulting linear regression model depends on the kernel width: Does the feature have a negative, positive or no effect for x = 1.6?
-</p>
+ŞEKİL 9.6:
+  x = 1.6 örneğinin açıklaması. Tek özniteliği olan kara kutu modelin tahminleri kalın çizgiyle, ve verinin dağılımı aşağıdaki çubuklarla gösterilmiştir.
+  Üç farklı kernel genişliğiyle üç farklı yerel vekil model oluşturuldu. Elde edilen lineer regression modeli kernel genişliğine bağlıdır:
+  x = 1.6 örneği için öznitelik nasıl bir etki (negatif, pozitif veya nötr) yapar?</p>
 </div>
-<p>The example shows only one feature.
-It gets worse in high-dimensional feature spaces.
-It is also very unclear whether the distance measure should treat all features equally.
-Is a distance unit for feature x1 identical to one unit for feature x2?
-Distance measures are quite arbitrary and distances in different dimensions (aka features) might not be comparable at all.</p>
+<p>Yukarıdaki durumda sadece tek bir öznitelik için farklı açıklamalar var, öznitelik uzayının boyutu arttıkça durum daha da kötüleşecektir.
+  Ayrıca uzaklık ölçüsünün tüm özniteliklere aynı şekilde davranıp davranmaması gerektiği de açık değildir. x1 özniteliğindeki bir birim uzaklık
+  x2 özniteliğindekine denk midir? Uzaklık ölçüleri oldukça keyfidir ve farklı eksenlerdeki (özniteliklerdeki) uzaklıkların karşılaştırılması mümkün olmayabilir.</p> 
 <div id="example-5" class="section level4 hasAnchor">
-<h4><span class="header-section-number">9.2.1.1</span> Example<a href="lime.html#example-5" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Let us look at a concrete example.
-We go back to the <a href="bike-data.html#bike-data">bike rental data</a> and turn the prediction problem into a classification:
-After taking into account the trend that the bicycle rental has become more popular over time, we want to know on a certain day whether the number of bicycles rented will be above or below the trend line.
-You can also interpret “above” as being above the average number of bicycles, but adjusted for the trend.</p>
-<p>First we train a random forest with 100 trees on the classification task.
-On what day will the number of rental bikes be above the trend-free average, based on weather and calendar information?</p>
-<p>The explanations are created with 2 features.
-The results of the sparse local linear models trained for two instances with different predicted classes:</p>
+<h4><span class="header-section-number">9.2.1.1</span> Örnek<a href="lime.html#example-5" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Gerçek bir örnekle devam edelim. <a href="bike-data.html#bike-data">Bisiklet kiralama verisetine</a>
+  geri dönecek ve onu bir sınıflandırma problemine dönüştüreceğiz: Bisiklet kiralamasının zamanla daha popüler olduğu trendini
+  göz önüne aldıktan sonra, şimdi de belli bir günde kiralanan bisiklet sayısının trend çizgisinden aşağıda mı yukarıda mı olduğunu araştıracağız.
+  "Yukarı"yı ortalama bisiklet sayısının yukarısında olarak da yorumlayabilirsiniz, burada sadece trende uyduruldu.</p>
+<p>Önce sınıflandırma için 100 ağaçlı bir rastgele orman eğiteceğiz. Hava ve takvim bilgisine göre, hangi günde kiralanan bisiklet sayısı
+  ortalamanın üstünde olacak?</p>
+<p>Açıklamalar 2 öznitelikle oluşturuluyor. Tahmin edilen sınıfı farklı olan iki veri örneği için ayrık yerel lineer modellerin sonucu:</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:lime-tabular-example-explain-plot-1"></span>
 <img src="images/lime-tabular-example-explain-plot-1-1.png" alt="LIME explanations for two instances of the bike rental dataset. Warmer temperature and good weather situation have a positive effect on the prediction. The x-axis shows the feature effect: The weight times the actual feature value." width="\textwidth" />
 <p class="caption">
-FIGURE 9.7: LIME explanations for two instances of the bike rental dataset. Warmer temperature and good weather situation have a positive effect on the prediction. The x-axis shows the feature effect: The weight times the actual feature value.
+ŞEKİL 9.7: Bisiklet kiralama verisetinden iki örnek için LIME açıklamaları. Yüksek sıcaklık ve iyi hava tahmine pozitif etki ediyor. x ekseni öznitelik etkisini
+  gösteriyor: Ağırlık çarpı özniteliğin değeri.
 </p>
 </div>
-<p>From the figure it becomes clear that it is easier to interpret categorical features than numerical features.
-One solution is to categorize the numerical features into bins.</p>
+<p>Şekilden daha iyi anlaşılacağı üzere, kategorik öznitelikleri yorumlamak sayısal olanları yorumlamaktan daha kolay. Buna dair bir çözüm
+  sayısal özniteliği aralıklara bölmektir.</p>
 </div>
 </div>
 <div id="lime-for-text" class="section level3 hasAnchor">
