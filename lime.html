@@ -910,50 +910,46 @@ For
 </div>
 <div id="advantages-13" class="section level3 hasAnchor">
 <h3><span class="header-section-number">9.2.4</span> Avantajlar<a href="lime.html#advantages-13" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>
-  
-  Even if you <strong>replace the underlying machine learning model</strong>, you can still use the same local, interpretable model for explanation.
-Suppose the people looking at the explanations understand decision trees best.
-Because you use local surrogate models, you use decision trees as explanations without actually having to use a decision tree to make the predictions.
-For example, you can use a SVM.
-And if it turns out that an xgboost model works better, you can replace the SVM and still use a decision tree to explain the predictions.</p>
-<p>Local surrogate models benefit from the literature and experience of training and interpreting interpretable models.</p>
-<p>When using Lasso or short trees, the resulting <strong>explanations are short (= selective) and possibly contrastive</strong>.
-Therefore, they make <a href="explanation.html#explanation">human-friendly explanations</a>.
-This is why I see LIME more in applications where the recipient of the explanation is a lay person or someone with very little time.
-It is not sufficient for complete attributions, so I do not see LIME in compliance scenarios where you might be legally required to fully explain a prediction.
-Also for debugging machine learning models, it is useful to have all the reasons instead of a few.</p>
-<p>LIME is one of the few methods that <strong>works for tabular data, text and images</strong>.</p>
-<p>The <strong>fidelity measure</strong> (how well the interpretable model approximates the black box predictions) gives us a good idea of how reliable the interpretable model is in explaining the black box predictions in the neighborhood of the data instance of interest.</p>
-<p>LIME is implemented in Python (<a href="https://github.com/marcotcr/lime">lime</a> library) and R (<a href="https://cran.r-project.org/web/packages/lime/index.html">lime package</a> and <a href="https://cran.r-project.org/web/packages/iml/index.html">iml package</a>) and is <strong>very easy to use</strong>.</p>
-<p>The explanations created with local surrogate models <strong>can use other (interpretable) features than the original model was trained on.</strong>.
-Of course, these interpretable features must be derived from the data instances.
-A text classifier can rely on abstract word embeddings as features, but the explanation can be based on the presence or absence of words in a sentence.
-A regression model can rely on a non-interpretable transformation of some attributes, but the explanations can be created with the original attributes.
-For example, the regression model could be trained on components of a principal component analysis (PCA) of answers to a survey, but LIME might be trained on the original survey questions.
-Using interpretable features for LIME can be a big advantage over other methods, especially when the model was trained with non-interpretable features.</p>
+<p>Tek bir yerel ve yorumlanabilir modeli, tahminlerini açıklamak istediğiniz <strong>herhangi bir kara kutu model</strong> için kullanabilirsiniz.
+  Açıklamaları inceleyen kullanıcıların en iyi anladığı modelin karar ağaçları olduğunu varsayalım. Yerel vekil modeller kullandığınızdan, tahminler için 
+  karar ağaçlarını kullanmasanız da açıklamalar için karar ağaçlarını kullanabilirsiniz. Örneğin, bir SVM ile başlarsınız, xgboost modeli daha iyi çalışıyorsa
+  SVM modelini değiştirirsiniz ama yine de açıklamalar için karar ağaçları kullanmaya devam edebilirsiniz.</p>
+<p>Yerel vekil modeller, yorumlanabilir modelleri eğitmenin ve yorumlamanın tecrübesinden ve araştırma geçmişinden faydalanır.</p>
+<p>Lasso ya da kısa ağaçlar kullandığınızda, elde ettiğiniz <strong>açıklamalar kısa (yani seçici) ve yüksek olasılıkla zıtlıklar üzerine olur</strong>.
+  Bu özelliklerinden ötürü bu açıklamalar <a href="explanation.html#explanation">insan dostu açıklamalardır</a>, ve bu yüzden LIME, açıklamanın alıcısının
+  meslek dışından veya az zamanı olan biri olduğu durumlarda daha çok tercih edilir. Bütünsel açıklamalar üretemediğinden LIME metodunu
+  yasal bir durumda tahminleri açıklamanız gereken senaryolarda kullanılabilir görmüyorum. Aynı zamanda makine öğrenmesi modellerini debug ederken
+  tüm nedenleri görebilmek birkaçını görmekten çok daha kullanışlıdır.</p>
+<p>LIME, <strong>hem tablo, hem metin, hem de görsel verisi için çalışabilen</strong> nadir metotlardandır.</p>
+<p><strong>Uygunluk ölçüsü</strong> (yorumlanabilir modelin kara kutu modeli ne kadar iyi taklit edebildiği), yorumlanabilir modelin ilgilendiğimiz
+  veri örneği etrafında kara kutu modeli ne kadar iyi açıklayabildiğine dair iyi bir bilgi verir.</p>
+<p>LIME'ın Python (<a href="https://github.com/marcotcr/lime">lime</a> library) ve 
+  R (<a href="https://cran.r-project.org/web/packages/lime/index.html">lime package</a> and <a href="https://cran.r-project.org/web/packages/iml/index.html">iml
+  package</a>) implementation'ları mevcuttur ve kullanımları gayet basittir.</p>
+<p>Yerel modellerle yapılan açıklamalar, <strong>asıl modelin kullanmadığı (yorumlanabilir) öznitelikler</strong> kullanabilir. Tabii ki bu yorumlanabilir
+  özniteliklerin eldeki verilerden türetilmesi gerekir. Bir metin sınıflandırıcısı kelime embedding'lerini öznitelikler olarak alırken
+  yapılan açıklamalar cümlede olan veya olmayan kelimeler üzerine yapılabilir. Bir regression modeli yorumlanabilir olmayan, özniteliklerin dönüştürülmüş
+  hallerine dayanırken açıklamalar orijinal özniteliklere dayanabilir. Örneğin, regression modeli bir ankete verilen cevapların PCA 
+  (principal component analysis) öznitelikleriyle eğitilirken LIME orijinal anket cevaplarıyla eğitilebilir. Özellikle kara kutu modelin öznitelikleri
+  yorumlanabilir olmadığında, LIME için yorumlanabilir öznitelikler kullanmak avantaj sağlayabilir.</p>
 </div>
 <div id="disadvantages-13" class="section level3 hasAnchor">
-<h3><span class="header-section-number">9.2.5</span> Disadvantages<a href="lime.html#disadvantages-13" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The correct definition of the neighborhood is a very big, unsolved problem when using LIME with tabular data.
-In my opinion it is the biggest problem with LIME and the reason why I would recommend to use LIME only with great care.
-For each application you have to try different kernel settings and see for yourself if the explanations make sense.
-Unfortunately, this is the best advice I can give to find good kernel widths.</p>
-<p>Sampling could be improved in the current implementation of LIME.
-Data points are sampled from a Gaussian distribution, ignoring the correlation between features.
-This can lead to unlikely data points which can then be used to learn local explanation models.</p>
-<p>The complexity of the explanation model has to be defined in advance.
-This is just a small complaint, because in the end the user always has to define the compromise between fidelity and sparsity.</p>
-<p>Another really big problem is the instability of the explanations.
-In an article <a href="#fn51" class="footnote-ref" id="fnref51"><sup>51</sup></a> the authors showed that the explanations of two very close points varied greatly in a simulated setting.
-Also, in my experience, if you repeat the sampling process, then the explantions that come out can be different.
-Instability means that it is difficult to trust the explanations, and you should be very critical.</p>
-<p>LIME explanations can be manipulated by the data scientist to hide biases <a href="#fn52" class="footnote-ref" id="fnref52"><sup>52</sup></a>.
-The possibility of manipulation makes it more difficult to trust explanations generated with LIME.</p>
-<p>Conclusion:
-Local surrogate models, with LIME as a concrete implementation, are very promising.
-But the method is still in development phase and many problems need to be solved before it can be safely applied.</p>
-
+<h3><span class="header-section-number">9.2.5</span> Dezavantajlar<a href="lime.html#disadvantages-13" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Tablo verisi için LIME metodunda, komşuluğun ne olduğunun tanımı çözülememiş büyük bir problemdir. Benim görüşüm bu durumun LIME'ın en büyük problemi
+  olduğu ve bu yüzden metodu kullanırken çok dikkatli olmanız gerektiği yönünde. Her farklı senaryo için farklı kernel ayarları denemeniz ve açıklamaları
+  kendiniz test etmeniz gerekmektedir, ve maalesef uygun kernel genişliğini bulmak için verebileceğim en iyi tavsiye budur.</p>
+<p>Örnekleme işlemi geliştirilmeye açıktır. Veri örnekleri, öznitelikler arasındaki korelasyon görmezden gelinerek Gaussian bir
+  dağılımdan alınır. Bu, yerel yorumlanabilir modelleri eğitirken gerçekçi olmayan veriler kullanmanıza sebep olabilir.</p>
+<p>Açıklama modelinin karmaşıklığı önceden belirlenmelidir. Bu aslında küçük bir problemdir, çünkü kullanıcının her zaman uygunluk
+  ve ayrıksılık arasında alış veriş yapması gereklidir.</p> 
+<p>Bir diğer problem ise açıklamaların istikrarsızlığıdır. Bir makalede <a href="#fn51" class="footnote-ref" id="fnref51"><sup>51</sup></a>
+  yazarlar, iki çok yakın veri örneği için yapılan açıklamaların oluşturulan ayarlarda çok farklı olduğunu gösterdiler. Benim de gözlemlediğim üzere,
+  eğer örnekleme işlemini tekrar ederseniz açıklamalar değişkenlik gösterebilir. İstikrarsızlık açıklamlara güvenmenin zor olduğu ve çok titiz
+  olmanız gerektiği anlamına gelir.</p>
+<p>LIME açıklamaları veri bilimciler tarafından bias'leri saklamak üzere <a href="#fn52" class="footnote-ref" id="fnref52"><sup>52</sup></a>
+  manipüle edilebilir. Manipülasyon ihtimali LIME'ın ürettiği açıklamalara güvenmeyi zorlaştırır.</p>
+<p>Sonuç: Yerel vekil modeller, ve onların bir örneği LIME, umut vaad eden metotlardır; fakat hala geliştirme sürecinde olduğundan güvenle kullanılmadan önce
+  daha birçok problemin çözülmesi gereklidir.
 <div style="page-break-after: always;"></div>
 </div>
 </div>
